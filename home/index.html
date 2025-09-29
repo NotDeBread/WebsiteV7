@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="breadFight/breadFight.css">
     <link rel="stylesheet" href="../global.css">
     <link rel="icon" type="image/x-icon" href="../media/favicon.png">
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="DeBread's Space">
+    <meta name="description" content="Visit DeBread's Space.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://debread.space/home">
+    <meta property="og:title" content="DeBread's Space">
+    <meta property="og:description" content="Visit DeBread's Space.">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/805608363291181068/1093677936416149584/FoxBeeg.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://debread.space/home">
+    <meta property="twitter:title" content="DeBread's Space">
+    <meta property="twitter:description" content="Visit DeBread's Space.">
+    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/805608363291181068/1093677936416149584/FoxBeeg.png">
+
     <title>DeBread's Space</title>
 </head>
 <body>
@@ -25,6 +45,63 @@
         <div id="loadingScreen"></div>
     </div>
     
+    <div id="breadFightContainer">
+        <div id="breadFight">
+            <div id="TPBarContainer">
+                <div id="TPCounterContainer">
+                    <div>T</div>
+                    <div>P</div>
+                    <div id="TPCounter">0</div>
+                    <div>%</div>
+                </div>
+                <div id="TPBar">
+                    <img src="../media/breadFight/TPTop.png" style="position: absolute; top: 0;" width="32">
+                    <img src="../media/breadFight/TPBottom.png" style="position: absolute; bottom: 0;" width="32">
+                    <div id="innerTPBar"></div>
+                </div>
+            </div>
+            <div id="playArea">
+                <div id="playFieldContainer">
+                    <div id="playFieldPlayers">
+                        <!-- <img src="../media/guy2.png" width="100"> -->
+                    </div>
+                    <div id="playField">
+                        <div id="bfSoul">
+                            <div id="bfGraze"></div>
+                        </div>
+                    </div>
+                    <div id="playFieldEnemies">
+                        <div id="fellaContainer">
+                            <img id="fella" src="../media/breadFight/fella/fellaIdle1.png" width="384" style="z-index: 2;">
+                            <!-- <img id="fella" src="../media/buddy.png" width="256" style="z-index: 2;"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="background"></div>
+                <div class="background" style="animation: backgroundScroll2 10s linear infinite reverse; opacity: 0.25;"></div>
+            </div>
+            <div id="status">
+                <div id="players">
+                    <!-- <div class="player" style="width: 300px !important;">
+                        <div class="playerCard">
+                            <img src="../media/breadFight/playerIcon.png" height="64">
+                            <div>YOU</div>
+                        </div>
+                        <div class="playerButtons">
+                            <div class="playerButton"></div>
+                            <div class="playerButton"></div>
+                            <div class="playerButton"></div>
+                            <div class="playerButton"></div>
+                        </div>
+                    </div> -->
+                </div>
+                <div id="statusMain">
+                    <span>????? appears</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="theBigOne">
         <div class="genericBoxRow">
             <div class="genericBox" style="width: 75%;">
@@ -34,6 +111,7 @@
                 </div>
                 <span>Heya, I'm DeBread and welcome to my page! I'm just a guy that resides in Missouri who somehow got into web development. </span><a onclick="gotoPage('aboutme')">Learn more...</a>
                 <br>
+                <!-- <button onclick="startFight()">FIGHT</button> -->
                 <!-- <span style="font-family: papyrus; font-size: 2em;">Sample text 🔥</span> -->
                 <!-- <a onclick="gotoPage('aboutme')" style="font-family: papyrus; font-size: 2em;">learn more</a>
                 <a onclick="gotoPage('chip')" style="font-family: papyrus; font-size: 2em;">chip page</a>
@@ -90,7 +168,7 @@
                 </div>
                 <div id="projects0">
                     <div class="projectsContainer">
-                        <div class="project" onclick="guyTalk('Hey that isnt out yet', true)">
+                        <div class="project" onclick="tryWIP()" wip="true">
                             <div class="projectInfo">
                                 <div>
                                     <strong class="projectTitle">Annie Accumulator</strong><br>
@@ -115,7 +193,7 @@
                         <div class="project mobileIncompatible" onclick="gotoPage('games/GooberShooter')">
                             <div class="projectInfo">
                                 <div>
-                                    <strong class="projectTitle">Goober Shooter</strong><br>
+                                    <strong class="projectTitle">Little guy Shooter</strong><br>
                                     <span>Awesome top-down wave shooter.</span>
                                 </div>
                                 <em style="color: grey;">Released <span fillDate="true" day="20" month="8" year="2024"></span></em>
@@ -147,7 +225,7 @@
                             <div class="projectTag">🎮 Game</div>
                             <div class="projectBG" style="background-image: url(../media/projectImages/mathGame.png);"></div>
                         </div>
-                        <div class="project mobileIncompatible" onclick="guyTalk('Hey that isnt out yet', true)">
+                        <div class="project mobileIncompatible" onclick="tryWIP()" wip="true">
                             <div class="projectInfo">
                                 <div>
                                     <strong class="projectTitle">DeBread's Retextures</strong><br>
@@ -158,7 +236,7 @@
                             <div class="projectTag">📦 Mod</div>
                             <div class="projectBG" style="background-image: url(../media/projectImages/balatro.png);"></div>
                         </div>
-                        <div class="project mobileIncompatible" onclick="guyTalk('Hey that isnt out yet', true)">
+                        <div class="project mobileIncompatible" onclick="tryWIP()" wip="true">
                             <div class="projectInfo">
                                 <div>
                                     <strong class="projectTitle">DEBREAD ARCHIVES</strong><br>
@@ -206,7 +284,7 @@
     </div>
 
     <div id="footer">
-        <span>DeBread 2025 - v6.022</span>
+        <a onclick="gotoPage('https://github.com/notdebread',true)" style="color: white;">v6.03</a>
     </div>
 
     <div class="mobileIncompatible" id="outerGuyContainer"> <!--Fixed positioning-->
@@ -219,7 +297,8 @@
     </div>
 
     <script src="../DeBread.js"></script>
-  <script src="../global.js"></script>
+    <script src="../global.js"></script>
+    <script src="breadFight/breadFight.js"></script>
     <script src="script.js"></script>
 
     <!-- BG Shader -->

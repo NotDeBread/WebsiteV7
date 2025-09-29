@@ -1,0 +1,257 @@
+:root {
+    --pageMargin: 50px;
+}
+
+#noticeContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    z-index: 2;
+}
+
+#notice {
+    width: 750px;
+    height: 500px;
+    outline: 1px solid white;
+    padding: 10px;
+    position: relative;
+    background-color: rgb(0,0,0,0.75);
+    backdrop-filter: blur(10px);
+}
+
+#noticeHeader {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.noticePoint {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.noticePoint img {
+    border-radius: 50%;
+}
+
+#noticeButton {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#noticeButton button {
+    padding: 5px 20px;
+}
+
+
+
+
+#itemPopupContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100dvw;
+    height: 100dvh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+#itemPopup {
+    outline: 2px solid white;
+    width: 500px;
+    height: 300px;
+    padding: 10px;
+    background-color: rgb(0,0,0,0.75);
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+
+#itemPopupInfo {
+    width: 50% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#itemX {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-weight: 900;
+    font-size: 1.5em;
+    background-color: black;
+    outline: 2px solid white;
+}
+
+#itemX:hover {
+    background-color: white;
+}
+
+#itemPopupName {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+#itemPopupSpecHeader {
+    color: grey;
+    font-size: 0.75em;
+}
+
+#itemPopupButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#itemPopupButtons button {
+    width: 100%;
+    background-color: white;
+    color: black;
+    height: 25px;
+    font-weight: 700;
+}
+
+#itemPopupImg {
+    height: 100%;
+    width: 50%;
+    background-image: url(../media/buddy.png);
+    background-position: center;
+    background-size: cover;
+    outline: 1px solid white;
+}
+
+#itemPopupHearts {
+    background-color: black;
+    outline: 2px solid black;
+    height: 20px;
+    padding: 0px 5px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    outline: 1px solid white;
+}
+
+
+
+
+
+#headerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#header {
+    font-size: 2em;
+    font-weight: 700;
+    margin-top: 50px;
+}
+
+#itemContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 50px;
+}
+
+.item {
+    outline: 2px solid black;
+    height: 200px;
+    width: 300px;
+    box-shadow: 0px 0px 0px 4px white;
+    background-color: lime;
+    background-image: url(../media/buddy.png);
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.item:hover {
+    outline: 4px solid black;
+    box-shadow: 0px 0px 0px 6px white;
+}
+
+.item:hover .itemPrice, .item:hover .itemDiscount, .item:hover .itemHearts {
+    outline: 4px solid black;
+}
+
+.item:active {
+    outline: 2px solid black;
+    box-shadow: 0px 0px 0px 4px white;
+}
+
+.item:active .itemPrice, .item:active .itemDiscount, .item:active .itemHearts {
+    outline: 2px solid black;
+}
+
+.itemInfo {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    padding: 10px;
+    line-height: 1.1;
+    background-image: linear-gradient(rgb(0,0,0,0.75), rgb(0,0,0,0.5), rgb(0,0,0,0.75));
+}
+
+.itemName {
+    font-weight: 700;
+    font-size: 1.25em;
+    filter: drop-shadow(0px 0px 5px black);
+}
+
+.itemPrice, .itemDiscount, .itemHearts {
+    position: absolute;
+    outline: 2px solid black;
+    color: black;
+    height: 20px;
+    padding: 0px 5px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemHearts {
+    top: -10px;
+    right: -10px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.itemPrice {
+    right: -10px;
+    bottom: -10px;
+    background-color: hsl(100, 100%, 65%);
+}
+
+.itemDiscount {
+    left: -10px;
+    bottom: -10px;
+    background-color: rgb(255, 100, 100);
+}

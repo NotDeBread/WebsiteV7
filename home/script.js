@@ -90,6 +90,32 @@ function guyTalk(text, animate = false) {
     }
 }
 
+let wipClicks = 0
+let WIPdialogue = [
+    'Hey that isnt out yet.',
+    'Hey that isnt out yet.',
+    'Hey that isnt out yet.',
+    'Dude did you hear me.',
+    'Maybe if you click on it again it will come out.',
+    'WRONG',
+    '...',
+    '...',
+    '...',
+    'Alright fuck you in particular.',
+    'No more WIPs for you.'
+]
+function tryWIP() {
+    wipClicks++
+    guyTalk(WIPdialogue[Math.min(wipClicks-1,WIPdialogue.length-1)],true)
+
+    if(wipClicks >= WIPdialogue.length) {
+        document.querySelectorAll('[wip="true"]').forEach(elem => {
+            elem.remove()
+            console.log(elem)
+        })
+    }
+}
+
 const particleBase = document.createElement('div')
 particleBase.classList.add('guyPointParticle')
 setInterval(() => {

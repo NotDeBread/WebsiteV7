@@ -1,0 +1,333 @@
+@font-face {
+    font-family: operator;
+    src: url(../../media/fonts/operator.otf);
+}
+
+#breadFightContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: black;
+    z-index: 2;
+    image-rendering: pixelated;
+    display: none;
+    font-family: operator;
+    font-size: 2em;
+}
+
+#breadFight {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#TPBarContainer {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    height: calc(100% - 325px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+#TPCounterContainer {
+    margin-right: 10px;
+    width: 50px;
+    text-align: center;
+}
+
+#TPCounterContainer div {
+    transform: skewX(-10deg);
+}
+
+#TPBar {
+    height: 320px;
+    width: 32px;
+    background-color: yellow;
+    position: relative;
+}
+
+#innerTPBar {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    transition: height ease-in-out 250ms;
+}
+
+#playArea, #backgroundContainer, #playFieldContainer {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: calc(100% - 325px);
+    transition: height ease-in-out 250ms;
+}
+
+#playFieldContainer {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    gap: 150px;
+}
+
+#playField {
+    outline: 4px solid darkgreen;
+    background-color: black;
+    width: 250px;
+    height: 250px;
+    position: relative;
+    /* scale: 0; */
+    /* rotate: 180deg; */
+    transition: rotate 1000ms ease-in-out, scale 1000ms ease-in-out;
+}
+
+#playFieldPlayers, #playFieldEnemies {
+    width: 100px;
+}
+
+#fellaContainer {
+    width: 256px;
+    height: 256px;
+    position: relative;
+}
+
+#playFieldEnemies img {
+    position: absolute;
+    animation: float 5s ease-in-out infinite forwards;
+}
+
+@keyframes float {
+    from {
+        translate: 0px -10px;
+    }
+    50% {
+        translate: 0px 10px;
+    }
+    to {
+        translate: 0px -10px;
+    }
+}
+
+@keyframes shadow {
+    from {
+        opacity: 0.25;
+    }
+    to {
+        translate: 250px 0px;
+        opacity: 0;
+    }
+}
+
+#bfSoul {
+    width: 24px;
+    height: 24px;
+    background-image: url(../../media/breadFight/soul.png);
+    background-size: 24px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bfGraze {
+    height: 64px;
+    width: 64px;
+    position: absolute;
+    background-image: url(../../media/breadFight/graze.png);
+    background-size: 64px;
+    opacity: 0;
+    /* animation: graze 250ms ease-out 1 forwards; */
+}
+
+@keyframes graze {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../../media/breadFight/bg.svg);
+    background-size: 100px;
+    opacity: 0.5;
+    animation: backgroundScroll 5s linear infinite forwards;
+}
+
+@keyframes backgroundScroll {
+    to {
+        background-position: 100px 100px;
+    }
+}
+
+@keyframes backgroundScroll2 {
+    from {
+        background-position: 13.35px 13.35px;
+    }
+    to {
+        background-position: 213.35px 313.35px;
+    }
+}
+
+#status {
+    height: 325px;
+    /* border-top: 4px solid rgb(51, 32, 51); */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+    transition: height ease-in-out 250ms;
+}
+
+#statusMain {
+    padding: 10px;
+    font-size: 1.25em;
+    border-top: 4px solid #332033;
+}
+
+#players {
+    height: 64px;
+    width: 100%;
+    display: flex;
+}
+
+.player {
+    height: 64px;
+    width: 350px;
+    /* border-top: 4px solid #9eabb4; */
+    box-shadow: 0px -4px 0px #9eabb4;
+    overflow: hidden;
+    background-color: black;
+    transition: height ease-in-out 250ms, translate ease-in-out 250ms;
+}
+
+.playerCard {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.playerHealth {
+    height: 15px;
+    width: 100px;
+    background-color: red;
+    position: relative;
+}
+
+.innerPlayerHealth {
+    width: 100%;
+    height: 100%;
+    background-color: lime;
+}
+
+.playerHealthText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    filter: drop-shadow(0px 0px 3px black);
+}
+
+
+.playerButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 64px;
+}
+
+.playerButton {
+    /* box-shadow: 0px 0px 0px 4px orange inset; */
+    width: 48px;
+    height: 48px;
+    background-image: url(../../media/breadFight/icons/fight.png);
+    background-size: 48px;
+}
+
+.attackBarContainer {
+    height: 64px;
+    width: 500px;
+    border-bottom: 2px solid grey;
+    display: flex;
+    padding: 8px 0px;
+    gap: 25px;
+}
+
+@keyframes attackBarHit {
+    from {
+        translate: -5px 0px;
+    }
+    to {
+        translate: 0px 0px;
+    }
+}
+
+.attackBox {
+    outline: 2px solid white;
+    height: 100%;
+    width: 250px;
+    position: relative;
+}
+
+.attackGoal {
+    height: 100%;
+    width: 10px;
+    outline: 4px solid white;
+}
+
+.attackBar {
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background-color: white;
+    transition: left linear 25ms;
+}
+
+@keyframes barAcc {
+    to {
+        translate: 10px 0px;
+        letter-spacing: 1px;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes barHit {
+    to {
+        scale: 2;
+        opacity: 0;
+    }
+}
+
+@keyframes barEffect0 {
+    to {
+        width: 250px;
+        opacity: 0;
+    }
+}
+
+@keyframes attackNum {
+    to {
+        translate: 0px -25px;
+        opacity: 0;
+    }
+}

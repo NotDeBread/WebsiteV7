@@ -53,11 +53,11 @@ const DeBread = {
             } else {
                 element.style.setProperty('transform',`translateX(${DeBread.randomNum(-intensityX, intensityX)}px) translateY(${DeBread.randomNum(-intensityY, intensityY)}px)`)
             }
-        }, interval * gameSpeed);
+        }, interval);
         setTimeout(() => {
             clearInterval(shakeInterval)
             element.style.setProperty('transform',`none`)
-        }, time * gameSpeed);
+        }, time);
     },
 
     easeShake(element, interval, startIntensity, intensityDecrease) {
@@ -201,29 +201,56 @@ const DeBread = {
     * @param volume The volume to play the sound at.
     * @param speed The speed to play the sound at.
     */
-    playSound(sound, volume = 1, speed = 1) {
+    /**
+    * Plays a sound.
+    * @param sound The file path of the audio.
+    * @param volume The volume to play the sound at.
+    * @param speed The speed to play the sound at.
+    */
+    playSound(sound, volume = 1, speed = 1, preservePitch = false) {
+        function updateCounter() {
+            // doge('dbAUD').innerText = `${audios}AUD`
+            // doge('dbAUD').style.color = `hsl(0deg, 100%, ${100 - (audios / audioLimit * 50)}%)`
+        }
+
         if(audios < audioLimit) {
-            if(!soundPool[sound]) {
+            if (!soundPool[sound]) {
                 soundPool[sound] = new Audio(sound)
             }
+    
             const audio = soundPool[sound]
             audio.volume = volume
             audio.playbackRate = speed
-
-            if(audio.paused) {
-                audio.play()
+            audio.preservesPitch = preservePitch
+    
+            if (audio.paused) {
+                audio.play().catch((error) => {
+                    console.error('Error playing audio:', error)
+                });
                 audios++
-            } else{
-                const audioClone = audio.cloneNode()
+                updateCounter()
+
+                setTimeout(() => {
+                    audios--
+                    updateCounter()
+                }, audio.duration * 1000);
+            } else {
+                const audioClone = audio.cloneNode();
                 audioClone.volume = volume
                 audioClone.playbackRate = speed
-                audioClone.play()
+                audioClone.preservesPitch = preservePitch
+                audioClone.play().catch((error) => {
+                    console.error('Error playing audio clone:', error)
+                })
                 audios++
-            }
+                updateCounter()
 
-            setTimeout(() => {
-                audios--
-            }, audio.duration * 1000);
+
+                setTimeout(() => {
+                    audios--
+                    updateCounter()
+                }, audio.duration * 1000);
+            }
         }
     },
 
