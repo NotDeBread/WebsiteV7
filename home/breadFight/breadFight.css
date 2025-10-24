@@ -17,6 +17,16 @@
     font-size: 2em;
 }
 
+#bfDebug {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: aqua;
+    z-index: 999;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 15px;
+}
+
 #breadFight {
     position: relative;
     width: 100%;
@@ -83,11 +93,60 @@
     position: relative;
     /* scale: 0; */
     /* rotate: 180deg; */
-    transition: rotate 1000ms ease-in-out, scale 1000ms ease-in-out;
+    overflow: hidden;
+    transition: rotate 1000ms ease-in-out, scale 1000ms ease-in-out, width 500ms ease-in-out, height 500ms ease-in-out;
 }
 
 #playFieldPlayers, #playFieldEnemies {
     width: 100px;
+}
+
+@keyframes gooberHazard {
+    to {
+        scale: 2;
+        opacity: 0;
+    }
+}
+
+@keyframes bulletExplosion {
+    to {
+        scale: 10;
+        opacity: 0;
+    }
+}
+
+@keyframes line {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes linePulse {
+    from {
+        transform: scaleX(200%);
+        box-shadow: 0px 0px 0px 0px white;
+    }
+    to {
+        box-shadow: 0px 0px 0px 25px transparent;
+    }
+}
+
+@keyframes lineOut {
+    to {
+        width: 0;
+    }
+}
+
+@keyframes spikeIn {
+    from {
+        scale: 0;
+    }
+}
+
+@keyframes spikeOut{
+    to {
+        scale: 0;
+    }
 }
 
 #fellaContainer {
@@ -180,6 +239,17 @@
     }
 }
 
+#realContainer {
+    position: absolute;
+    width: 100%;
+    bottom: 450px;
+    z-index: 0;
+}
+
+#innerRealContainer {
+    position: relative;
+}
+
 #status {
     height: 325px;
     /* border-top: 4px solid rgb(51, 32, 51); */
@@ -188,6 +258,65 @@
     width: 100%;
     z-index: 2;
     transition: height ease-in-out 250ms;
+}
+
+#realContainer {
+    position: absolute;
+    top: 0;
+}
+
+#innerRealContainer {
+    position: relative;
+}
+
+.realBox {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 128px;
+    display: flex;
+    z-index: 3;
+    background-image: url(../../media/breadFight/real0.png);
+    background-size: contain;
+    animation: realboxLoop 2s linear infinite forwards, realboxJump 4s ease-out infinite forwards;
+}
+
+#realboxBack {
+    z-index: 2;
+    filter: brightness(75%);
+    animation: realboxLoop 3.76576s linear infinite forwards, realboxJump 4s ease-out 3.1415926s infinite forwards;
+}
+
+#realboxFarBack {
+    z-index: 1;
+    filter: brightness(50%);
+    animation: realboxLoop 4.4356s linear infinite forwards, realboxJump 4s ease-out 4.43821s infinite forwards;
+}
+
+#realboxFartherBack {
+    z-index: 0;
+    filter: brightness(50%);
+    animation: realboxLoop 5.986645s linear infinite forwards, realboxJump 4s ease-out 6.4342s infinite forwards;
+}
+
+@keyframes realboxLoop {
+    to {
+        background-position: -128px 0px;
+    }
+}
+
+@keyframes realboxJump {
+    from {
+        background-image: url(../../media/breadFight/real1.png);
+    }
+    10% {
+        translate: 0px -100px;
+        background-image: url(../../media/breadFight/real1.png);
+    }
+    30% {
+        translate: 0px 0px;
+        background-image: url(../../media/breadFight/real0.png);
+    }
 }
 
 #statusMain {
@@ -200,6 +329,8 @@
     height: 64px;
     width: 100%;
     display: flex;
+    background-color: black;
+    box-shadow: 0px -4px 0px #332033;
 }
 
 .player {

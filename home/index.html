@@ -47,6 +47,7 @@
     
     <div id="breadFightContainer">
         <div id="breadFight">
+            <span id="bfDebug">-</span>
             <div id="TPBarContainer">
                 <div id="TPCounterContainer">
                     <div>T</div>
@@ -81,6 +82,14 @@
                 <div class="background" style="animation: backgroundScroll2 10s linear infinite reverse; opacity: 0.25;"></div>
             </div>
             <div id="status">
+                <div id="realContainer">
+                    <div id="innerRealContainer">
+                        <div class="realBox"></div>
+                        <div class="realBox" id="realboxBack"></div>
+                        <div class="realBox" id="realboxFarBack"></div>
+                        <div class="realBox" id="realboxFartherBack"></div>
+                    </div>
+                </div>
                 <div id="players">
                     <!-- <div class="player" style="width: 300px !important;">
                         <div class="playerCard">
@@ -284,7 +293,7 @@
     </div>
 
     <div id="footer">
-        <a onclick="gotoPage('https://github.com/notdebread',true)" style="color: white;">v6.03</a>
+        <a onclick="gotoPage('https://github.com/notdebread',true)" style="color: white;">v6.04</a>
     </div>
 
     <div class="mobileIncompatible" id="outerGuyContainer"> <!--Fixed positioning-->

@@ -7,6 +7,7 @@ battleMusic.loop = true
 
 function startFight() {
     if(!breadFightActive) {
+        document.body.style.overflow = 'hidden'
         breadFightActive  = true
         DeBread.playSound('../media/breadFight/tension.wav', 0.25, 1)
         setTimeout(() => {
@@ -29,7 +30,9 @@ let currentDialogue = '????? appears.'
 
 const bfSoul = {
     isActive: false,
+    mode: 0,
     pos: [0,0],
+    vel: [0,0],
     speed: 5,
     tp: 0,
     immune: false,
@@ -40,7 +43,26 @@ const bfSoul = {
         right: undefined
     },
 
-    damage: function() {
+    inventory: [
+        {
+            name: 'Large lollipop',
+            desc: 'Heals 100HP',
+            inUse: false,
+            fun: player => {
+                healPlayer(player, 100)  
+            },
+        },
+        {
+            name: 'Large lollipop',
+            desc: 'Heals 100HP',
+            inUse: false,
+            fun: player => {
+                healPlayer(player, 100)  
+            },
+        }
+    ],
+
+    damage: function(damage) {
         if(!bfSoul.immune) {
             DeBread.playSound('../../media/breadFight/audio/hurt.wav', 0.1)
             const possiblePlayers = []
@@ -50,7 +72,7 @@ const bfSoul = {
                 }
             }
     
-            damagePlayer(possiblePlayers[DeBread.randomNum(0,possiblePlayers.length-1)], DeBread.randomNum(10, 30))
+            damagePlayer(possiblePlayers[DeBread.randomNum(0,possiblePlayers.length-1)], damage)
     
             bfSoul.immune = true
             doge('bfSoul').style.opacity = '0.5'
@@ -60,6 +82,13 @@ const bfSoul = {
             }, 500);
         }
     }
+}
+
+function changePlayFieldSize(size) {
+    addStyles(doge('playField'), {
+        width: size[0]+'px',
+        height: size[1]+'px'
+    })
 }
 
 const bfPlayers = [
@@ -96,6 +125,17 @@ const bfPlayers = [
         isDefending: false,
         barPos: Infinity,
     },
+    // {
+    //     name: '?????',
+    //     health: 7000,
+    //     maxHealth: 7000,
+    //     color: '#4a2f75ff',
+    //     isAttacking: false,
+    //     damageMultiplier: 10,
+    //     defense: 0.5,
+    //     isDefending: false,
+    //     barPos: Infinity,
+    // },
 ]
 
 for(let i = 0; i < bfPlayers.length; i++) {
@@ -112,8 +152,133 @@ const bfEnemies = [
         health: 7000,
         maxHealth: 7000,
         id: 'fella',
-        currentAttack: 0,
+        currentAttack: 1,
         attacks: [
+            // {
+            //     time: 15000,
+            //     fun: () => {
+            //         const hazard = createHazard()
+            //         addStyles(hazard, {
+            //             width: '10px',
+            //             height: '10px'
+            //         })
+            //         doge('playField').append(hazard)
+            //     }
+            // },
+            {
+                time: 15000,
+                fun: () => {
+                    changeFellaMood('Spawn')
+                    changePlayFieldSize([350,250])
+
+                    setTimeout(() => {                        
+                        const goober = createHazard(50, true)
+                        addStyles(goober, {
+                            width: '32px',
+                            height: '32px',
+                            top: '109px',
+                            right: '10px',
+                            backgroundImage: `url(../../media/breadFight/goober${DeBread.randomNum(0,2)}.png)`,
+                            backgroundSize: '32px',
+                            backgroundColor: 'transparent',
+                        })
+                        doge('playField').append(goober)
+
+                        const gooberGun = createHazard(30, true)
+                        addStyles(gooberGun, {
+                            width: '16px',
+                            height: '8px',
+                            backgroundColor: 'transparent',
+                            backgroundImage: 'url(../../media/breadFight/gooberGun.png)',
+                            right: '60px',
+                            backgroundSize: '16px',
+                            top: '121px'
+                        })
+                        doge('playField').append(gooberGun)
+
+                        const gooberEffect = document.createElement('div')
+                        addStyles(gooberEffect, {
+                            position: 'fixed',
+                            width: '48px',
+                            height: '48px',
+                            top: '101px',
+                            right: '10px',
+                            backgroundColor: 'white',
+                            zIndex: '2',
+                            animation: 'gooberHazard 500ms ease-out 1 forwards'
+                        })
+
+                        setTimeout(() => {
+                            changeFellaMood('Idle')
+                            gooberEffect.remove()
+
+                            let angle
+                            let gunRect = gooberGun.getBoundingClientRect()
+                            gooberGun.interval = setInterval(() => {
+                                const soulRect = doge('bfSoul').getBoundingClientRect()
+                                angle = Math.atan2(soulRect.top - gunRect.top, soulRect.left - gunRect.left)
+                                gooberGun.style.rotate = angle+'rad'
+                            }, 250);
+
+                            for(let i = 1; i < 30; i++) {
+                                const bullet = createHazard(20, undefined, '../../media/breadFight/gooberBullet.png', [8,4])
+                                setTimeout(() => {
+                                    const bulletAngle = angle
+                                    bullet.pos = [gunRect.left,gunRect.top]
+                                    bullet.scale = 1
+                                    
+                                    bullet.interval = setInterval(() => {
+                                        bullet.pos[0] += Math.cos(bulletAngle)*5
+                                        bullet.pos[1] += Math.sin(bulletAngle)*5
+                                        bullet.scale += 0.1
+
+                                        addStyles(bullet, {
+                                            left: bullet.pos[0]+'px',
+                                            top: bullet.pos[1]+'px',
+                                            width: '4px',
+                                            height: '4px',
+                                            scale: bullet.scale
+                                        })
+
+                                        bullet.querySelector('img').style.rotate = bulletAngle + 'rad'
+
+                                        doge('breadFight').append(bullet)
+
+                                        if(bullet.pos[0] <= doge('playField').getBoundingClientRect().left || bullet.pos[1] < doge('playField').getBoundingClientRect().top || bullet.pos[1] > doge('playField').getBoundingClientRect().bottom - bullet.offsetHeight) {
+                                            const explosion = createHazard(50, true)
+                                            addStyles(explosion, {
+                                                left: bullet.pos[0]+'px',
+                                                top: bullet.pos[1]+'px',
+                                                width: '15px',
+                                                height: '15px',
+                                                animation: 'bulletExplosion 1000ms ease-out 1 forwards'
+                                            })
+                                            doge('breadFight').append(explosion)
+
+                                            setTimeout(() => {
+                                                explosion.canCollide = false
+                                            }, 500);
+
+                                            setTimeout(() => {
+                                                explosion.remove()
+                                            }, 1000);
+
+                                            clearInterval(bullet.interval)
+                                            bullet.remove()
+                                        }
+                                    }, 25);
+                                }, 300 * i)
+                            }
+                        }, 1000);
+                        doge('playField').append(gooberEffect)
+
+                        setTimeout(() => {
+                            goober.remove()
+                            gooberGun.remove()
+                        }, 15000);
+                    }, 1000);
+                }
+            },
             {
                 time: 12500,
                 fun: () => {
@@ -122,9 +287,9 @@ const bfEnemies = [
                     setTimeout(() => {       
                         for(let i = 0; i < 10; i++) {
                             setTimeout(() => {     
-                                for(let x = 0; x < 3; x++) {
+                                for(let x = 0; x < 5; x++) {
                                     const fellaRect = doge('fella').getBoundingClientRect()
-                                    const fireball = createHazard(true, '../../media/breadFight/fireball.png', [32,32])
+                                    const fireball = createHazard(35, true, '../../media/breadFight/fireball.png', [32,32])
                                     let fireballRect = fireball.getBoundingClientRect()
                                     let soulRect = doge('bfSoul').getBoundingClientRect()
                                     fireball.pos = [fellaRect.left, fellaRect.top + 80]
@@ -134,7 +299,7 @@ const bfEnemies = [
                                     fireball.angle = Math.atan2(
                                         soulRect.top - fireball.pos[1],
                                         soulRect.left - fireball.pos[0]
-                                    ) * (0.9 + (x / 10))
+                                    ) * (0.9 + (x / 10) * DeBread.randomNum(0.5,2,3))
 
                                     addStyles(fireball, {
                                         width: '12px',
@@ -147,7 +312,7 @@ const bfEnemies = [
                                         fireballRect = fireball.getBoundingClientRect()
                                         soulRect = doge('bfSoul').getBoundingClientRect()
     
-                                        const targetAngle = Math.atan2(soulRect.top - fireballRect.top, soulRect.left - fireballRect.left)
+                                        const targetAngle = Math.atan2(soulRect.top * DeBread.randomNum(0.75,1.25) - fireballRect.top, soulRect.left * DeBread.randomNum(0.75,1.25) - fireballRect.left)
                                         
                                         let diff = targetAngle - fireball.angle
                                         diff = Math.atan2(Math.sin(diff), Math.cos(diff))
@@ -190,6 +355,126 @@ const bfEnemies = [
                 }
             },
             {
+                time: 12500,
+                fun: () => {
+                    doge('playField').style.overflow = 'hidden'
+                    for(let i = 0; i < 15; i++) {
+                        setTimeout(() => {                            
+                            const line = createHazard(100, true)
+                            line.canCollide = false
+                            let randomOffset = DeBread.randomNum(-100,100)
+                            let rotation = DeBread.randomNum(0,1)
+                            addStyles(line, {
+                                width: '25px',
+                                height: '250px',
+                                opacity: '0.25',
+                                left: 125-12.5 * rotation + 'px',
+                                top: '0',
+                                rotate: 90*rotation+'deg',
+                                animation: 'line ease-out 500ms 1 forwards'
+                            })
+
+                            if(rotation === 1) {
+                                line.style.top = randomOffset + 'px'
+                            }
+                            if(rotation === 0) {
+                                line.style.left = 125-12.5 + randomOffset + 'px'
+                            }        
+                            
+                            let updates = 0
+                            line.interval = setInterval(() => {                            
+                                if(rotation === 1) {
+                                    line.style.top = (Math.sin(updates / 10) * 25) + randomOffset + 'px'
+                                }
+                                if(rotation === 0) {
+                                    line.style.left = (125-12.5 + Math.sin(updates / 10) * 25) + randomOffset + 'px'
+                                }
+                                updates++
+                            }, 25);
+        
+                            doge('playField').append(line)
+        
+                            setTimeout(() => {
+                                addStyles(line, {
+                                    opacity: 1,
+                                    animation: 'linePulse ease-out 500ms 1 forwards'
+                                })
+                                clearInterval(line.interval)
+                                line.canCollide = true
+                                DeBread.shake(doge('fella'),10,5,0,250)
+
+                                setTimeout(() => {
+                                    line.style.animation = 'lineOut ease-in 500ms 1 forwards'
+                                }, 500);
+                                setTimeout(() => {
+                                    line.remove()
+                                }, 1000);
+                            }, 1000);
+                        }, i * DeBread.randomNum(500, 750));
+                    }
+                }
+            },
+            {
+                time: 15000,
+                fun: () => {
+                    bfSoul.mode = 1
+                    DeBread.playSound('../../media/breadFight/audio/bell.wav', 0.1)
+                    doge('bfSoul').style.filter = 'hue-rotate(200deg)'
+                    doge('playField').style.overflow = 'unset'
+
+                    setTimeout(() => {
+                        changePlayFieldSize([24,250])
+
+                        setTimeout(() => {
+                            for(let i = 1; i < 5; i++) {
+                                setTimeout(() => {                                    
+                                    const spike = createHazard(25,true)
+                                    spike.pos = 300
+                                    addStyles(spike, {
+                                        width: '24px',
+                                        height: '24px',
+                                        left: spike.pos+'px',
+                                        bottom: '0px',
+                                        animation: 'spikeIn 500ms ease-out 1 forwards'
+                                    })
+                                    spike.interval = setInterval(() => {
+                                        spike.pos -= 5
+                                        spike.style.left = spike.pos+'px'
+    
+                                        if(spike.pos <= -100) {
+                                            spike.style.animation = 'spikeOut 500ms ease-out 1 forwards'
+                                            clearInterval(spike.interval)
+                                        }
+                                    }, 25);
+        
+                                    doge('playField').append(spike)
+                                }, 1000*i);
+
+                                setTimeout(() => {
+                                    const orb = document.createElement('div')
+                                    orb.pos = 300
+                                    orb.classList.add('orb')
+                                    addStyles(orb, {
+                                        position: 'absolute',
+                                        left: orb.pos + 'px',
+                                        bottom: '50px',
+                                        width: '24px',
+                                        height: '24px',
+                                        backgroundColor: 'yellow',
+                                    })
+                                    doge('playField').append(orb)
+
+                                    orb.interval = setInterval(() => {
+                                        orb.pos -= 5
+                                        orb.style.left = orb.pos+'px'
+                                    }, 25);
+                                }, 5000);
+                            }
+                        }, 1000);
+                    }, 1000);
+                }
+            },
+            {
                 time: 7500,
                 fun: () => {
                     const text = document.createElement('span')
@@ -199,6 +484,7 @@ const bfEnemies = [
                     })
                     text.innerText = 'Too tired to make more attacks rn.'
                     doge('playField').append(text)
+                    bfEnemies[0].currentAttack = 0
                     setTimeout(() => {
                         text.remove()
                     }, 5000);
@@ -220,13 +506,21 @@ let currentACTButton = 0
 let lastGrazeDate = performance.now()
 const bfInterval = setInterval(() => {
     if(breadFightActive) {
+        if(bfSoul.pos[0] > doge('playField').offsetWidth - doge('bfSoul').offsetWidth) {
+            bfSoul.pos[0] = doge('playField').offsetWidth - doge('bfSoul').offsetWidth
+        }
+
+        if(bfSoul.pos[1] < 0) {
+            bfSoul.pos[1] = 0
+        }
+
         doge('bfSoul').style.left = bfSoul.pos[0]+'px'
         doge('bfSoul').style.top = bfSoul.pos[1]+'px'
 
         doge('breadFight').querySelectorAll('.hazard').forEach(hazard => {
             if(hazard.canCollide && bfSoul.isActive) {
                 if(isColliding(hazard, doge('bfSoul'))) {
-                    bfSoul.damage()
+                    bfSoul.damage(hazard.damage)
                 }
 
                 if(isColliding(hazard, doge('bfGraze')) && performance.now() - lastGrazeDate >= 100 && !bfSoul.immune) {
@@ -243,6 +537,16 @@ const bfInterval = setInterval(() => {
                 }
             }
         })
+
+        if(bfSoul.mode === 1) {
+            bfSoul.vel[1]++
+            if(bfSoul.pos[1] + bfSoul.vel[1] >= doge('playField').offsetHeight - doge('bfSoul').offsetHeight) {
+                bfSoul.pos[1] = doge('playField').offsetHeight - doge('bfSoul').offsetHeight
+                bfSoul.vel[1] = 0
+            }
+
+            bfSoul.pos[1] += bfSoul.vel[1]
+        }
     }
 }, 25);
 
@@ -258,6 +562,10 @@ const fellaSprites = {
     Point: {
         frames: 3,
         loop: false,
+    },
+    Spawn: {
+        frames: 2,
+        loop: false
     }
 }
 
@@ -291,6 +599,12 @@ const fellaInterval = setInterval(() => {
         setTimeout(() => {
             shadow.remove()
         }, 5000);
+
+        doge('bfDebug').innerText = `
+        Attack: ${bfEnemies[0].currentAttack}
+        Mood: ${fellaMood}${currentFellaSprite}
+        Health: ${bfEnemies[0].health}
+        `
     }
 }, 250)
 
@@ -303,46 +617,59 @@ document.addEventListener('keydown', ev => {
     if(breadFightActive) {
         const key = ev.key.toLowerCase()
         if(bfSoul.isActive) {
-            if(['a','arrowleft'].includes(key) && bfSoul.intervals.left === undefined) {
-                bfSoul.intervals.left = setInterval(() => {
-                    bfSoul.pos[0] -= bfSoul.speed
-        
-                    if(bfSoul.pos[0] < 0) {
-                        bfSoul.pos[0] = 0
+            if(bfSoul.mode === 0) {
+                if(['a','arrowleft'].includes(key) && bfSoul.intervals.left === undefined) {
+                    bfSoul.intervals.left = setInterval(() => {
+                        bfSoul.pos[0] -= bfSoul.speed
+            
+                        if(bfSoul.pos[0] < 0) {
+                            bfSoul.pos[0] = 0
+                        }
+                    }, 25);
+                }
+                if(['d','arrowright'].includes(key) && bfSoul.intervals.right === undefined) {
+                    bfSoul.intervals.right = setInterval(() => {
+                        bfSoul.pos[0] += bfSoul.speed
+                        
+                        if(bfSoul.pos[0] > doge('playField').offsetWidth - doge('bfSoul').offsetWidth) {
+                            bfSoul.pos[0] = doge('playField').offsetWidth - doge('bfSoul').offsetWidth
+                        }
+                    }, 25);
+                }
+                if(['w','arrowup'].includes(key) && bfSoul.intervals.up === undefined) {
+                    bfSoul.intervals.up = setInterval(() => {
+                        bfSoul.pos[1] -= bfSoul.speed
+            
+                        if(bfSoul.pos[1] < 0) {
+                            bfSoul.pos[1] = 0
+                        }
+                    }, 25);
+                }
+                if(['s','arrowdown'].includes(key) && bfSoul.intervals.down === undefined) {
+                    bfSoul.intervals.down = setInterval(() => {
+                        bfSoul.pos[1] += bfSoul.speed
+            
+                        if(bfSoul.pos[1] > doge('playField').offsetHeight - doge('bfSoul').offsetHeight) {
+                            bfSoul.pos[1] = doge('playField').offsetHeight - doge('bfSoul').offsetHeight
+                        }
+                    }, 25);
+                }
+            
+                //Precise movement
+                if(key === 'shift') {
+                    bfSoul.speed = 2.5
+                }
+            } else if(bfSoul.mode === 1) { //GD
+                let isCollidingWithOrb = false
+                doge('playField').querySelectorAll('.orb').forEach(orb => {
+                    if(isColliding(orb, doge('bfSoul'))) {
+                        isCollidingWithOrb = true
                     }
-                }, 25);
-            }
-            if(['d','arrowright'].includes(key) && bfSoul.intervals.right === undefined) {
-                bfSoul.intervals.right = setInterval(() => {
-                    bfSoul.pos[0] += bfSoul.speed
-                    
-                    if(bfSoul.pos[0] > doge('playField').offsetWidth - doge('bfSoul').offsetWidth) {
-                        bfSoul.pos[0] = doge('playField').offsetWidth - doge('bfSoul').offsetWidth
-                    }
-                }, 25);
-            }
-            if(['w','arrowup'].includes(key) && bfSoul.intervals.up === undefined) {
-                bfSoul.intervals.up = setInterval(() => {
-                    bfSoul.pos[1] -= bfSoul.speed
-        
-                    if(bfSoul.pos[1] < 0) {
-                        bfSoul.pos[1] = 0
-                    }
-                }, 25);
-            }
-            if(['s','arrowdown'].includes(key) && bfSoul.intervals.down === undefined) {
-                bfSoul.intervals.down = setInterval(() => {
-                    bfSoul.pos[1] += bfSoul.speed
-        
-                    if(bfSoul.pos[1] > doge('playField').offsetHeight - doge('bfSoul').offsetHeight) {
-                        bfSoul.pos[1] = doge('playField').offsetHeight - doge('bfSoul').offsetHeight
-                    }
-                }, 25);
-            }
-        
-            //Precise movement
-            if(key === 'shift') {
-                bfSoul.speed = 2.5
+                })
+
+                if(['w','arrowup'].includes(key) && bfSoul.pos[1] >= doge('playField').offsetHeight - doge('bfSoul').offsetHeight || isCollidingWithOrb) {
+                    bfSoul.vel[1] = -12
+                }
             }
         }
     
@@ -375,6 +702,10 @@ document.addEventListener('keydown', ev => {
                     doge('statusMain').innerHTML = '<div style="display: flex; align-items: center; gap: 10px;"><img src="../../media/breadFight/soul.png" width=24>?????</div>'
                     currentMenu++
                 }
+
+                if(currentACTButton === 2) {
+                    doge('statuus')
+                }
     
                 if(currentACTButton === 4) {
                     if(currentPlayer === Object.keys(bfPlayers).length - 1) {
@@ -399,29 +730,30 @@ document.addEventListener('keydown', ev => {
             }
         }
     
-        if(currentMenu === 1 && currentACTButton === 0) {
-            if(key === 'z') {
-                DeBread.playSound('../../media/breadFight/audio/select.wav', 0.1)
-                if(currentPlayer === Object.keys(bfPlayers).length - 1) {
-                    bfPlayers[currentPlayer].isAttacking = true
-                    startAttacks()
-                } else {
-                    bfPlayers[currentPlayer].isAttacking = true
-                    currentPlayer++
-                    currentMenu = 0
-                    selectPlayer(currentPlayer)
-                    doge('statusMain').innerText = currentDialogue
-                    return
+        if(currentMenu === 1) {
+            if(currentACTButton === 0) {
+                if(key === 'z') {
+                    DeBread.playSound('../../media/breadFight/audio/select.wav', 0.1)
+                    if(currentPlayer === Object.keys(bfPlayers).length - 1) {
+                        bfPlayers[currentPlayer].isAttacking = true
+                        startAttacks()
+                    } else {
+                        bfPlayers[currentPlayer].isAttacking = true
+                        currentPlayer++
+                        currentMenu = 0
+                        selectPlayer(currentPlayer)
+                        doge('statusMain').innerText = currentDialogue
+                        return
+                    }
                 }
+        
+                if(key === 'x') {
+                    currentMenu = 0
+                    bfPlayers[currentPlayer].isAttacking = false
+                    doge('statusMain').innerText = currentDialogue        
+                }        
+                return
             }
-    
-            if(key === 'x') {
-                currentMenu = 0
-                bfPlayers[currentPlayer].isAttacking = false
-                doge('statusMain').innerText = currentDialogue        
-            }
-    
-            return
         }
     
         if(currentMenu === 2) {
@@ -568,6 +900,14 @@ document.addEventListener('keydown', ev => {
                 }
             }
         }
+
+        //Debug stuff
+        if(key === 'm') {
+            bfEnemies[0].currentAttack++
+        }
+        if(key === 'n') {
+            bfEnemies[0].currentAttack--
+        }
     }
 })
 
@@ -625,21 +965,12 @@ for(const key in bfPlayers) {
     <div class="playerButtons">
         <div class="playerButton" id="${key}Button0" style="background-image: url(../../media/breadFight/icons/fight.png);"></div>
         <div class="playerButton" id="${key}Button1" style="background-image: url(../../media/breadFight/icons/act.png); opacity: 0.5;"></div>
-        <div class="playerButton" id="${key}Button2" style="background-image: url(../../media/breadFight/icons/item.png); opacity: 0.5;"></div>
+        <div class="playerButton" id="${key}Button2" style="background-image: url(../../media/breadFight/icons/item.png);"></div>
         <div class="playerButton" id="${key}Button3" style="background-image: url(../../media/breadFight/icons/mercy.png); opacity: 0.5;"></div>
         <div class="playerButton" id="${key}Button4" style="background-image: url(../../media/breadFight/icons/defend.png);"></div>
     </div>
     `
 }
-
-const emptyPlayer = document.createElement('div')
-emptyPlayer.classList.add('player')
-addStyles(emptyPlayer, {
-    width: 'calc(100% - 700px)',
-    boxShadow: '0px -4px 0px #332033'
-})
-doge('players').append(emptyPlayer)
-
 
 function selectPlayer(player) {
     currentACTButton = 0
@@ -718,6 +1049,10 @@ function startEnemyAttacks() {
     doge('playArea').style.height = 'calc(100% - 64px)'
     // doge('backgroundContainer').style.height = 'calc(100% - 64px)'
     doge('playFieldContainer').style.height = 'calc(100% - 64px)'
+    bfSoul.pos = [
+        doge('playField').offsetWidth / 2 - doge('bfSoul').offsetWidth / 2,
+        doge('playField').offsetHeight / 2 - doge('bfSoul').offsetHeight / 2
+    ]
 
     setTimeout(() => {
         bfEnemies[0].attacks[bfEnemies[0].currentAttack].fun()
@@ -734,6 +1069,7 @@ function startEnemyAttacks() {
             bfSoul.isActive = false
             selectPlayer(0)
             currentPlayer = 0
+            changePlayFieldSize([250,250])
 
             for(const key in bfSoul.intervals) {
                 clearInterval(bfSoul.intervals[key])
@@ -744,9 +1080,9 @@ function startEnemyAttacks() {
             }
             doge('statusMain').innerText = currentDialogue
 
-            // bfEnemies[0].currentAttack++
+            bfEnemies[0].currentAttack++
 
-        }, bfEnemies[0].attacks[0].time);
+        }, bfEnemies[0].attacks[bfEnemies[0].currentAttack].time);
     }, 1500);
 }
 
@@ -784,23 +1120,92 @@ function damagePlayer(player, amount) {
     }
 
     if(gameOver) {
-        console.log('you lost')
+        doge('breadFightContainer').style.filter = 'brightness(0)'
+        bfSoul.immune = true
+        bfSoul.isActive = false
+        const soulRect = doge('bfSoul').getBoundingClientRect()
+        battleMusic.pause()
+        
+        const soul = document.createElement('img')
+        soul.src = '../../media/breadFight/soulBreak0.png'
+        addStyles(soul, {
+            width: '48px',
+            height: '24px',
+            position: 'fixed',
+            left: soulRect.left - 12+'px',
+            top: soulRect.top+'px',
+            zIndex: '5',
+            imageRendering: 'pixelated'
+        })
+        
+        setTimeout(() => {
+            soul.src = '../../media/breadFight/soulBreak1.png'
+            DeBread.playSound('../../media/breadFight/audio/break1.wav',0.1)
+
+            setTimeout(() => {
+                soul.remove()
+                DeBread.playSound('../../media/breadFight/audio/break2.wav',0.1)
+                for(let i = 0; i < 10; i++) {
+                    const soulShard = document.createElement('img')
+                    soulShard.src = `../../media/breadFight/soulShard${DeBread.randomNum(0,2)}.png`
+
+                    soulShard.vel = [DeBread.randomNum(-10, 10,5), DeBread.randomNum(-5,-15,5)]
+                    soulShard.pos = [
+                        DeBread.randomNum(soulRect.left, soulRect.right - 8),
+                        DeBread.randomNum(soulRect.top, soulRect.bottom - 8)
+                    ]
+
+                    addStyles(soulShard, {
+                        position: 'fixed',
+                        left: soulShard.pos[0]+'px',
+                        top: soulShard.pos[1]+'px',
+                        width: '8px',
+                        height: '8px',
+                        zIndex: '5',
+                        imageRendering: 'pixelated'
+                    })
+                    
+                    setInterval(() => {
+                        soulShard.pos[0] += soulShard.vel[0]
+                        soulShard.pos[1] += soulShard.vel[1]
+
+                        soulShard.vel[1] += 0.5
+                        soulShard.vel[0] /= 1.01
+
+                        addStyles(soulShard, {
+                            left: soulShard.pos[0]+'px',
+                            top: soulShard.pos[1]+'px'
+                        })
+                    }, 25)
+                    document.body.append(soulShard)
+                }
+            }, 1500);
+        }, 750);
+        document.body.append(soul)
     }
 }
 
-function createHazard(unbreakable = false, texture, textureSize) {
+function healPlayer(player, amount) {
+    bfPlayers[player].health = Math.min(bfPlayers[player].health + amount, bfPlayers[player].maxHealth)
+
+    doge(`${player}HealthText`).innerText = `${DeBread.round(bfPlayers[player].health)}/${DeBread.round(bfPlayers[player].maxHealth)}`
+    doge(`${player}HealthBar`).style.width = `${Math.max(bfPlayers[player].health / bfPlayers[player].maxHealth,0) * 100}%`
+}
+
+function createHazard(damage, unbreakable = false, texture, textureSize) {
     const hazard = document.createElement('div')
     hazard.classList.add('hazard')
     hazard.breakable = unbreakable
     hazard.canCollide = true
+    hazard.damage = damage
     addStyles(hazard, {
         backgroundColor: 'white',
-        position: 'absolute',
+        position: 'fixed',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 2,
-        // outline: '1px solid red',
+        // outline: '1px solid red'
     })
 
     if(texture) {
@@ -828,7 +1233,7 @@ function fellaTalk(text) {
     textbox.innerText = text
     textbox.id = 'fellaTextbox'
     addStyles(textbox, {
-        position: 'absolute',
+        position: 'fixed',
         top: doge('fella').getBoundingClientRect().top + 'px',
         left: doge('fella').getBoundingClientRect().left + 'px',
         backgroundColor: 'white',
