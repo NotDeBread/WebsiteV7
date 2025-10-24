@@ -1,4 +1,4 @@
-let breadFightActive = false
+let breadFightActive = true
 
 const battleMusic = new Audio()
 battleMusic.src = '../media/breadFight/blackKnife.mp3'

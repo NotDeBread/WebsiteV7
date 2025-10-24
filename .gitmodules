@@ -28,6 +28,6 @@
 [submodule "archives/PixelGenerator"]
 	path = archives/PixelGenerator
 	url = https://github.com/NotDeBread/PixelGenerator.git
-[submodule "EsportsWebsite"]
-	path = EsportsWebsite
-	url = https://github.com/NotDeBread/EsportsWebsite
+[submodule "CentralEsports"]
+	path = CentralEsports
+	url = https://github.com/NotDeBread/CentralEsports.git
