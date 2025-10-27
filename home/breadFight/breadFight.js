@@ -1,4 +1,4 @@
-let breadFightActive = true
+let breadFightActive = false
 
 const battleMusic = new Audio()
 battleMusic.src = '../media/breadFight/blackKnife.mp3'
@@ -798,15 +798,11 @@ document.addEventListener('keydown', ev => {
                     if(damage > 0) {
                         const damageNum = document.createElement('span')
                         addStyles(damageNum, {
-                            position: 'absolute',
-                            left: doge(enemyBounds.left) + 'px',
-                            top: doge(enemyBounds.top + (shorterBar.player * 25)) + 'px',
-                            zIndex: 2,
                             color: bfPlayers[shorterBar.player].color,
-                            animation: 'attackNum 5s ease-out 1 forwards'
+                            animation: 'attackNum 2s linear 1 forwards'
                         })
                         damageNum.innerText = DeBread.round(damage)
-                        doge('breadFightContainer').append(damageNum)
+                        doge('attackNumContainer').append(damageNum)
                         damageNum.style.left = DeBread.randomNum(enemyBounds.left, enemyBounds.left + doge(bfEnemies[0].id).offsetWidth - damageNum.offsetWidth)+'px'
                         damageNum.style.top = DeBread.randomNum(enemyBounds.top, enemyBounds.bottom - 20)+'px'
 
