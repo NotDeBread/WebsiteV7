@@ -1,4 +1,4 @@
-let breadFightActive = false
+let breadFightActive = true
 
 const battleMusic = new Audio()
 battleMusic.src = '../media/breadFight/blackKnife.mp3'
@@ -104,6 +104,72 @@ const bfPlayers = [
         barPos: Infinity,
     },
     {
+        name: 'DeBread',
+        health: 150,
+        maxHealth: 150,
+        color: '#df7126',
+        isAttacking: false,
+        damageMultiplier: 1.25,
+        defense: 1.75,
+        isDefending: false,
+        barPos: Infinity,
+    },
+    {
+        name: 'DeBread',
+        health: 150,
+        maxHealth: 150,
+        color: '#df7126',
+        isAttacking: false,
+        damageMultiplier: 1.25,
+        defense: 1.75,
+        isDefending: false,
+        barPos: Infinity,
+    },
+    {
+        name: 'DeBread',
+        health: 150,
+        maxHealth: 150,
+        color: '#df7126',
+        isAttacking: false,
+        damageMultiplier: 1.25,
+        defense: 1.75,
+        isDefending: false,
+        barPos: Infinity,
+    },
+    {
+        name: 'DeBread',
+        health: 150,
+        maxHealth: 150,
+        color: '#df7126',
+        isAttacking: false,
+        damageMultiplier: 1.25,
+        defense: 1.75,
+        isDefending: false,
+        barPos: Infinity,
+    },
+    {
+        name: 'DeBread',
+        health: 150,
+        maxHealth: 150,
+        color: '#df7126',
+        isAttacking: false,
+        damageMultiplier: 1.25,
+        defense: 1.75,
+        isDefending: false,
+        barPos: Infinity,
+    },
+    {
+        name: 'DeBread',
+        health: 150,
+        maxHealth: 150,
+        color: '#df7126',
+        isAttacking: false,
+        damageMultiplier: 1.25,
+        defense: 1.75,
+        isDefending: false,
+        barPos: Infinity,
+    },
+    {
         name: 'Ashton',
         health: 125,
         maxHealth: 125,
@@ -152,7 +218,7 @@ const bfEnemies = [
         health: 7000,
         maxHealth: 7000,
         id: 'fella',
-        currentAttack: 1,
+        currentAttack: 0,
         attacks: [
             // {
             //     time: 15000,
@@ -283,7 +349,7 @@ const bfEnemies = [
                 time: 12500,
                 fun: () => {
                     changeFellaMood('Point')
-                    fellaTalk('ough')
+                    fellaTalk('bla bla bla something ultrakill')
                     setTimeout(() => {       
                         for(let i = 0; i < 10; i++) {
                             setTimeout(() => {     
@@ -806,7 +872,6 @@ document.addEventListener('keydown', ev => {
                         damageNum.style.left = DeBread.randomNum(enemyBounds.left, enemyBounds.left + doge(bfEnemies[0].id).offsetWidth - damageNum.offsetWidth)+'px'
                         damageNum.style.top = DeBread.randomNum(enemyBounds.top, enemyBounds.bottom - 20)+'px'
 
-
                         DeBread.playSound('../../media/breadFight/audio/damage.wav', 0.1)
                         DeBread.shake(doge(bfEnemies[0].id), damage / 5, damage / 5, 0, 250)
                         fellaMood = 'Hurt' 
@@ -1077,6 +1142,8 @@ function startEnemyAttacks() {
             doge('statusMain').innerText = currentDialogue
 
             bfEnemies[0].currentAttack++
+
+            doge('attackNumContainer').innerHTML = ''
 
         }, bfEnemies[0].attacks[bfEnemies[0].currentAttack].time);
     }, 1500);

@@ -46,60 +46,60 @@ const items = {
             }
         ]
     },
-    RuinSeekerHoodie: {
-        name: 'Ruin Seeker Hoodie',
-        price: 69,
-        hearts: 5,
-        description: 'A hoodie with designs based on one of my favorite games.',
-        specs: [
-            ['Size','Large']
-        ],
-        links: [
-            {
-                name: 'Fangamer',
-                link: 'https://www.fangamer.com/products/tunic-hoodie-ruin-seeker'
-            }
-        ]
-    },
-    rgbController: {
-        name: 'NZXT RGB & Fan Controller',
-        price: 34.99,
-        hearts: 2,
-        description: 'A PC component that allows for fans to communicate with eachother and allows them to have RGB.',
-        specs: [],
-        links: [
-            {
-                name: 'NZXT',
-                link: 'https://nzxt.com/products/rgb-and-fan-controller'
-            }
-        ]
-    },
-    hat: {
-        name: 'Runic Hat',
-        price: 24,
-        hearts: 3,
-        description: 'A hat showcasing a character from TUNIC.',
-        tags: ['Fashion'],
-        specs: [],
-        links: [
-            {
-                name: 'Fangamer',
-                link: 'https://www.fangamer.com/collections/tunic/products/tunic-game-hat'
-            }
-        ]
-    },
-    AnnoyingDogPin: {
-        name: 'Annoying Dog Pin',
-        price: 12,
-        hearts: 3,
-        description: 'A pin of a dog featured in UNDERTALE and DELTARUNE.',
-        links: [
-            {
-                name: 'Fangamer',
-                link: 'https://www.fangamer.com/products/undertale-annoying-dog-lapel-pin?_pos=1&_psq=annoying+dog&_ss=e&_v=1.0'
-            }
-        ]
-    },
+    // RuinSeekerHoodie: {
+    //     name: 'Ruin Seeker Hoodie',
+    //     price: 69,
+    //     hearts: 5,
+    //     description: 'A hoodie with designs based on one of my favorite games.',
+    //     specs: [
+    //         ['Size','Large']
+    //     ],
+    //     links: [
+    //         {
+    //             name: 'Fangamer',
+    //             link: 'https://www.fangamer.com/products/tunic-hoodie-ruin-seeker'
+    //         }
+    //     ]
+    // },
+    // rgbController: {
+    //     name: 'NZXT RGB & Fan Controller',
+    //     price: 34.99,
+    //     hearts: 2,
+    //     description: 'A PC component that allows for fans to communicate with eachother and allows them to have RGB.',
+    //     specs: [],
+    //     links: [
+    //         {
+    //             name: 'NZXT',
+    //             link: 'https://nzxt.com/products/rgb-and-fan-controller'
+    //         }
+    //     ]
+    // },
+    // hat: {
+    //     name: 'Runic Hat',
+    //     price: 24,
+    //     hearts: 3,
+    //     description: 'A hat showcasing a character from TUNIC.',
+    //     tags: ['Fashion'],
+    //     specs: [],
+    //     links: [
+    //         {
+    //             name: 'Fangamer',
+    //             link: 'https://www.fangamer.com/collections/tunic/products/tunic-game-hat'
+    //         }
+    //     ]
+    // },
+    // AnnoyingDogPin: {
+    //     name: 'Annoying Dog Pin',
+    //     price: 12,
+    //     hearts: 3,
+    //     description: 'A pin of a dog featured in UNDERTALE and DELTARUNE.',
+    //     links: [
+    //         {
+    //             name: 'Fangamer',
+    //             link: 'https://www.fangamer.com/products/undertale-annoying-dog-lapel-pin?_pos=1&_psq=annoying+dog&_ss=e&_v=1.0'
+    //         }
+    //     ]
+    // },
 }
 
 for(const key in items) {

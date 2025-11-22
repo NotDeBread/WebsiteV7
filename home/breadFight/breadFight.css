@@ -12,7 +12,7 @@
     background-color: black;
     z-index: 2;
     image-rendering: pixelated;
-    display: none;
+    display: flex;
     font-family: operator;
     font-size: 2em;
 }
@@ -282,7 +282,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
     transition: height ease-in-out 250ms;
 }
 
