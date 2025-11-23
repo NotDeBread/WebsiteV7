@@ -32,9 +32,9 @@ const items = {
     // },
     monitor: {
         name: 'ASUS TUF Gaming 27” 1440P HDR Monitor',
-        price: 196.99,
-        discount: '21% OFF',
-        hearts: 4,
+        price: 179,
+        discount: '28% OFF',
+        hearts: 5,
         description: 'A high quality and fast gaming monitor.',
         specs: [
             ['Refresh rate','180Hz']
@@ -43,6 +43,39 @@ const items = {
             {
                 name: 'Amazon',
                 link: 'https://a.co/d/5XhV8ks'
+            }
+        ]
+    },
+    lego: {
+        name: 'LEGO',
+        price: 'Price Varies',
+        hearts: 4,
+        description: '',
+        specs: [],
+        links: [
+            {
+                name: 'LEGO',
+                link: 'https://www.lego.com/en-us'
+            }
+        ]
+    },
+    cards: {
+        name: 'Pokémon Cards',
+        price: 'Price Varies',
+        hearts: 4,
+        description: 'Collectable cards.',
+        specs: [
+            ['Good luck','finding them'],
+            ['Preferred set','Black Bolt']
+        ],
+        links: [
+            {
+                name: 'Pokémon Center (good luck)',
+                link: 'https://www.pokemoncenter.com/category/trading-card-game?category=booster-packs'
+            },
+            {
+                name: 'Walmart',
+                link: 'https://www.walmart.com/search?q=Pokemon+TCG'
             }
         ]
     },
@@ -148,6 +181,7 @@ function openItem(item, key) {
         doge('itemPopupSpecContainer').append(span)
     }
 
+    doge('itemPopupButtons').innerHTML = ''
     for(const key in item.links) {
         const link = item.links[key]
 
@@ -158,7 +192,6 @@ function openItem(item, key) {
             gotoPage(link.link, true)
         }
 
-        doge('itemPopupButtons').innerHTML = ''
         doge('itemPopupButtons').append(button)
     }
 }
