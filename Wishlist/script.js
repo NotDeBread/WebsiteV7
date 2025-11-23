@@ -15,21 +15,21 @@ const items = {
             }
         ]
     },
-    SSD: {
-        name: 'SSD',
-        price: 269,
-        hearts: 3,
-        description: 'A computer component, specifically designed for my Framework laptop, that holds storage.',
-        specs: [
-            ['Capacity','2TB']
-        ],
-        links: [
-            {
-                name: 'Framework',
-                link: 'https://frame.work/products/wd_black-sn770m-nvme?v=FRANTAWD0B'
-            }
-        ]
-    },
+    // SSD: {
+    //     name: 'SSD',
+    //     price: 269,
+    //     hearts: 3,
+    //     description: 'A computer component, specifically designed for my Framework laptop, that holds storage.',
+    //     specs: [
+    //         ['Capacity','2TB']
+    //     ],
+    //     links: [
+    //         {
+    //             name: 'Framework',
+    //             link: 'https://frame.work/products/wd_black-sn770m-nvme?v=FRANTAWD0B'
+    //         }
+    //     ]
+    // },
     monitor: {
         name: 'ASUS TUF Gaming 27” 1440P HDR Monitor',
         price: 196.99,
