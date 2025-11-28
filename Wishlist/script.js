@@ -1,20 +1,4 @@
 const items = {
-    AIO: {
-        name: 'NZXT 360 RGB',
-        price: 279,
-        hearts: 4,
-        discount: '-13% OFF',
-        description: 'A computer component that uses liquid to cool the CPU, also including a customizable screen.',
-        specs: [
-            ['Size','360mm']
-        ],
-        links: [
-            {
-                name: 'Amazon',
-                link: 'https://a.co/d/fsh6rqY'
-            }
-        ]
-    },
     // SSD: {
     //     name: 'SSD',
     //     price: 269,
@@ -30,6 +14,37 @@ const items = {
     //         }
     //     ]
     // },
+    // RAM: {
+    //     name: 'RAM (2x16GB)',
+    //     price: 349.99,
+    //     hearts: '-',
+    //     description: 'A computer component that holds temporary storage. (Unfortunately the prices on these have skyrocketed due to AI)',
+    //     specs: [],
+    //     links: [
+    //         {
+    //             name: 'Amazon',
+    //             link: 'https://a.co/d/hxsE4FO'
+    //         }
+    //     ],
+
+    //     puter: true
+    // },
+    AIO: {
+        name: 'NZXT 240 RGB',
+        price: 179.99,
+        hearts: 4,
+        description: 'A computer component that uses liquid to cool the CPU, also including a customizable screen.',
+        specs: [
+            ['Size','240mm'],
+            ['Color','Black']
+        ],
+        links: [
+            {
+                name: 'Amazon',
+                link: 'https://a.co/d/0fz3BjH'
+            }
+        ]
+    },
     monitor: {
         name: 'ASUS TUF Gaming 27” 1440P HDR Monitor',
         price: 179,
@@ -43,6 +58,22 @@ const items = {
             {
                 name: 'Amazon',
                 link: 'https://a.co/d/5XhV8ks'
+            }
+        ]
+    },
+    RuinSeekerHoodie: {
+        name: 'Ruin Seeker Hoodie',
+        price: 69,
+        hearts: 5,
+        discount: 'SOLD OUT as of 11/27',
+        description: 'A hoodie with designs based on one of my favorite games.',
+        specs: [
+            ['Size','Large']
+        ],
+        links: [
+            {
+                name: 'Fangamer',
+                link: 'https://www.fangamer.com/products/tunic-hoodie-ruin-seeker'
             }
         ]
     },
@@ -64,8 +95,8 @@ const items = {
         price: 'Price Varies',
         hearts: 4,
         description: 'Collectable cards.',
+        discount: 'Discounts at Walmart',
         specs: [
-            ['Good luck','finding them'],
             ['Preferred set','Black Bolt']
         ],
         links: [
@@ -79,21 +110,6 @@ const items = {
             }
         ]
     },
-    // RuinSeekerHoodie: {
-    //     name: 'Ruin Seeker Hoodie',
-    //     price: 69,
-    //     hearts: 5,
-    //     description: 'A hoodie with designs based on one of my favorite games.',
-    //     specs: [
-    //         ['Size','Large']
-    //     ],
-    //     links: [
-    //         {
-    //             name: 'Fangamer',
-    //             link: 'https://www.fangamer.com/products/tunic-hoodie-ruin-seeker'
-    //         }
-    //     ]
-    // },
     // rgbController: {
     //     name: 'NZXT RGB & Fan Controller',
     //     price: 34.99,
@@ -157,7 +173,11 @@ for(const key in items) {
         div.getElementsByClassName('itemDiscount')[0].remove()
     }
 
-    doge('innerItemContainer').append(div)
+    if(item.puter) {
+        doge('pcItemContainer').append(div)
+    } else {
+        doge('mainItemContainer').append(div)
+    }
 
     div.onclick = () => {openItem(item, key)}
 }

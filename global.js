@@ -107,7 +107,7 @@ setTimeout(() => {
         loadingSkipped = true
         console.warn('Seems like it took too long to load. Hiding loading screen anyways.')
     }
-}, 5000);
+}, 2000);
 
 if(currentDate.getMonth()+1 >= 11 || currentDate.getMonth()+1 <= 2) {
     if(doge('guy')) {

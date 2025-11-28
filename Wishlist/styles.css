@@ -179,12 +179,19 @@
     margin-top: 50px;
 }
 
-#innerItemContainer {
+.innerItemContainer {
     width: 90dvw;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 50px;
+}
+
+#pcItemContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
 }
 
 .item {
