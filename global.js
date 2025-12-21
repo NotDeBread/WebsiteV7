@@ -1,8 +1,12 @@
-const currentDate = new Date
+const globalDate = new Date
 
 const defaultData = {
+    //Old data
     firstTime: true,
     guyPoints: 0,
+
+    fellaClicks: 0,
+    achievementsGot: [],
 }
 const data = JSON.parse(localStorage.getItem("DeBreadsSpace")) ?? defaultData
 
@@ -33,87 +37,41 @@ function deleteData() {
 }
 
 //Loading screen stuff
-let loadingFinished = false
-let loadingSkipped = false
-function finishLoading() {
-    loadingFinished = true
-    const randomRot = DeBread.randomNum(0,360)
-    const screen = doge('loadingScreen')
-    const emblem = doge('loadingEmblem')
-
-    screen.style.rotate = randomRot + 'deg'
+if(doge('loadingScreen')) {
+    let loadingFinished = false
+    let loadingSkipped = false
+    function finishLoading() {
+        loadingFinished = true
+        const randomRot = DeBread.randomNum(0,360)
+        const screen = doge('loadingScreen')
+        const emblem = doge('loadingEmblem')
     
-    screen.style.width = '0vmax'
-    screen.style.height = '0vmax'
-    setTimeout(() => {
-        emblem.style.scale = 0
+        screen.style.rotate = randomRot + 'deg'
+        
+        screen.style.width = '0vmax'
+        screen.style.height = '0vmax'
         setTimeout(() => {
-            doge('loadingEmblemContainer').style.pointerEvents = 'none'
-            document.body.style.overflow = 'unset'
-
-            if(doge('guy')) {
-                doge('guy').style.scale = '1.2 0.9'
-                doge('guy').style.translate = '0 10px' 
-                setTimeout(() => {                    
-                    doge('guy').style.scale = ''
-                    doge('guy').style.translate = ''
-
-                    const month = currentDate.getMonth() + 1
-                    const day = currentDate.getDate()
-
-                    const textbox = textboxBase.cloneNode()
-                    if(loadingSkipped) {
-                        textbox.innerHTML = 'My bad, the loading screen bugged out for some reason.'
-                    } else if(day === 25 && month === 12) {
-                        const chistmasTexts = [
-                            'Merry Christmas!',
-                            'Get jolly!',
-                            'Oh so jolly!',
-                            'Ho ho ho!'
-                        ]
-                        textbox.innerHTML = chistmasTexts[DeBread.randomNum(0,chistmasTexts.length-1)]
-                    } else if(day === 8 && month === 8) {
-                        textbox.innerHTML = 'Birthday time'
-                    } else if(data.firstTime) {
-                        textbox.innerHTML = 'Welcome!'
-                    } else {
-                        textbox.innerHTML = 'Welcome back!'
-                    }
-
-                    data.firstTime = false
-                    saveData()
-                    
-                    doge('relativeGuyContainer').append(textbox)
-                    textbox.style.left = -textbox.offsetWidth + 'px'
-
-                    textbox.timeout = setTimeout(() => {
-                        textbox.remove()
-                    }, 4000);
-                }, 100);
-            }
-        }, 750);
-    }, 500);
-    setTimeout(() => {
-        doge('loadingScreenContainer').style.pointerEvents = 'none'
-    }, 1250);
-} 
-if(!['/',''].includes(window.location.pathname)) {
-    finishLoading()
-}
-
-setTimeout(() => {
-    if(!loadingFinished) {
+            emblem.style.scale = 0
+            setTimeout(() => {
+                doge('loadingEmblemContainer').style.pointerEvents = 'none'
+                document.body.style.overflow = 'unset'
+            }, 750);
+        }, 500);
+        setTimeout(() => {
+            doge('loadingScreenContainer').style.pointerEvents = 'none'
+        }, 1250);
+    } 
+    if(!['/',''].includes(window.location.pathname)) {
         finishLoading()
-        loadingSkipped = true
-        console.warn('Seems like it took too long to load. Hiding loading screen anyways.')
     }
-}, 2000);
-
-if(currentDate.getMonth()+1 >= 11 || currentDate.getMonth()+1 <= 2) {
-    if(doge('guy')) {
-        doge('guy').src = '../media/guyWinter.png'
-    }
-    document.body.style.setProperty('--accent','rgb(144, 233, 255)')
+    
+    setTimeout(() => {
+        if(!loadingFinished) {
+            finishLoading()
+            loadingSkipped = true
+            console.warn('Seems like it took too long to load. Hiding loading screen anyways.')
+        }
+    }, 2000);
 }
 
 function gotoPage(page, absoluteURL) {
@@ -235,38 +193,49 @@ addStyles(imageContainer, {
 
 document.body.append(imageContainer)
 
-function openImage(src, caption) {
-    imageContainer.innerHTML = ''
-    imageContainer.style.display = 'flex'
-    imageContainer.style.pointerEvents = 'unset'
-
-    const image = document.createElement('img')
-    addStyles(image, {
-        outline: '1px solid white',
-        backgroundColor: 'rgb(0,0,0,0.5)',
-        maxWidth: '90dvw',
-        maxHeight: '75dvh'
-    })
-    image.src = src
-    imageContainer.append(image)
-
-    if(caption) {
-        const span = document.createElement('span')
-        span.innerText = caption
-        imageContainer.append(span)
-    }
-
-    const imageContainerClose = document.createElement('button')
-    imageContainerClose.innerText = 'X'
-    imageContainerClose.classList.add('imageContainerClose')
-    imageContainer.append(imageContainerClose)
-    imageContainer.onclick = closeImage
+function openImage(title, desc, url) {
+    doge('imageViewContainer').style.display = 'flex'
+    doge('imageViewTitle').innerText = title
+    doge('imageViewDesc').innerText = desc
+    doge('imageViewImg').src = url
 }
 
 function closeImage() {
-    imageContainer.style.display = 'none'
-    imageContainer.style.pointerEvents = 'none'
+    doge('imageViewContainer').style.display = 'none'
 }
+
+// function openImage(src, caption) {
+//     imageContainer.innerHTML = ''
+//     imageContainer.style.display = 'flex'
+//     imageContainer.style.pointerEvents = 'unset'
+
+//     const image = document.createElement('img')
+//     addStyles(image, {
+//         outline: '1px solid white',
+//         backgroundColor: 'rgb(0,0,0,0.5)',
+//         maxWidth: '90dvw',
+//         maxHeight: '75dvh'
+//     })
+//     image.src = src
+//     imageContainer.append(image)
+
+//     if(caption) {
+//         const span = document.createElement('span')
+//         span.innerText = caption
+//         imageContainer.append(span)
+//     }
+
+//     const imageContainerClose = document.createElement('button')
+//     imageContainerClose.innerText = 'X'
+//     imageContainerClose.classList.add('imageContainerClose')
+//     imageContainer.append(imageContainerClose)
+//     imageContainer.onclick = closeImage
+// }
+
+// function closeImage() {
+//     imageContainer.style.display = 'none'
+//     imageContainer.style.pointerEvents = 'none'
+// }
 
 document.addEventListener('keydown', ev => {
     if(ev.key === 'Escape') closeImage()
@@ -275,7 +244,7 @@ document.addEventListener('keydown', ev => {
 function getTimeSince(day, month, year) {
     const givenDate = new Date(year, month - 1, day)
 
-    const diffMs = currentDate - givenDate
+    const diffMs = globalDate - givenDate
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
 
     const years = Math.floor(diffDays / 365)
@@ -286,3 +255,66 @@ function getTimeSince(day, month, year) {
     if (months > 0) return `${months} month${months > 1 ? "s" : ""}`
     return `${days} day${days > 1 ? "s" : ""}`
 }
+
+const achievements = {
+    welcome: {
+        name: 'Welcome!',
+        desc: 'Visit for the first time.'
+    },
+    afterhours: {
+        name: 'Afterhours',
+        desc: 'Visit late at night.'
+    },
+    raccoon: {
+        name: 'Raccoon Enthusiast',
+        desc: 'Click on the fella 100 times.'
+    },
+    chud: {
+        name: 'My stupid chud dog',
+        desc: 'Click the Buddy banner ad.'
+    },
+    downpour: {
+        name: 'Downpour',
+        desc: 'Visit while the rain is at its strongest.'
+    },
+    fanart: {
+        name: 'Quite beautiful isn\'t it',
+        desc: 'View the fan art of the day.'
+    },
+    whoops: {
+        name: 'Whoops!',
+        desc: 'Encounter a 404 error.'
+    },
+    beginnings: {
+        name: 'Where it all began',
+        desc: 'Visit the Eddie site.'
+    },
+    og: {
+        name: 'OG',
+        desc: 'Visit before the v7 update.'
+    }
+}
+
+function getAchievement(ach) {
+    if(!data.achievementsGot.includes(ach)) {
+        const achievement = document.createElement('div')
+        achievement.classList.add('achievement')
+        achievement.innerHTML = `
+            <img src="../media/icons/achievement.png">
+            <div class="achivementInfo">
+                <span>${achievements[ach].name}</span>
+                <span>${achievements[ach].desc}</span>
+            </div>
+        `
+
+        doge('achievementNotiContainer').append(achievement)
+        data.achievementsGot.push(ach)
+        saveData()
+    }
+}
+
+if(data.guyPoints) {
+    getAchievement('og')
+}
+
+getAchievement('welcome')

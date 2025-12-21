@@ -1,4 +1,4 @@
-let breadFightActive = true
+let breadFightActive = false
 
 const battleMusic = new Audio()
 battleMusic.src = '../media/breadFight/blackKnife.mp3'
@@ -92,72 +92,6 @@ function changePlayFieldSize(size) {
 }
 
 const bfPlayers = [
-    {
-        name: 'DeBread',
-        health: 150,
-        maxHealth: 150,
-        color: '#df7126',
-        isAttacking: false,
-        damageMultiplier: 1.25,
-        defense: 1.75,
-        isDefending: false,
-        barPos: Infinity,
-    },
-    {
-        name: 'DeBread',
-        health: 150,
-        maxHealth: 150,
-        color: '#df7126',
-        isAttacking: false,
-        damageMultiplier: 1.25,
-        defense: 1.75,
-        isDefending: false,
-        barPos: Infinity,
-    },
-    {
-        name: 'DeBread',
-        health: 150,
-        maxHealth: 150,
-        color: '#df7126',
-        isAttacking: false,
-        damageMultiplier: 1.25,
-        defense: 1.75,
-        isDefending: false,
-        barPos: Infinity,
-    },
-    {
-        name: 'DeBread',
-        health: 150,
-        maxHealth: 150,
-        color: '#df7126',
-        isAttacking: false,
-        damageMultiplier: 1.25,
-        defense: 1.75,
-        isDefending: false,
-        barPos: Infinity,
-    },
-    {
-        name: 'DeBread',
-        health: 150,
-        maxHealth: 150,
-        color: '#df7126',
-        isAttacking: false,
-        damageMultiplier: 1.25,
-        defense: 1.75,
-        isDefending: false,
-        barPos: Infinity,
-    },
-    {
-        name: 'DeBread',
-        health: 150,
-        maxHealth: 150,
-        color: '#df7126',
-        isAttacking: false,
-        damageMultiplier: 1.25,
-        defense: 1.75,
-        isDefending: false,
-        barPos: Infinity,
-    },
     {
         name: 'DeBread',
         health: 150,

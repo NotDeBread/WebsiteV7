@@ -1,0 +1,518 @@
+img {
+    image-rendering: pixelated;
+}
+
+#all {
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 150px 0px;
+}
+
+#achievementsContainer {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0,0,0,0.25);
+    backdrop-filter: blur(5px);
+}
+
+#achievements {
+    padding: 5px;
+    outline: 1px solid lightgray;
+    background-color: rgb(0,0,0,0.75);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#achievementsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2em;
+    font-weight: 700;
+    gap: 5px;
+    white-space: nowrap;
+    width: 100%;
+}
+
+#achievementsCloseButton {
+    min-width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+}
+
+#innerAchievementsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    width: 525px;
+}
+
+@media (max-width: 600px) {
+    #achievements {
+        width: 300px;
+    }
+
+    #innerAchievementsContainer {
+        width: 100%;
+    }
+
+
+
+    .achievementListItem {
+        width: 100% !important;
+    }
+}
+
+.achievementListItem {
+    outline: 1px solid white;
+    padding: 5px;
+    display: flex;
+    gap: 5px;
+    width: 250px;
+}
+
+.achievementListItem img {
+    width: 50px;
+    height: 50px;
+}
+
+.achievementListItemInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.achievementListItemInfo span:nth-child(1) {
+    font-weight: 700;
+}
+
+#confettiContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    perspective: 1000px;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+#titleContainer {
+    width: 700px;
+    display: flex;
+    align-items: end;
+    gap: 100px;
+    margin-bottom: 50px;
+}
+
+#titleContainer wavey {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+#main {
+    display: flex;
+    gap: 5px;
+}
+
+#main section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.genericBox {
+    outline: 1px solid rgb(90, 90, 90);
+    background-color: rgb(0,0,0,0.25);
+    padding: 5px;
+}
+
+#fellaPortrait {
+    float: left;
+    margin: 0px 10px 0px 0px;
+    outline: 1px solid white;
+    width: 128px;
+    height: 128px;
+    background-image: url(../media/feellaPortrait.png);
+    image-rendering: pixelated;
+    border: none;
+}
+
+#fellaPortrait:hover {
+    background-image: url(../media/fellaPortraitEyes.png);
+}
+
+.newsBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 250px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.newsHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.newsTitle {
+    font-size: 1.5em;
+    font-weight: 700;
+    white-space: nowrap;
+}    
+
+.newsBody {
+    color: lightgray;
+}
+
+#featuredProjectsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 5px;
+    max-height: 320px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.projectBox {
+    display: flex;
+    min-height: 100px;
+    border: 1px solid grey;
+    position: relative;
+}
+
+.projectInfo {
+    padding: 5px;
+    width: 100%;
+}
+
+.projectThumbnail {
+    min-width: 150px;
+    /* height: 100%; */
+    background-size: cover;
+    background-position: center;
+    mask-image: linear-gradient(to left, black, 90%, transparent);
+}
+
+.projectTitle {
+    font-size: 1.25em;
+    font-weight: 700;
+}
+
+.projectDesc {
+    color: lightgray;
+}
+
+
+/* Music player */
+#musicControllsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+#musicPlayerFooter {
+    display: flex;
+    align-items: end;
+    gap: 5px;
+}
+
+#musicPlayerInfo {
+    display: flex;
+    gap: 5px;
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+}
+
+#musicPlayerInfo img {
+    width: 50px;
+    height: 50px;
+}
+
+#musicPlayerText {
+    display: flex;
+    flex-direction: column;
+}
+
+#musicPlayerText span:nth-child(1) {
+    font-weight: 700;
+}
+
+#musicControlls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#musicControlls span {
+    width: 50px;
+}
+
+#musicControllsRanges {
+    display: flex;
+    justify-content: space-between;
+}
+
+#musicControllsRanges input {
+    width: 100%;
+}
+
+#musicControllsButtons {
+    display: flex;
+    gap: 5px;
+}
+
+#musicControllsButtons button {
+    width: 25px;
+    height: 25px;
+}
+
+#musicControllsButtons button:hover img {
+    filter: invert();
+}
+
+#musicProgressBar {
+    height: 5px;
+    width: 100%;
+    border: 1px solid lightgray;
+}
+
+#musicInnerProgressBar {
+    height: 100%;
+    width: 50%;
+    background-color: white;
+}
+
+input[type="range"] {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+    height: 10px;
+}
+
+input[type="range"]::-moz-range-thumb {
+    background-color: white;
+    border: none;
+    border-radius: 0px;
+    outline: none;
+    width: 5px;
+    height: 4px;
+    transition: height cubic-bezier(0,2,.75,1) 250ms;
+}
+
+input[type="range"]::-moz-range-track {
+    border: 1px solid white;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+input[type="range"]::-moz-range-progress {
+    background-color: white;
+}
+
+
+
+
+
+
+#dateContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+#dateContainer section {
+    display: flex;
+    flex-direction: column;
+}
+
+#dateDate {
+    font-size: 2em;
+    font-weight: 900;
+}
+
+.dateBar {
+    display: flex;
+    flex-direction: column;
+}
+
+.dateBarText {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dateBarBar {
+    width: 100px;
+    height: 5px;
+    border-radius: 2.5px;
+    outline: 1px solid white;
+    overflow: hidden;
+}
+
+.dateBarInnerBar {
+    height: 100%;
+    width: 50%;
+    background-color: white;
+}
+
+#topHitContainer {
+    display: flex;
+    gap: 5px;
+}
+
+#topHitInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+#topHitButton {
+    margin-top: 5px;
+    width: 100%;
+}
+
+#faotdContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+#faotdImg {
+    max-width: 150px;
+    image-rendering: unset;
+}
+
+
+
+
+#navigator {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 200px;
+    min-height: 250px;
+}
+
+.genericHeader {
+    font-size: 1.25em;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    white-space: nowrap;
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+#chipContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+
+#chipContainer a {
+    width: 88px;
+    height: 31px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+#fellaContainer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: fit-content;
+    height: 200px;
+    display: flex;
+    gap: 25px;
+    pointer-events: none;
+}
+
+#fella {
+    width: 200px;
+    cursor: pointer;
+    translate: 0px 5px;
+    pointer-events: all;
+    transition: scale cubic-bezier(0,2,.75,1) 250ms, translate cubic-bezier(0,2,.75,1) 250ms;
+}
+
+#fella:active {
+    scale: 1.1 0.9;
+    translate: 0px 15px;
+}
+
+#fellaTextboxContainer {
+    display: flex;
+    align-items: center;
+}
+
+#fellaTextbox {
+    font-family: monospace;
+    padding: 5px;
+    outline: 2px solid var(--accent);
+    box-shadow: 0px 0px 0px 4px black;
+    background-color: rgb(0,0,0,0.75);
+    backdrop-filter: blur(5px);
+    max-width: 250px;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    animation: fellaTextboxIn 250ms cubic-bezier(.1,1.5,.75,1) 1 forwards;
+}
+
+@keyframes fellaTextboxIn {
+    from {
+        scale: 0;
+    }
+}
+
+@keyframes confettiSpin {
+    to {
+        transform: rotateX(var(--confettiSpin));
+    }
+}
+
+#rainContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+    backdrop-filter: blur(5px);
+}

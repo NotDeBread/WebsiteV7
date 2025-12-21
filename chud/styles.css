@@ -1,0 +1,10 @@
+html {
+    overflow: hidden;
+}
+
+img {
+    width: 100dvw;
+    height: 100dvh;
+    cursor: pointer;
+    user-select: none;
+}

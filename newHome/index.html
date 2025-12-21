@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="../media/favicon.png">
+    <title>DeBread's Space - Home</title>
+</head>
+<body>
+    <div id="crtOverlay"></div>
+    <div id="loadingEmblemContainer">
+        <img src="../media/emblem.svg" width="100" id="loadingEmblem">
+    </div>
+    <div id="loadingScreenContainer">
+        <div id="loadingScreen"></div>
+    </div>
+
+    <div id="achievementNotiContainer"></div>
+
+    <button id="achievementsButton" onclick="openAchievements()"><img src="../media/icons/achievement.png"></button>
+
+    <div id="achievementsContainer">
+        <div id="achievements">
+            <div id="achievementsHeader">
+                <div style="display: flex; align-items: center; gap: 5px;">
+                    <img src="../media/icons/achievement.png">
+                    <span>DeBread.space Achievements</span>
+                </div>
+                <coolLine></coolLine>
+                <button id="achievementsCloseButton" onclick="doge('achievementsContainer').style.display = 'none'">X</button>
+            </div>
+            <div id="innerAchievementsContainer"></div>
+        </div>
+    </div>
+
+    <div id="confettiContainer"></div>
+
+    <div id="imageViewContainer">
+        <div id="imageViewText">
+            <div id="imageViewTitleContainer">
+                <coolLine></coolLine>
+                <span id="imageViewTitle">Image Title</span>
+                <coolLine></coolLine>
+            </div>
+            <span id="imageViewDesc" style="color: lightgrey;">Some really really long image description</span>
+        </div>
+        <img src="../media/buddy.png" id="imageViewImg">
+        <button id="imageViewButton" onclick="closeImage()">Close</button>
+    </div>
+
+    <div id="all">
+        <div id="titleContainer">
+            <div>
+                <wavey>DeBread's Space</wavey>
+                <span>v7</span>
+            </div>
+            <img src="../media/realWalking.png" style="translate: 0px 57px;">
+        </div>
+        <div id="main">
+            <section id="aboutSection" style="width: 500px;">
+                <div class="genericBox">
+                    <div id="fellaPortrait"></div>
+                    <span>[TEMP TEXT] What's up, I'm DeBread or Bread or Ayden however you want to call me, welcome to my page! I made this place to hold all of my projects and interests, feel free to look around. (Theres easter eggs aswell 👀)</span>
+                </div>
+                <div class="genericBox">
+                    <marquee scrollamount="6">🦝 DeBread.space v7 out now! Check the <a onclick="scrollToElem(doge('newsSection'))">news section</a> for more information! 🦝</marquee>
+                </div>
+                <div class="genericBox" id="newsSection">
+                    <div class="genericHeader">
+                        <img src="../media/icons/mail.png">
+                        <span>NEWS</span>
+                        <coolLine></coolLine>
+                    </div>
+                    <div class="newsBox">
+                        <div>
+                            <div class="newsHeader">
+                                <span class="newsTitle">DeBread.space v7</span>
+                                <coolLine></coolLine>
+                                <em>12/???/2025</em>
+                            </div>
+                            <span class="newsBody">
+                                Since I'm never happy with the look of my website, I remade it again for the seventh time! This one is inspired by old style websites, mostly similar to neocities websites. Some of the specific sites I used as inspiration are included in the <a onclick="scrollToElem(doge('sitesSection'))">'SITES'</a> section under the navigator.
+                            </span>
+                        </div>
+                        <div>
+                            <div class="newsHeader">
+                                <span class="newsTitle">Goober Shooter 2 Announcement</span>
+                                <coolLine></coolLine>
+                                <em>12/???/2025</em>
+                            </div>
+                            <span class="newsBody">
+                                For awhile, Goober Shooter has been my biggest <em>public</em> project. But for the past few months I've been working on it's sequel, Goober Shooter 2 (i know very creative right). More information about the game will be posted here in the future, but in the meantime, you can check out the #goober-shooter channel in my <a href="https://discord.gg/ecCBTRD2hN" target="_blank">Discord Server</a> for progress posts!
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <a class="genericBox" style="height: 75px; padding: 0;" href="../chud">
+                    <img src="../media/notads/0.gif"> <!--Ad blockers block this if the file path contains 'ad' LMAOOO-->
+                </a>
+                <div class="genericBox">
+                    <div class="genericHeader">
+                        <img src="../media/icons/projects.png">
+                        <span>FEATURED PROJECTS</span>
+                        <coolLine></coolLine>
+                    </div>
+                    <div id="featuredProjectsContainer">
+                        <!-- <div class="projectBox">
+                            <img src="../media/buddy.png" class="projectThumbnail">
+                            <div class="projectInfo">
+                                <span class="projectTitle">Goober Shooter 2</span><br>
+                                <span class="projectDesc">Top down wave shooter inspired by The Binding of Isaac and Balatro.</span>
+                            </div>
+                        </div> -->
+                        <div class="projectBox">
+                            <div class="projectInfo">
+                                <span class="projectTitle">Goober Shooter</span><br>
+                                <span class="projectDesc">Top down wave shooter but awesome.</span>
+                            </div>
+                            <div style="background-image: url('../media/projectImages/gooberShooter.png');" class="projectThumbnail"></div>
+                        </div>
+                        <div class="projectBox">
+                            <div class="projectInfo">
+                                <span class="projectTitle">Winnie Accumulator</span><br>
+                                <span class="projectDesc">Cookie Clicker if it was good.</span>
+                            </div>
+                            <div style="background-image: url('../media/projectImages/winnieAccumulator.png');" class="projectThumbnail"></div>
+                        </div>
+                        <div class="projectBox">
+                            <div class="projectInfo">
+                                <span class="projectTitle">THE SERVER</span><br>
+                                <span class="projectDesc">A modded Minecraft server, originally for just my computer servicing class, but recently made public.</span>
+                            </div>
+                            <div style="background-image: url('../media/projectImages/theServer.png');" class="projectThumbnail"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="genericBox" id="musicPlayerContainer">
+                    <div class="genericHeader">
+                        <img src="../media/icons/music.png">
+                        <span>Music Player</span>
+                        <coolLine></coolLine>
+                    </div>
+                    <audio id="musicPlayerAudio"></audio>
+                    <div id="musicPlayerFooter">
+                        <div id="musicPlayerInfo">
+                            <img src="../media/buddy.png" id="musicPlayerAlbum">
+                            <div id="musicPlayerText">
+                                <span id="musicPlayerTitle">please do not listen to this song</span>
+                                <span id="musicPlayerArtist">Some artist</span>
+                            </div>
+                        </div>
+                        <div id="musicControllsContainer">
+                            <div id="musicControllsRanges">
+                                <input type="range" step="1" max="100">
+                                <input type="range" step="0.25" min="0" max="2">
+                            </div>
+                            <div id="musicControlls">
+                                <span id="musicCurrentTime">0:00</span>
+                                <div id="musicControllsButtons">
+                                    <button><img src="../media/icons/prev.png"></button>
+                                    <button onclick="toggleTrack()"><img src="../media/icons/play.png" id="musicControllsPauseButtonImg"></button>
+                                    <button><img src="../media/icons/next.png"></button>
+                                </div>
+                                <span id="musicDuration" style="text-align: right;">10:00</span>
+                            </div>
+                            <input type="range" id="musicControllsRange">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section style="width: 210px;">
+                <div class="genericBox">
+                    <div class="genericHeader">
+                        <coolLine></coolLine>
+                        <img src="../media/icons/date.png">
+                        Date
+                        <coolLine></coolLine>
+                    </div>
+                    <div id="dateContainer">
+                        <section>
+                            <span id="dateMonth">DEC</span>
+                            <span id="dateDate">6th</span>
+                            <span id="dateDay">SAT</span>
+                        </section>
+                        <section>
+                            <div class="dateBar">
+                                <div class="dateBarText">
+                                    <span>YEAR</span>
+                                    <span id="dateYearPercent">0%</span>
+                                </div>
+                                <div class="dateBarBar">
+                                    <div class="dateBarInnerBar" id="dateYearBar"></div>
+                                </div>
+                            </div>
+                            <div class="dateBar">
+                                <div class="dateBarText">
+                                    <span>MONTH</span>
+                                    <span id="dateMonthPercent">0%</span>
+                                </div>
+                                <div class="dateBarBar">
+                                    <div class="dateBarInnerBar" id="dateMonthBar"></div>
+                                </div>
+                            </div>
+                            <div class="dateBar">
+                                <div class="dateBarText">
+                                    <span>DAY</span>
+                                    <span id="dateDayPercent">0%</span>
+                                </div>
+                                <div class="dateBarBar">
+                                    <div class="dateBarInnerBar" id="dateDayBar"></div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="genericBox">
+                    <div class="genericHeader">
+                        <coolLine></coolLine>
+                        <img src="../media/icons/music.png">
+                        Top hit
+                        <coolLine></coolLine>
+                    </div>
+                    <div id="topHitContainer">
+                        <img src="../media/music/TV_WORLD/cover.png" width="50">
+                        <div id="topHitInfo">
+                            <span>TV WORLD</span>
+                            <span>By: Toby Fox</span>
+                        </div>
+                    </div>
+                    <button id="topHitButton" onclick="scrollToElem(doge('musicPlayerContainer'));openTrack('TV_WORLD')">Open in music player</button>
+                </div>
+                <div class="genericBox">
+                    <div class="genericHeader">
+                        <coolLine></coolLine>
+                        <img src="../media/icons/socials.png">
+                        FAOTD
+                        <coolLine></coolLine>
+                    </div>
+                    <div id="faotdContainer">
+                        <img src="../media/featuredDrawings/Erix/0.png" id="faotdImg">
+                        <span id="faotdArtist">Drawn by Erix</span>
+                    </div>
+                </div>
+                <div class="genericBox" id="navigator">
+                    <div class="genericHeader">
+                        <coolLine></coolLine>
+                        <img src="../media/icons/about.png">
+                        About
+                        <coolLine></coolLine>
+                    </div>
+                    <a>Home</a>
+                    <a>About me</a>
+                    <a>Projects</a>
+                    <a>Gallery</a>
+                    <div class="genericHeader">
+                        <coolLine></coolLine>
+                        <img src="../media/icons/socials.png">
+                        Socials
+                        <coolLine></coolLine>
+                    </div>
+                    <a target="_blank" href="https://discord.gg/ecCBTRD2hN">Discord Server</a>
+                    <a target="_blank" href="https://twitter.com/notdebread">Twitter</a>
+                    <a target="_blank">Bluesky</a>
+                    <a target="_blank">YEEN TOWN</a>
+                    <a target="_blank" href="https://youtube.com/notdebread">YouTube</a>
+                    <a target="_blank">GitHub</a>
+                    <div class="genericHeader">
+                        <coolLine></coolLine>
+                        <img src="../media/icons/projects.png">
+                        Projects
+                        <coolLine></coolLine>
+                    </div>
+                    <a target="_blank" href="../games/GooberShooter/">Goober Shooter</a>
+                    <a target="_blank" href="../games/WinnieAccumulator/">Winnie Accumulator</a>
+                    <a target="_blank" href="../THESERVER/">THE SERVER</a>
+                    <div class="genericHeader">
+                        <coolLine></coolLine>
+                        <img src="../media/icons/archives.png">
+                        Archives
+                        <coolLine></coolLine>
+                    </div>
+                    <a target="_blank">Eddie Accumulator</a>
+                    <a target="_blank">Random Sentence Generator</a>
+                    <a target="_blank">Not JSAB</a>
+                    <a target="_blank">Press The Button</a>
+                    <a target="_blank">Pixel Generator</a>
+                    <a target="_blank">Big Number</a>
+                    <a target="_blank">CPR Game</a>
+                    <a target="_blank">Math Game</a>
+                </div>
+                <div class="genericBox" id="sitesSection">
+                    <div class="genericHeader">
+                        <coolLine></coolLine>
+                        <img src="../media/icons/about.png">
+                        Friends sites
+                        <coolLine></coolLine>
+                    </div>
+                    <div id="chipContainer">
+                        <a href="https://debread.space/" target="_blank"><img src="../media/chips/debreadspace.gif" alt="DeBread's Space"></a>
+                        <a href="https://plinkel.neocities.org/" target="_blank"><img src="../media/chips/plonksite.png"></a>
+                    </div>
+                    <div class="genericHeader" style="margin-top: 5px;">
+                        <coolLine></coolLine>
+                        <img src="../media/icons/about.png">
+                        Inspiration
+                        <coolLine></coolLine>
+                    </div>
+                    <div id="chipContainer">
+                        <a href="https://dimden.dev/" target="_blank"><img src="https://dimden.dev/services/images/88x31.gif"></a>
+                        <a href="https://ne0nbandit.neocities.org/" target="_blank"><img src="https://ne0nbandit.github.io/assets/img/btn/mine/nbbanner.png"></a>
+                        <a href="https://swiftyshq.neocities.org/" target="_blank"><img src="https://swiftyshq.neocities.org/img/res/aff/swsign.png" alt="Swifty's HQ!"></a>
+                        <a href="https://ninacti0n.art/" target="_blank"><img src="../media/chips/ninacti0n.gif"></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="fellaContainer">
+        <div id="fellaTextboxContainer">
+            <div id="fellaTextbox">
+                <span style="color: var(--accent); font-weight: 700;">DeBread 🦝</span>
+                <span id="fellaTextboxBody">This is some sample text! and some more to make sure that the text wraps properly!</span>
+            </div>
+        </div>
+      <img id="fella" src="../media/fella.png" onclick="fellaClick()">
+    </div>
+
+    <div id="rainContainer"></div>
+
+    <script src="../DeBread.js"></script>
+    <script src="../global.js"></script>
+    <script src="script.js"></script>
+
+    <!-- BG Shader -->
+    <script src="https://xemantic.github.io/shader-web-background/dist/shader-web-background.min.js"></script>
+    <script type="x-shader/x-fragment" id="image">
+    precision mediump float;
+    #define SPIN_EASE 0.8
+    #define spin_time 5.
+    #define spin_amount 0.3
+    #define contrast 1.
+
+    #define PIXEL_SIZE_FAC 0.25.
+
+    // default colours
+    #define colour_1 vec4(0.118, 0.098, 0.176 ,1.0)
+    #define colour_2 vec4(0.0,0,0.0,1.0)
+    #define colour_3 vec4(0,0,0,1.0)
+
+    // dark theme colors
+    // #define colour_1 vec4(0.0, 0.0, 0.0, 1.0)
+    // #define colour_2 vec4(0.1, 0.1, 0.1, 1.0)
+    // #define colour_3 vec4(0.15, 0.15, 0.15, 1.0)
+
+    // light theme colors
+    // #define colour_1 vec4(1, 1, 1, 1.0)
+    // #define colour_2 vec4(0.9, 0.9, 0.9, 1.0)
+    // #define colour_3 vec4(0.8, 0.8, 0.8, 1.0)
+
+    uniform vec2 iResolution;
+    uniform float iTime;
+
+    void main( )
+    {
+      // uncomment to enable pixelated bg
+      // float pixel_size = length(iResolution.xy)/PIXEL_SIZE_FAC;
+      float pixel_size = 1.0;
+      vec2 uv = (floor(gl_FragCoord.xy*(1./pixel_size))*pixel_size - 0.5*iResolution.xy)/length(iResolution.xy) - vec2(0.12, 0.);
+      
+      float uv_len = length(uv);
+      
+      float speed = (spin_time*SPIN_EASE*0.2) + 302.2;
+      float new_pixel_angle = (atan(uv.y, uv.x)) + speed - SPIN_EASE*20.*(1.*spin_amount*uv_len + (1. - 1.*spin_amount));
+      
+      vec2 mid = vec2(0.5, 0.5);
+      uv = (vec2((uv_len * cos(new_pixel_angle) + mid.x), (uv_len * sin(new_pixel_angle) + mid.y)) - mid);
+      
+      uv *= 30.;
+      speed = iTime*(2.);
+      vec2 uv2 = vec2(uv.x+uv.y);
+
+      for(int i=0; i < 5; i++) {
+        uv2 += sin(max(uv.x, uv.y)) + uv;
+        uv  += 0.5*vec2(cos(5.1123314 + 0.353*uv2.y + speed*0.131121),sin(uv2.x - 0.113*speed));
+        uv  -= 1.0*cos(uv.x + uv.y) - 1.0*sin(uv.x*0.711 - uv.y);
+      }
+      
+      float contrast_mod = (0.25*contrast + 0.5*spin_amount + 1.2);
+      float paint_res =min(2., max(0.,length(uv)*(0.035)*contrast_mod));
+      float c1p = max(0.,1. - contrast_mod*abs(1.-paint_res));
+      float c2p = max(0.,1. - contrast_mod*abs(paint_res));
+      float c3p = 1. - min(1., c1p + c2p);
+
+      // Output to screen
+      gl_FragColor = (0.3/contrast)*colour_1 + (1. - 0.3/contrast)*(colour_1*c1p + colour_2*c2p + vec4(c3p*colour_3.rgb, c3p*colour_1.a));
+    }
+    </script>
+    <script src="../bgShader.js"></script>
+</body>
+</html>

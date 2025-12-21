@@ -4,16 +4,17 @@
 <head>
     <title>Eddie Website</title>
     <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="../global.css">
 </head>
 
 <body>
+    <div id="achievementNotiContainer"></div>
+
     <div class="title">Eddie "Website"</div>
     <p style="text-align: center;" class="body">"This is gonna suck, <br> oh well."</p>
     <p class="eddiemove">
         <img src="EddieSphere.gif" alt="EddieSphere" style="width: 100px; height: 100px;" onclick="wobble(AnimationEffect)">
         <hr>
-
-
     </p>
     <header class="body center">Epic Eddie Video</header>
     <div class="linkcenter">
@@ -104,6 +105,27 @@
                 style="width: 25px; height: 25px;">
         </p>
     </div>
+
+    <!--Not included in first version-->
+    <script src="../DeBread.js"></script>
+    <script src="../global.js"></script>
+    <script>
+        setTimeout(() => {
+            getAchievement('beginnings')
+        }, 1000);
+    </script>
+    <style>
+        body {
+            background-color: white;
+            overflow: unset;
+        }
+
+        p {
+            color: black;
+        }
+    </style>
+    <!---->
+
     <script>
         function yt() {
             window.open("https://www.youtube.com/channel/UCaiYMSsTMAovG2HZjc0cKDw")
