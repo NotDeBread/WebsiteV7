@@ -46,8 +46,9 @@ const items = {
     //     ]
     // },
     quest: {
-        name: 'Oculus Quest 3',
-        price: 499.99,
+        name: 'Oculus Quest 3S',
+        price: 249.99,
+        discount: '$50 OFF + 50$ GIFTCARD',
         hearts: 5,
         description: 'A virtual reality headset',
         specs: [
@@ -55,12 +56,8 @@ const items = {
         ],
         links: [
             {
-                name: 'Meta',
-                link: 'https://www.meta.com/quest/quest-3/'
-            },
-            {
-                name: 'Amazon',
-                link: 'https://a.co/d/iH1LW4R'
+                name: 'Target (+$50 Giftcard)',
+                link: 'https://www.target.com/p/meta-quest-3s-128gb-virtual-reality-headset/-/A-94661443#lnk=sametab'
             }
         ]
     },
@@ -121,21 +118,21 @@ const items = {
             },
         ]
     },
-    case: {
-        name: 'Phone Case',
-        price: 14.99,
-        hearts: 4,
-        description: 'Slick, low profile phone case.',
-        specs: [
-            ['Model','iPhone 15']
-        ],
-        links: [
-            {
-                name: 'Amazon',
-                link: 'https://a.co/d/i7M6eYK'
-            },
-        ]
-    },
+    // case: {
+    //     name: 'Phone Case',
+    //     price: 14.99,
+    //     hearts: 4,
+    //     description: 'Slick, low profile phone case.',
+    //     specs: [
+    //         ['Model','iPhone 15']
+    //     ],
+    //     links: [
+    //         {
+    //             name: 'Amazon',
+    //             link: 'https://a.co/d/i7M6eYK'
+    //         },
+    //     ]
+    // },
     cat: {
         name: 'Cat',
         price: 'Price Varies',
