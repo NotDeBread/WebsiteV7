@@ -9,6 +9,7 @@ function convertToVec4(rgb) {
 
 const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
 const days = ['SUN','MON','TUE','WED','THU','FRI','SAT']
+let newYearsTrigger = false
 
 function updateDate() {
     const now = new Date()
@@ -48,13 +49,23 @@ function updateDate() {
     const dayOfYear = (now - startOfYear) / 86400000
     const yearLength = (endOfYear - startOfYear) / 86400000
 
-    const yearProgress = dayOfYear / yearLength
+    const yearProgress = dayOfYear / (yearLength + 1)
     
     doge('dateYearPercent').innerText = DeBread.round(yearProgress * 100,2) + '%'
     doge('dateYearBar').style.width = yearProgress * 100 + '%'
 
-    if(dayProgress <= 0.5) {
+    if(dayProgress <= 0.15) {
         getAchievement('afterhours')
+    }
+
+    if(DeBread.round(yearProgress,3) === 0 && !newYearsTrigger) {
+        for(let i = 0; i < globalDate.getFullYear() - 2000; i++) {
+            setTimeout(() => {
+                createConfetti()
+            }, i * 250);
+        }
+        fellaClick('Man you should be out celebrating right now, not sitting on my website 😭', true)
+        newYearsTrigger = true
     }
 } setInterval(updateDate, 1000)
 
@@ -71,7 +82,7 @@ addStyles(confettiBase, {
 function createConfetti() {
     const randomPos = [DeBread.randomNum(100, window.innerWidth - 100),DeBread.randomNum(100, window.innerHeight - 100)]
     
-    for(let i = 0; i < 7; i++) {
+    for(let i = 0; i < 10; i++) {
         const confetti = confettiBase.cloneNode()
         confetti.classList.add('confetti')
         confetti.pos = [randomPos[0], randomPos[1]]
@@ -111,7 +122,7 @@ setTimeout(() => {
 }, 1000);
 
 if(globalDate.getMonth() === 11) {
-    doge('fella').src = '../media/fellaChristmase.png'
+    doge('fella').src = '../media/fellaChristmas.png'
 }
 
 setInterval(() => {
@@ -227,12 +238,13 @@ const fellaTexts = [
     `<div style="display: flex; align-items: center;">Man its kinda <img src="../media/warm.gif" class="shake" width=137></div>`,
     'I\'m good at programming just trust',
     'Throw rocks at homeless people',
-    `<img src="../media/server.gif" width=250>`,
     'I need my big lolipop',
     'I love playing with my choo choo train',
     'I gotta go to bed',
     `I\'m ${globalDate.getFullYear() - 2007} years old and I've already wasted my entire life`,
-    'I hate my stupid job'
+    'I hate my stupid job',
+    'Tombstone pizzas 🥹',
+    `${globalDate.getFullYear()+1} will be my year trust`
 ] 
 
 let fellaTimesClicked = 0
@@ -253,8 +265,17 @@ function fellaClick(talk, giggle) {
     }
 }
 
+let textboxTimeout
 function fellaTalk(text) {
+    clearInterval(textboxTimeout)
+    doge('fellaTextbox').style.transition = 'none'
+    doge('fellaTextbox').style.opacity = '1'
     doge('fellaTextboxBody').innerHTML = text
+
+    textboxTimeout = setTimeout(() => {
+    doge('fellaTextbox').style.transition = 'opacity ease-in-out 500ms'
+        doge('fellaTextbox').style.opacity = '0'
+    }, 5000);
 }
 
 setTimeout(() => {
@@ -264,7 +285,7 @@ setTimeout(() => {
         } else if(globalDate.getDate() === 25) {
             fellaClick('Merry Christmas!!', true)
         } else {
-            fellaClick('Ah! so jolly!', true)
+            fellaClick(['Ah! so jolly!','Ho ho ho ! ‼️'][DeBread.randomNum(0,1)], true)
         }
     }
 }, 1000);
@@ -351,6 +372,7 @@ for(let i = 0; i < 100; i++) {
 
 function renderAchievements() {
     doge('innerAchievementsContainer').innerHTML = ''
+    let achGot = 0
     for(const key in achievements) {
         const ach = achievements[key]
 
@@ -367,10 +389,20 @@ function renderAchievements() {
         if(!data.achievementsGot.includes(key)) {
             card.style.filter = 'brightness(50%)'
             card.querySelector('.achievementListItemInfo span:nth-child(2)').innerHTML = '???'
+        } else {
+            achGot++
         }
 
         doge('innerAchievementsContainer').append(card)
     }
+
+    doge('innerAchievementsBar').style.width = achGot / Object.keys(achievements).length * 100 + '%'
+    doge('achievementsBarProgress').innerText = `${achGot} / ${Object.keys(achievements).length}`
+
+    if(achGot === Object.keys(achievements).length) {
+        doge('achievementsBarProgress').innerText = `you're did it`
+    }
+
 }
 
 function openAchievements() {
@@ -387,6 +419,14 @@ const tracks = {
     TV_WORLD: {
         name: 'TV WORLD',
         artist: 'Toby Fox',
+    },
+    FINAL_BLENDERMAN_APPEARED: {
+        name: 'FINAL BLENDERMAN APPEARED',
+        artist: 'Camellia, RichaadEB'
+    },
+    jaden: {
+        name: 'jaden',
+        artist: 'jaden'
     }
 }
 
@@ -405,9 +445,7 @@ function startTrack(track) {
     currentTrack = track
     audio.play()
 
-    doge('musicPlayerAlbum').src = `../media/music/${track}/cover.png`
-    doge('musicPlayerTitle').innerText = tracks[track].name
-    doge('musicPlayerArtist').innerText = tracks[track].artist
+    updateTrackInfo(track)
 }
 
 function openTrack(track) {
@@ -417,10 +455,17 @@ function openTrack(track) {
     currentTrack = track
     audio.pause()
 
+    updateTrackInfo(track)
+} openTrack('carnation')
+
+function updateTrackInfo(track) {
     doge('musicPlayerAlbum').src = `../media/music/${track}/cover.png`
+    doge('musicPlayerAlbum').onclick = () => {
+        openImage(tracks[track].name, `By: ${tracks[track].artist}`,`../media/music/${track}/cover.png`)
+    }
     doge('musicPlayerTitle').innerText = tracks[track].name
     doge('musicPlayerArtist').innerText = tracks[track].artist
-} openTrack('carnation')
+}
 
 function toggleTrack() {
     const audio = doge('musicPlayerAudio')
@@ -437,7 +482,7 @@ function toggleTrack() {
 }
 
 const exampleAudio = new Audio()
-
+doge('musicPlayerAudio').preservesPitch = false
 setInterval(() => {
     const audio = doge('musicPlayerAudio')
 
@@ -467,3 +512,118 @@ doge('musicControllsRange').addEventListener('wheel', ev => {
     audio.currentTime = doge('musicControllsRange').value / 10
     ev.preventDefault()
 })
+
+let volumeUpdateInterval
+doge('musicControllsVolume').addEventListener('mousedown', ev => {volumeUpdateInterval = setInterval(updateTrackVolume, 25);})
+doge('musicControllsVolume').addEventListener('mouseup', ev => {clearInterval(volumeUpdateInterval)})
+doge('musicControllsVolume').addEventListener('change', updateTrackVolume)
+
+function updateTrackVolume() {
+    const volume = doge('musicControllsVolume').value
+    doge('musicPlayerAudio').volume = volume
+
+    if(volume >= 0.5) {
+        if(volume == 1) {
+            DeBread.easeShake(doge('musicPlayerVolumeIcon'), 25, 2, 0.01)
+            if(!doge('musicPlayerAudio').paused) {
+                getAchievement('hearingProblems')
+            }
+        }
+        doge('musicPlayerVolumeIcon').src = '../media/icons/volume2.png'
+    } else if(volume > 0) {
+        doge('musicPlayerVolumeIcon').src = '../media/icons/volume1.png'
+    } else {
+        doge('musicPlayerVolumeIcon').src = '../media/icons/volume0.png'
+    }
+}
+
+let fellaSpeedTalk = false
+
+let speedUpdateInterval
+doge('musicControllsSpeed').addEventListener('mousedown', ev => {
+    speedUpdateInterval = setInterval(updateTrackSpeed, 25);
+})
+doge('musicControllsSpeed').addEventListener('mouseup', ev => {clearInterval(speedUpdateInterval)})
+
+doge('musicControllsSpeed').addEventListener('change', ev => {
+    updateTrackSpeed()
+
+    if(!fellaSpeedTalk) {
+        fellaClick('Y\'know, it should be standard for music players to have a speed slider. It\'s pretty cool.', true)
+        fellaSpeedTalk = true
+    }
+})
+
+function updateTrackSpeed() {
+    doge('musicPlayerAudio').playbackRate = doge('musicControllsSpeed').value
+}
+
+doge('realRacc').offset = 10
+function realClick() {
+    getAchievement('look')
+    
+    const racc = doge('realRacc')
+    clearInterval(racc.interval)
+
+    racc.src = '../media/realJump.png'
+
+    racc.vel =- 10
+    racc.interval = setInterval(() => {
+        racc.vel++
+        racc.offset += racc.vel
+        racc.style.translate = `0px ${racc.offset}px`
+
+        if(racc.getBoundingClientRect().top >= window.innerHeight) {
+            clearInterval(racc.interval)
+            racc.style.pointerEvents = 'none'
+            racc.style.opacity = '0'
+        }
+
+        if(racc.offset <= -140) {
+            getAchievement('volleyball')
+        }
+    }, 25);
+}
+
+function copyButtonHTML() {
+    navigator.clipboard.writeText(`<a href="https://debread.space/" target="_blank"><img src="https://debread.space/media/chips/debreadspace.gif" alt="DeBread's Space"></a>`)
+    doge('buttonCopyButton').innerText = 'Copied!'
+}
+
+//Get mc server members
+let mcServerData
+let mcServerDataTooltip = 'fetching...'
+
+function refreshServerInfo() {
+    fetch('https://api.mcsrvstat.us/2/debread.space')
+    .then(res => res.json())
+    .then(data => {
+        mcServerData = data
+        if(data.debug.error && false) {
+            doge('onlineMemberCount').innerText = 'Error'
+            doge('onlineMemberCircle').style.backgroundColor = 'red'
+            mcServerDataTooltip = data.debug.error.query
+        } else if(data.online) {
+            doge('onlineMemberCount').innerText = data.players.online + ' Online'
+            doge('onlineMemberCircle').style.backgroundColor = 'lime'
+
+            mcServerDataTooltip = `${data.players.online}/${data.players.max} members online<br>`
+            for(const key in data.players.list) {
+                mcServerDataTooltip += '<br>'+data.players.list[key]
+            }
+        } else {
+            doge('onlineMemberCount').innerText = 'Server down'
+            doge('onlineMemberCircle').style.backgroundColor = 'red'
+        }
+    })
+    
+    doge('serverMemberCount').onmouseenter = () => {
+        const rect = doge('serverMemberCount').getBoundingClientRect()
+        tooltip([rect.left + doge('serverMemberCount').offsetWidth / 2, rect.bottom + 10], mcServerDataTooltip, true)
+    }
+
+    doge('serverMemberCount').onmouseleave = () => {
+        doge('tooltip').style.display = 'none'
+    }
+} refreshServerInfo()
+setInterval(refreshServerInfo, 60000);

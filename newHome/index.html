@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="fediverse:creator" content="debread@yeen.town" />
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="../media/favicon.png">
@@ -10,17 +11,15 @@
 </head>
 <body>
     <div id="crtOverlay"></div>
-    <div id="loadingEmblemContainer">
+    <!-- <div id="loadingEmblemContainer">
         <img src="../media/emblem.svg" width="100" id="loadingEmblem">
     </div>
     <div id="loadingScreenContainer">
         <div id="loadingScreen"></div>
-    </div>
+    </div> -->
 
     <div id="achievementNotiContainer"></div>
-
     <button id="achievementsButton" onclick="openAchievements()"><img src="../media/icons/achievement.png"></button>
-
     <div id="achievementsContainer">
         <div id="achievements">
             <div id="achievementsHeader">
@@ -31,8 +30,19 @@
                 <coolLine></coolLine>
                 <button id="achievementsCloseButton" onclick="doge('achievementsContainer').style.display = 'none'">X</button>
             </div>
+            <div id="achievementsBar">
+                <div id="achievementsBarText">
+                    <span id="achievementsBarProgress">Wowie this is some sample text!</span>
+                </div>
+                <div id="innerAchievementsBar"></div>
+            </div>
             <div id="innerAchievementsContainer"></div>
+            <a onclick="deleteData()">Delete data</a>
         </div>
+    </div>
+
+    <div id="tooltip">
+        <span>Some sample text</span>
     </div>
 
     <div id="confettiContainer"></div>
@@ -52,11 +62,11 @@
 
     <div id="all">
         <div id="titleContainer">
-            <div>
+            <div style="height: 75px;">
                 <wavey>DeBread's Space</wavey>
-                <span>v7</span>
+                <span>v7-pre0 - the rebrand is real</span>
             </div>
-            <img src="../media/realWalking.png" style="translate: 0px 57px;">
+            <img src="../media/realWalking.png" style="translate: 0px 57px;" onclick="realClick()" id="realRacc">
         </div>
         <div id="main">
             <section id="aboutSection" style="width: 500px;">
@@ -115,24 +125,45 @@
                         </div> -->
                         <div class="projectBox">
                             <div class="projectInfo">
-                                <span class="projectTitle">Goober Shooter</span><br>
-                                <span class="projectDesc">Top down wave shooter but awesome.</span>
+                                <div>
+                                    <div style="display: flex; gap: 10px;">
+                                        <span class="projectTitle">THE SERVER - SEASON TWO</span>
+                                        <div id="serverMemberCount">
+                                            <div style="width: 5px; height: 5px; border-radius: 50%; background-color: grey;" id="onlineMemberCircle"></div>
+                                            <span id="onlineMemberCount">fetching...</span>
+                                        </div>
+                                    </div>
+                                    <span class="projectDesc">The sequel of my old modded Minecraft server, which was originally for just my computer servicing class, but recently made public.</span>
+                                </div>
+                                <a href="../THESERVER/">
+                                    <button>JOIN</button>
+                                </a>
+                            </div>
+                            <div style="background-image: url('../media/projectImages/theServer.png');" class="projectThumbnail"></div>
+                        </div>
+                        <div class="projectBox">
+                            <div class="projectInfo">
+                                <div>
+                                    <span class="projectTitle">Goober Shooter</span><br>
+                                    <span class="projectDesc">Top down wave shooter but awesome.</span>
+                                </div>
+                                <a href="../games/GooberShooter/">
+                                    <button>PLAY</button>
+                                </a>
                             </div>
                             <div style="background-image: url('../media/projectImages/gooberShooter.png');" class="projectThumbnail"></div>
                         </div>
                         <div class="projectBox">
                             <div class="projectInfo">
-                                <span class="projectTitle">Winnie Accumulator</span><br>
-                                <span class="projectDesc">Cookie Clicker if it was good.</span>
+                                <div>
+                                    <span class="projectTitle">Winnie Accumulator</span><br>
+                                    <span class="projectDesc">Cookie Clicker if it was good.</span>
+                                </div>
+                                <a href="../games/WinnieAccumulator/">
+                                    <button>PLAY</button>
+                                </a>
                             </div>
                             <div style="background-image: url('../media/projectImages/winnieAccumulator.png');" class="projectThumbnail"></div>
-                        </div>
-                        <div class="projectBox">
-                            <div class="projectInfo">
-                                <span class="projectTitle">THE SERVER</span><br>
-                                <span class="projectDesc">A modded Minecraft server, originally for just my computer servicing class, but recently made public.</span>
-                            </div>
-                            <div style="background-image: url('../media/projectImages/theServer.png');" class="projectThumbnail"></div>
                         </div>
                     </div>
                 </div>
@@ -142,7 +173,7 @@
                         <span>Music Player</span>
                         <coolLine></coolLine>
                     </div>
-                    <audio id="musicPlayerAudio"></audio>
+                    <audio id="musicPlayerAudio" preservesPitch="false"></audio>
                     <div id="musicPlayerFooter">
                         <div id="musicPlayerInfo">
                             <img src="../media/buddy.png" id="musicPlayerAlbum">
@@ -152,10 +183,6 @@
                             </div>
                         </div>
                         <div id="musicControllsContainer">
-                            <div id="musicControllsRanges">
-                                <input type="range" step="1" max="100">
-                                <input type="range" step="0.25" min="0" max="2">
-                            </div>
                             <div id="musicControlls">
                                 <span id="musicCurrentTime">0:00</span>
                                 <div id="musicControllsButtons">
@@ -165,10 +192,23 @@
                                 </div>
                                 <span id="musicDuration" style="text-align: right;">10:00</span>
                             </div>
-                            <input type="range" id="musicControllsRange">
+                            <div style="display: flex; gap: 5px;">
+                                <div class="musicCollapsibleControll">
+                                    <img src="../media/icons/volume1.png" id="musicPlayerVolumeIcon">
+                                    <input type="range" step="0.05" max="1" id="musicControllsVolume">
+                                </div>
+                                <input type="range" id="musicControllsRange" style="width: 100%;">
+                                <div class="musicCollapsibleControll" style="justify-content: end;">
+                                    <input type="range" step="0.01" min="0" max="2" id="musicControllsSpeed">
+                                    <img src="../media/icons/time.png">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+               <a class="genericBox" style="height: 75px; padding: 0;" href="https://debread.straw.page/" target="_blank">
+                    <img src="../media/notads/1.gif">
+                </a>
             </section>
             <section style="width: 210px;">
                 <div class="genericBox">
@@ -180,9 +220,9 @@
                     </div>
                     <div id="dateContainer">
                         <section>
-                            <span id="dateMonth">DEC</span>
-                            <span id="dateDate">6th</span>
-                            <span id="dateDay">SAT</span>
+                            <span id="dateMonth">-</span>
+                            <span id="dateDate">-</span>
+                            <span id="dateDay">-</span>
                         </section>
                         <section>
                             <div class="dateBar">
@@ -241,6 +281,7 @@
                     <div id="faotdContainer">
                         <img src="../media/featuredDrawings/Erix/0.png" id="faotdImg">
                         <span id="faotdArtist">Drawn by Erix</span>
+                        <a href="https://discord.gg/PCaxBSpD" target="_blank">Send a drawing</a>
                     </div>
                 </div>
                 <div class="genericBox" id="navigator">
@@ -253,7 +294,7 @@
                     <a>Home</a>
                     <a>About me</a>
                     <a>Projects</a>
-                    <a>Gallery</a>
+                    <a href="../gallery/">Gallery</a>
                     <div class="genericHeader">
                         <coolLine></coolLine>
                         <img src="../media/icons/socials.png">
@@ -262,10 +303,10 @@
                     </div>
                     <a target="_blank" href="https://discord.gg/ecCBTRD2hN">Discord Server</a>
                     <a target="_blank" href="https://twitter.com/notdebread">Twitter</a>
-                    <a target="_blank">Bluesky</a>
-                    <a target="_blank">YEEN TOWN</a>
+                    <a target="_blank" href="https://bsky.app/profile/debread.space">Bluesky</a>
+                    <a target="_blank" href="https://yeen.town/@debread">YEEN TOWN</a>
                     <a target="_blank" href="https://youtube.com/notdebread">YouTube</a>
-                    <a target="_blank">GitHub</a>
+                    <a target="_blank" href="https://github.com/NotDeBread">GitHub</a>
                     <div class="genericHeader">
                         <coolLine></coolLine>
                         <img src="../media/icons/projects.png">
@@ -281,14 +322,15 @@
                         Archives
                         <coolLine></coolLine>
                     </div>
-                    <a target="_blank">Eddie Accumulator</a>
-                    <a target="_blank">Random Sentence Generator</a>
-                    <a target="_blank">Not JSAB</a>
-                    <a target="_blank">Press The Button</a>
-                    <a target="_blank">Pixel Generator</a>
-                    <a target="_blank">Big Number</a>
-                    <a target="_blank">CPR Game</a>
-                    <a target="_blank">Math Game</a>
+                    <a target="_blank" href="../archives/Eddie-Accumulator/">Eddie Accumulator</a>
+                    <a target="_blank" href="../archives/RandomSentenceGenerator/">Random Sentence Generator</a>
+                    <a target="_blank" href="../archives/NotJSAB/">Not JSAB</a>
+                    <a target="_blank" href="../archives/PressTheButton/">Press The Button</a>
+                    <a target="_blank" href="../archives/PixelGenerator/">Pixel Generator</a>
+                    <a target="_blank" href="../archives/BigNumber/">Big Number</a>
+                    <a target="_blank" href="../archives/cprGame/">CPR Game</a>
+                    <a target="_blank" href="../archives/MathGame/">Math Game</a>
+                    <a target="_blank" href="../EddieSite/">Eddie Site</a>
                 </div>
                 <div class="genericBox" id="sitesSection">
                     <div class="genericHeader">
@@ -300,6 +342,10 @@
                     <div id="chipContainer">
                         <a href="https://debread.space/" target="_blank"><img src="../media/chips/debreadspace.gif" alt="DeBread's Space"></a>
                         <a href="https://plinkel.neocities.org/" target="_blank"><img src="../media/chips/plonksite.png"></a>
+                    </div>
+                    <div style="margin-top: 5px; display: flex; align-items: center; flex-direction: column; gap: 5px;">
+                        <span>Use my button!</span>
+                        <button id="buttonCopyButton" onclick="copyButtonHTML()">Copy HTML</button>
                     </div>
                     <div class="genericHeader" style="margin-top: 5px;">
                         <coolLine></coolLine>
@@ -320,7 +366,7 @@
 
     <div id="fellaContainer">
         <div id="fellaTextboxContainer">
-            <div id="fellaTextbox">
+            <div id="fellaTextbox" style="opacity: 0;">
                 <span style="color: var(--accent); font-weight: 700;">DeBread 🦝</span>
                 <span id="fellaTextboxBody">This is some sample text! and some more to make sure that the text wraps properly!</span>
             </div>

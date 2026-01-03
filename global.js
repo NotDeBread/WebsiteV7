@@ -33,6 +33,7 @@ function saveData() {
 
 function deleteData() {
     localStorage.removeItem("DeBreadsSpace", JSON.stringify(data))
+    window.location.reload()
     console.log('Save deleted.')
 }
 
@@ -200,6 +201,22 @@ function openImage(title, desc, url) {
     doge('imageViewImg').src = url
 }
 
+function tooltip(pos, html, center) {
+    const tooltip = doge('tooltip')
+    tooltip.style.display = 'unset'
+    if(center) {
+        tooltip.style.translate = '-50% 0'
+    } else {
+        tooltip.style.translate = 'unset'
+    }
+
+    tooltip.innerHTML = html
+    addStyles(tooltip, {
+        left: pos[0]+'px',
+        top: pos[1]+'px'
+    })
+}
+
 function closeImage() {
     doge('imageViewContainer').style.display = 'none'
 }
@@ -271,11 +288,7 @@ const achievements = {
     },
     chud: {
         name: 'My stupid chud dog',
-        desc: 'Click the Buddy banner ad.'
-    },
-    downpour: {
-        name: 'Downpour',
-        desc: 'Visit while the rain is at its strongest.'
+        desc: 'Visit the chud page.'
     },
     fanart: {
         name: 'Quite beautiful isn\'t it',
@@ -292,6 +305,22 @@ const achievements = {
     og: {
         name: 'OG',
         desc: 'Visit before the v7 update.'
+    },
+    look: {
+        name: 'Look at what you did.',
+        desc: 'wow...'
+    },
+    volleyball: {
+        name: 'Volleyball',
+        desc: 'Juggle the racc.'
+    },
+    hearingProblems: {
+        name: 'Hearing problems',
+        desc: 'Set the volume to max while a track is playing.'
+    },
+    holiday: {
+        name: 'Don\'t you have anything better to do?',
+        desc: 'Visit during a holiday.'
     }
 }
 
@@ -310,7 +339,21 @@ function getAchievement(ach) {
         doge('achievementNotiContainer').append(achievement)
         data.achievementsGot.push(ach)
         saveData()
+
+        setTimeout(() => {
+            achievement.style.opacity = '0'
+            setTimeout(() => {
+                achievement.remove()
+            }, 1000);
+        }, 5000);
     }
+}
+
+if(
+    (globalDate.getMonth() === 11 && globalDate.getDate() === 25) ||
+    (globalDate.getMonth() === 9 && globalDate.getDate() === 31)
+) {
+    getAchievement('holiday')
 }
 
 if(data.guyPoints) {

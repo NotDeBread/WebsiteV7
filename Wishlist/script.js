@@ -45,22 +45,6 @@ const items = {
     //         }
     //     ]
     // },
-    quest: {
-        name: 'Oculus Quest 3S',
-        price: 249.99,
-        discount: '$50 OFF + 50$ GIFTCARD',
-        hearts: 5,
-        description: 'A virtual reality headset',
-        specs: [
-
-        ],
-        links: [
-            {
-                name: 'Target (+$50 Giftcard)',
-                link: 'https://www.target.com/p/meta-quest-3s-128gb-virtual-reality-headset/-/A-94661443#lnk=sametab'
-            }
-        ]
-    },
     monitor: {
         name: 'ASUS TUF Gaming 27” 1440P HDR Monitor',
         price: 248,
@@ -105,34 +89,6 @@ const items = {
             },
         ]
     },
-    bamboo: {
-        name: 'Lucky Bamboo',
-        price: 23.95,
-        hearts: 3,
-        discount: '-20% OFF',
-        description: '',
-        links: [
-            {
-                name: 'Amazon',
-                link: 'https://a.co/d/45Mcf9k'
-            },
-        ]
-    },
-    // case: {
-    //     name: 'Phone Case',
-    //     price: 14.99,
-    //     hearts: 4,
-    //     description: 'Slick, low profile phone case.',
-    //     specs: [
-    //         ['Model','iPhone 15']
-    //     ],
-    //     links: [
-    //         {
-    //             name: 'Amazon',
-    //             link: 'https://a.co/d/i7M6eYK'
-    //         },
-    //     ]
-    // },
     cat: {
         name: 'Cat',
         price: 'Price Varies',

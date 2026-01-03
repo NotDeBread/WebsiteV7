@@ -20,8 +20,8 @@
 
     <!--Content goes here-->
 
-
     <script src="../DeBread.js"></script>
+    <script src="../global.js"></script>
     <script src="script.js"></script>
 
     <!-- BG Shader -->
@@ -36,14 +36,14 @@
     // #define PIXEL_SIZE_FAC 700.
 
     // default colours
-    // #define colour_1 vec4(1.0,0.3725490196,0.3333333333,1.0)
-    // #define colour_2 vec4(0.0,0.6156862745,1.0,1.0)
-    // #define colour_3 vec4(0.2156862745,0.2588235294,0.2666666667,1.0)
+    #define colour_1 vec4(0.118, 0.098, 0.176 ,1.0)
+    #define colour_2 vec4(0.0,0,0.0,1.0)
+    #define colour_3 vec4(0,0,0,1.0)
 
     // dark theme colors
-    #define colour_1 vec4(0.0, 0.0, 0.0, 1.0)
-    #define colour_2 vec4(0.1, 0.1, 0.1, 1.0)
-    #define colour_3 vec4(0.15, 0.15, 0.15, 1.0)
+    // #define colour_1 vec4(0.0, 0.0, 0.0, 1.0)
+    // #define colour_2 vec4(0.1, 0.1, 0.1, 1.0)
+    // #define colour_3 vec4(0.15, 0.15, 0.15, 1.0)
 
     // light theme colors
     // #define colour_1 vec4(1, 1, 1, 1.0)
@@ -87,8 +87,7 @@
       // Output to screen
       gl_FragColor = (0.3/contrast)*colour_1 + (1. - 0.3/contrast)*(colour_1*c1p + colour_2*c2p + vec4(c3p*colour_3.rgb, c3p*colour_1.a));
     }
-  </script>
-  <script src="../bgShader.js"></script>
-  <script src="../global.js"></script>
+    </script>
+    <script src="../bgShader.js"></script>
 </body>
 </html>
