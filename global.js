@@ -38,41 +38,68 @@ function deleteData() {
 }
 
 //Loading screen stuff
-if(doge('loadingScreen')) {
-    let loadingFinished = false
-    let loadingSkipped = false
-    function finishLoading() {
-        loadingFinished = true
-        const randomRot = DeBread.randomNum(0,360)
-        const screen = doge('loadingScreen')
-        const emblem = doge('loadingEmblem')
+// if(doge('loadingScreen')) {
+//     let loadingFinished = false
+//     let loadingSkipped = false
+//     function finishLoading() {
+//         loadingFinished = true
+//         const randomRot = DeBread.randomNum(0,360)
+//         const screen = doge('loadingScreen')
+//         const emblem = doge('loadingEmblem')
     
-        screen.style.rotate = randomRot + 'deg'
+//         screen.style.rotate = randomRot + 'deg'
         
-        screen.style.width = '0vmax'
-        screen.style.height = '0vmax'
-        setTimeout(() => {
-            emblem.style.scale = 0
-            setTimeout(() => {
-                doge('loadingEmblemContainer').style.pointerEvents = 'none'
-                document.body.style.overflow = 'unset'
-            }, 750);
-        }, 500);
-        setTimeout(() => {
-            doge('loadingScreenContainer').style.pointerEvents = 'none'
-        }, 1250);
-    } 
-    if(!['/',''].includes(window.location.pathname)) {
-        finishLoading()
-    }
+//         screen.style.width = '0vmax'
+//         screen.style.height = '0vmax'
+//         setTimeout(() => {
+//             emblem.style.scale = 0
+//             setTimeout(() => {
+//                 doge('loadingEmblemContainer').style.pointerEvents = 'none'
+//                 document.body.style.overflow = 'unset'
+//             }, 750);
+//         }, 500);
+//         setTimeout(() => {
+//             doge('loadingScreenContainer').style.pointerEvents = 'none'
+//         }, 1250);
+//     } 
+//     if(!['/',''].includes(window.location.pathname)) {
+//         finishLoading()
+//     }
     
-    setTimeout(() => {
-        if(!loadingFinished) {
-            finishLoading()
-            loadingSkipped = true
-            console.warn('Seems like it took too long to load. Hiding loading screen anyways.')
+//     setTimeout(() => {
+//         if(!loadingFinished) {
+//             finishLoading()
+//             loadingSkipped = true
+//             console.warn('Seems like it took too long to load. Hiding loading screen anyways.')
+//         }
+//     }, 2000);
+// }'
+
+if(doge('loadingScreenContainer')) {
+    let dots = 4
+    let loadingInterval = setInterval(() => {
+        dots--
+        if(dots < 1) dots = 4
+        
+        doge('loadingText').innerText = 'Loading'.padEnd(dots+6,'.')
+
+        doge('loadingImg').style.rotate = (((dots % 2) - 4) * 2 + 7) * 5 + 'deg'
+
+        if(document.readyState === 'complete') {
+            clearInterval(loadingInterval)
+            doge('loadingText').innerText = 'Done!'
+            doge('loadingImg').src = '../media/realJump.png'
+            doge('loadingImg').style.rotate = '0deg'
+
+            setTimeout(() => {
+                doge('loadingScreenContainer').style.opacity = '0'
+                setTimeout(() => {
+                    doge('loadingScreenContainer').style.display = 'none'
+                }, 250);
+            }, 500);
         }
-    }, 2000);
+    }, 500);
+
 }
 
 function gotoPage(page, absoluteURL) {

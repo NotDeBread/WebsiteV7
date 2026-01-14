@@ -10,16 +10,14 @@
 </head>
 <body>
     <div id="crtOverlay"></div>
-    <div id="loadingEmblemContainer">
-        <img src="../media/emblem.svg" width="100" id="loadingEmblem">
-    </div>
     <div id="loadingScreenContainer">
-        <div id="loadingScreen"></div>
+        <img src="../media/realFit.png" id="loadingImg" width="100">
+        <span id="loadingText">LOADING...</span>
     </div>
 
     <div id="achievementNotiContainer"></div>
 
-    <img src="../media/gauntletofgormlessterror.gif" id="him" onclick="DeBread.playSound('../media/audio/bark.mp3', 0.25)">
+    <img src="../media/gauntletofgormlessterrorfella.gif" id="him" onclick="DeBread.playSound('../media/audio/bark.mp3', 0.25)">
 
     <div id="fourohfour">
       <span>404</span><br>
@@ -30,7 +28,9 @@
       <span>The page </span><span id="unknownpage" style="font-family: 'JetBrains Mono', monospace;">undefined</span><span> links to a page that doesnt exist or has not been made yet.</span>
     </div>
 
-    <button id="returnButton" onclick="gotoPage('home')">Return to main page</button>
+    <a href="../home">
+      <button id="returnButton">Return to main page</button>
+    </a>
 
 
     <script src="../DeBread.js"></script>

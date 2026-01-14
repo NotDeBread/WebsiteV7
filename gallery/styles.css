@@ -6,3 +6,21 @@
     display: flex;
     flex-direction: column;
 }
+
+#charactersContainer {
+    display: flex;
+    gap: 5px;
+}
+
+.characterButton {
+    padding: 5px;
+    gap: 5px;
+    outline: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.characterButton img {
+    width: 100px;
+}

@@ -1,5 +1,5 @@
 :root {
-    --pageMargin: 250px;
+    --pageMargin: 25dvw;
 }
 
 @font-face {
@@ -34,8 +34,11 @@ sup:hover {
 }
 
 @keyframes panorama {
+    from {
+        background-position: 0px -100px;
+    }
     to {
-        background-position: 1000px 0px;
+        background-position: 2000px -100px;
     }
 }
 
@@ -46,8 +49,8 @@ sup:hover {
 #splashContainer {
     width: 0px;
     position: absolute;
-    top: 100px;
-    right: 0;
+    top: 70px;
+    right: 10px;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -120,176 +123,95 @@ sup:hover {
     text-decoration: none;
 }
 
-.header {
+#serverCountdownContainer {
+    padding: 5px;
+    outline: 1px solid white;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+#counterContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    min-width: fit-content;
+}
+
+#serverCountdown {
     font-size: 2em;
     font-weight: 700;
 }
 
-#cardContainer {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 50px;
-}
-
-.playerCard {
-    position: relative;
-    width: 100%;
-    height: 475px;
-}
-
-.genericCardRow {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.genericCard {
-    position: relative;
-    height: 400px;
-    width: 100%;
-}
-
-.cardContent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-    z-index: 2;
-    padding: 10px;
-    font-family: minecraft;
+.paragraph {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
-.genericCardContent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-    z-index: 2;
-    padding: 10px;
-    font-family: minecraft;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.header {
+    font-size: 1.5em;
+    font-weight: 700;
 }
 
-.genericCardContent imgCarrossel {
-    outline: 4px solid rgb(85, 85, 85);
-    margin: 4px;
-    background-color: rgb(33, 33, 33);
-    margin-top: 5px;
+#serverStatusContainer {
+    width: 250px;
+    outline: 1px solid white;
+    margin-top: 25px;
+    padding: 5px;
+    min-height: 500px;
 }
 
-.genericCardContent imgCarrossel button {
-    outline: 4px solid rgb(85, 85, 85);
+#statusDot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: grey;
 }
 
-.cardTitle {
-    font-size: 1.25em;
-    background-color: rgb(0,0,0,.5);
-    padding: 2px;
-}
-
-.cardBG {
-    display: grid;
-    grid-template-columns: 8px 1fr 8px;
-    grid-template-rows: 8px 1fr 8px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-}
-
-.cardImageContainer {
-    display: flex;
-    justify-content: center;
-}
-
-.cardHeaderContainer {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-    margin-bottom: 10px;
-}
-
-.cardHeader {
-    font-size: 2em;
-    white-space: nowrap;
-}
-
-.cardEm {
+#statusInfo {
     color: grey;
-}
-
-@media (max-width: 1750px) {
-    :root {
-        --pageMargin: 25px
-    }
-}
-
-@media (max-width: 1500px) {
-    /* :root {
-        --pageMargin: 25px;
-    } */
-
-    #innerTitle {
-        scale: 0.75;
-    }
-    
-    .genericCardRow {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 1100px) {
-    :root {
-        --pageMargin: 10px;
-    }
-
-    #cardContainer {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .playerCard {
-        width: 100%;
-    }
-
-    #splashContainer {
-        display: none;
-    }
-
-    .genericCard {
-        height: 500px;
-    }
-}
-
-@media (max-width: 750px) {
-    imgCarrossel img {
-        width: 100%;
-        height: unset !important;
-    }
-}
-
-@media (max-width: 350px) {
-    .playerCard {
-        height: 500px;
-    }
-
-
-    #innerTitle {
-        scale: 0.6;
-    }
 }
 
 #haroldContainer {
     display: flex;
     justify-content: center;
+    margin-top: 100px;
+}
+
+#haroldContainer img {
+    width: 128px;
+    height: 128px;
+    image-rendering: pixelated;
+}
+
+@media (max-width: 1750px) {
+    :root {
+        --pageMargin: 10dvw;
+    }
+}
+
+@media (max-width: 750px) {
+    #all {
+        flex-direction: column;
+    }
+
+    #innerTitle img {
+        scale: 0.5;
+    }
+
+    #splash {
+        display: none;
+    }
+
+    #countownFlex {
+        flex-direction: column;
+    }
+
+    #serverStatusContainer {
+        width: 100%;
+        min-height: unset;
+    }
 }

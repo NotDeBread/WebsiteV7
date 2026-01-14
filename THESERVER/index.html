@@ -5,258 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../global.css">
-    <link rel="icon" type="image/x-icon" href="../media/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../media/server/serverPFPS3Icon-10x.png">
     <title>DeBread's Space - THE SERVER</title>
 </head>
 <body>
     <div id="crtOverlay"></div>
-    <div id="loadingEmblemContainer">
-        <img src="../media/emblem.svg" width="100" id="loadingEmblem">
-    </div>
     <div id="loadingScreenContainer">
-        <div id="loadingScreen"></div>
+        <img src="../media/realFit.png" id="loadingImg" width="100">
+        <span id="loadingText">Loading...</span>
     </div>
 
-    <button onclick="gotoPage('home')" class="goBackButton">
-      <svg style="min-width: 24px !important; min-height: 24px !important;" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>
-      Go back
-    </button>
+    <a href="../home/">
+        <button onclick="gotoPage('home')" class="goBackButton">
+            <svg style="min-width: 24px !important; min-height: 24px !important;" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>
+            Go back
+        </button>
+    </a>
 
     <div id="titleContainer">
-      <div id="innerTitle">
-        <img src="../media/server/title.png" width="500">
-        <div id="splashContainer"> <!--Zero width, centered-->
-          <div id="innerSplashContainer"> <!--Gives width to span-->
-            <span id="splash">-</span>
-          </div>
+        <div id="innerTitle">
+            <img src="../media/server/title2.png" width="500">
+            <div id="splashContainer"> <!--Zero width, centered-->
+                <div id="innerSplashContainer"> <!--Gives width to span-->
+                    <span id="splash">-</span>
+                </div>
+            </div>
         </div>
-      </div>
-      <div id="blocks"></div>
+        <div id="blocks"></div>
     </div>
 
-    <div style="margin: 0px var(--pageMargin);">
-      <div id="downloadButtonContainer">
-        <a href="https://www.dropbox.com/scl/fi/nnpc4f2h3prmkrrl20tp8/The-Server-Modpack-v2.05.zip?rlkey=vfhc76ntxxvxj09nuajtzkcoc&st=wdt7wtcl&dl=1" id="downloadButton">DOWNLOAD MODPACK</a>
-        <em style="color: grey;">Join the <a href="https://discord.gg/Yvu7CRFGvr" target="_blank">Discord Server</a> too!</em>
-      </div>
+    <div style="margin: 0px var(--pageMargin); display: flex; gap: 25px;" id="all">
+        <div>
+            <div id="downloadButtonContainer">
+                <a href="https://discord.gg/Yvu7CRFGvr" id="downloadButton">JOIN DISCORD SERVER</a>
+                <em style="color: grey;">Or just download the <a href="" target="_blank">Modpack</a></em>
+            </div>
+    
+            <div id="serverCountdownContainer">
+                <div style="display: flex; gap: 25px;" id="countownFlex">
+                    <div style="width: 100%;">
+                        <span class="header">SEASON TWO FINALE</span><br>
+                        <span>Season two of THE SERVER will be coming to the end after we fight the Ender Dragon for the first time.</span>
+                    </div>
+                    <div id="counterContainer">
+                        <span id="serverCountdown">0:00:00:00</span><br>
+                        <span>January 14th, 6:00PM CST</span>
+                    </div>
+                </div>
+                <button style="height: 25px;">JOIN FINALE EVENT</button>
+            </div>
+    
+            <div class="paragraph" style="margin-top: 50px;">
+                <span class="header">THE SERVER</span>
+                <span>'CST Server', made back in December of 2024, was originally a small project of mine made for my Computer Servicing class. In March of 2025, we opened the server to the public moving it to a server outside of the classroom, one hosted by <a>udev</a>. This also marked the point in which we renamed the server to "THE SERVER".</span>
+                <span class="header" style="margin-top: 25px;">Season One</span>
+                <span>Season one is currently the longest standing version in the servers history, also being the most successfull (And my personal favorite). Several large scale buildings were made (mostly by <a>TheTrueSkywalkr</a>) and many different evens occured.</span>
+                <span class="header" style="margin-top: 25px;">Season Two</span>
+                <span>Season two was created so everyone could go back and have a fresh start, and to have a new and more effecient modpack. At launch, it was pretty rough. We had around 8 concurrent players cauing the server to lag immensely, drama started to unfold immediately, and the world generation was awful. Besides that, a few members still locked in and made some buildings.</span>
+            </div>
+        </div>
 
-      <span class="header">THE SERVER</span>
-      <div style="margin-bottom: 50px;">
-        <span>'THE SERVER' is a modded Minecraft server originally made for my Computer Service Technology class<sup onclick="gotoPage('aboutme')" title="Visit 'About Me'">?</sup>, but due to the lack of members, we opened it to the public. It has been given regular updates about once every month or so, adding content mods and fixing performance issues.</span>
-      </div>
-      <br>
+        <div>
+            <div id="serverStatusContainer">
+                <span style="font-size: 1.25em; font-weight: 700;">Server Status</span><br>
+                <div style="display: flex; align-items: center; gap: 5px;">
+                    <div id="statusDot"></div>
+                    <span id="statusLabel">Fetching...</span>
+                </div>
+                <span id="statusInfo">Fetching server data...</span><br>
+                <br>
+                <span style="font-size: 1.25em; font-weight: 700;">Active Players</span><br>
+                <span id="memberCount">-/-</span><br>
+                <span id="memberList"></span>
+            </div>
+        </div>
+    </div>
 
-      <span class="header">Active Players</span><br>
-      <div id="cardContainer">
-        <div class="playerCard">
-          <div class="cardContent">
-            <div>
-              <span class="cardTitle"><strong style="color: lime;">[SERVER TECHNICIAN]</strong> fordaven</span>
-              <em style="color: grey;">udev</em>
-              <br><span style="margin-top: 25px;">THE SERVER is hosted on one of udev's extra PCs, which just runs in the background in his room. He is the guy that ensures everything network related is functioning, and initially helped me getting the debread.space server domain working.</span>
-            </div>
-              
-            <div class="cardImageContainer">
-              <img src="../media/server/card0.png">
-            </div>
-          </div>
-          <div class="cardBG">
-            <div style="background-image: url(../media/server/box/topleft.png);"></div>
-            <div style="background-image: url(../media/server/box/topmiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/topright.png);"></div>
-            <div style="background-image: url(../media/server/box/middleleft.png);"></div>
-            <div style="background-color: #212121;"></div>
-            <div style="background-image: url(../media/server/box/middleright.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomleft.png);"></div>
-            <div style="background-image: url(../media/server/box/bottommiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomright.png);"></div>
-          </div>
-        </div>
-        <div class="playerCard">
-          <div class="cardContent">
-            <div>
-              <span class="cardTitle"><strong style="color: orange;">[OWNER]</strong> NotDeBread</span>
-              <em style="color: grey;">DeBread</em>
-              <br><span style="margin-top: 25px;">Back a few months ago, it was initially my idea to have a Minecraft server for my Computer Service Technology class, so I managed to get one up and running locally in the classroom. After a few weeks, I moved the server to a new world and made it open to the public. Now I'm the one that puts together modpacks and manage the Discord Server.</span>
-            </div>
-              
-            <div class="cardImageContainer">
-              <img src="../media/server/card1.png">
-            </div>
-          </div>
-          <div class="cardBG">
-            <div style="background-image: url(../media/server/box/topleft.png);"></div>
-            <div style="background-image: url(../media/server/box/topmiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/topright.png);"></div>
-            <div style="background-image: url(../media/server/box/middleleft.png);"></div>
-            <div style="background-color: #212121;"></div>
-            <div style="background-image: url(../media/server/box/middleright.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomleft.png);"></div>
-            <div style="background-image: url(../media/server/box/bottommiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomright.png);"></div>
-          </div>
-        </div>
-        <div class="playerCard">
-          <div class="cardContent">
-            <div>
-              <span class="cardTitle"><strong style="color: aqua;">[OPERATOR]</strong> TheTrueSkywalkr</span>
-              <em style="color: grey;">Skywalkr</em>
-              <br><span style="margin-top: 25px;">Skywalkr is the main guy who suggests new mods to be added to modpack updates. He's also the most active server member, being responsible for almost all of the major builds in the world.</span>
-            </div>
-            <div class="cardImageContainer">
-              <img src="../media/server/card2.png">
-            </div>
-          </div>
-          <div class="cardBG">
-            <div style="background-image: url(../media/server/box/topleft.png);"></div>
-            <div style="background-image: url(../media/server/box/topmiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/topright.png);"></div>
-            <div style="background-image: url(../media/server/box/middleleft.png);"></div>
-            <div style="background-color: #212121;"></div>
-            <div style="background-image: url(../media/server/box/middleright.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomleft.png);"></div>
-            <div style="background-image: url(../media/server/box/bottommiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomright.png);"></div>
-          </div>
-        </div> 
-        
-      </div>
-      <span class="header">Featured Builds</span><br>
-      <span>Below are some cool builds that have been made on THE SERVER. (Notice how almost all of them were made by Skywalkr)</span>
+    <!-- <div class="cardBG">
+    <div style="background-image: url(../media/server/box/topleft.png);"></div>
+    <div style="background-image: url(../media/server/box/topmiddle.png);"></div>
+    <div style="background-image: url(../media/server/box/topright.png);"></div>
+    <div style="background-image: url(../media/server/box/middleleft.png);"></div>
+    <div style="background-color: #212121;"></div>
+    <div style="background-image: url(../media/server/box/middleright.png);"></div>
+    <div style="background-image: url(../media/server/box/bottomleft.png);"></div>
+    <div style="background-image: url(../media/server/box/bottommiddle.png);"></div>
+    <div style="background-image: url(../media/server/box/bottomright.png);"></div>
+    </div> -->
 
-      <div class="genericCardRow">
-        <div class="genericCard">
-          <div class="genericCardContent">
-            <div>
-              <div class="cardHeaderContainer">
-                <strong class="cardHeader">The Citadel</strong>
-                <em class="cardEm">By Skywalkr</em>
-              </div>
-              <span>The Citadel is Skywalkr's second major base, being inside of a mountain near The Highlands. It has been under construction for about 3 months now.</span>
-            </div>
-            <div style="display: flex; justify-content: center;">
-              <imgCarrossel folderPath="../media/server/builds/TheCitadel" imgCount="5"></imgCarrossel>
-            </div>
-          </div>
-          <div class="cardBG">
-            <div style="background-image: url(../media/server/box/topleft.png);"></div>
-            <div style="background-image: url(../media/server/box/topmiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/topright.png);"></div>
-            <div style="background-image: url(../media/server/box/middleleft.png);"></div>
-            <div style="background-color: #212121;"></div>
-            <div style="background-image: url(../media/server/box/middleright.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomleft.png);"></div>
-            <div style="background-image: url(../media/server/box/bottommiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomright.png);"></div>
-          </div>
-        </div>
-        <div class="genericCard">
-          <div class="genericCardContent">
-            <div>
-              <div class="cardHeaderContainer">
-                <strong class="cardHeader">The Tower</strong>
-                <em class="cardEm">By Skywalkr</em>
-              </div>
-              <span>The Tower was the first large build on the server, it being Skywalkr's first major base. It is now availble to rent out as no one lives there anymore.</span>
-            </div>
-            <div style="display: flex; justify-content: center;">
-              <imgCarrossel folderPath="../media/server/builds/TheTower" imgCount="4"></imgCarrossel>
-            </div>
-          </div>
-          <div class="cardBG">
-            <div style="background-image: url(../media/server/box/topleft.png);"></div>
-            <div style="background-image: url(../media/server/box/topmiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/topright.png);"></div>
-            <div style="background-image: url(../media/server/box/middleleft.png);"></div>
-            <div style="background-color: #212121;"></div>
-            <div style="background-image: url(../media/server/box/middleright.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomleft.png);"></div>
-            <div style="background-image: url(../media/server/box/bottommiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomright.png);"></div>
-          </div>
-        </div>
-        <div class="genericCard">
-          <div class="genericCardContent">
-            <div>
-              <div class="cardHeaderContainer">
-                <strong class="cardHeader">The Highlands</strong>
-                <em class="cardEm">By DeBread</em>
-              </div>
-              <span>The Highlands was DeBread's second base, the one after The Pub & Grub. This build was originally going to be near a friends base, but ended up not happening.</span>
-            </div>
-            <div style="display: flex; justify-content: center;">
-              <imgCarrossel folderPath="../media/server/builds/TheHighlands" imgCount="4"></imgCarrossel>
-            </div>
-          </div>
-          <div class="cardBG">
-            <div style="background-image: url(../media/server/box/topleft.png);"></div>
-            <div style="background-image: url(../media/server/box/topmiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/topright.png);"></div>
-            <div style="background-image: url(../media/server/box/middleleft.png);"></div>
-            <div style="background-color: #212121;"></div>
-            <div style="background-image: url(../media/server/box/middleright.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomleft.png);"></div>
-            <div style="background-image: url(../media/server/box/bottommiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomright.png);"></div>
-          </div>
-        </div>
-      </div>
-      <div class="genericCardRow">
-        <div class="genericCard">
-          <div class="genericCardContent">
-            <div>
-              <div class="cardHeaderContainer">
-                <strong class="cardHeader">New Bread City</strong>
-                <em class="cardEm">By Skywalkr, DeBread, Jag(?)</em>
-              </div>
-              <span>New Bread City is the 'Down Town' of THE SERVER. The first building there was the train station, made by DeBread. Then, Skywalkr designed and constructed the mall which is across the street. After those two, Skywalkr made the bank, shulker shell shop, post office, and Citadel Records.</span>
-            </div>
-            <div style="display: flex; justify-content: center;">
-              <imgCarrossel folderPath="../media/server/builds/NewBreadCity" imgCount="4"></imgCarrossel>
-            </div>
-          </div>
-          <div class="cardBG">
-            <div style="background-image: url(../media/server/box/topleft.png);"></div>
-            <div style="background-image: url(../media/server/box/topmiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/topright.png);"></div>
-            <div style="background-image: url(../media/server/box/middleleft.png);"></div>
-            <div style="background-color: #212121;"></div>
-            <div style="background-image: url(../media/server/box/middleright.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomleft.png);"></div>
-            <div style="background-image: url(../media/server/box/bottommiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomright.png);"></div>
-          </div>
-        </div>
-        <div class="genericCard">
-          <div class="genericCardContent">
-            <div>              
-              <div class="cardHeaderContainer">
-                <strong class="cardHeader">Generations Village</strong>
-                <em class="cardEm">By Plonk, DeBread, Jaden, udev, Jakob, Roba, Wasp, Bees, Skywalkr</em>
-              </div>
-              <span>Generations Village was originally a 1.7 server hosted by Plonk. It was active for only a couple months until it was eventually ported into THE SERVER a few months ago via chunk blending.</span>
-            </div>
-            <div style="display: flex; justify-content: center;">
-              <imgCarrossel folderPath="../media/server/builds/GenerationsVillage" imgCount="3"></imgCarrossel>
-            </div>
-          </div>
-          <div class="cardBG">
-            <div style="background-image: url(../media/server/box/topleft.png);"></div>
-            <div style="background-image: url(../media/server/box/topmiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/topright.png);"></div>
-            <div style="background-image: url(../media/server/box/middleleft.png);"></div>
-            <div style="background-color: #212121;"></div>
-            <div style="background-image: url(../media/server/box/middleright.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomleft.png);"></div>
-            <div style="background-image: url(../media/server/box/bottommiddle.png);"></div>
-            <div style="background-image: url(../media/server/box/bottomright.png);"></div>
-          </div>
-        </div>
-      </div>
-
-      <div id="haroldContainer">
-        <img src="../media/server/harold.png">
-      </div>
+    <div id="haroldContainer">
+        <img src="../media/server/trashcan.png">
+    </div>
 
     <script src="../DeBread.js"></script>
     <script src="script.js"></script>
