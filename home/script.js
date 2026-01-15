@@ -699,19 +699,19 @@ function refreshServerInfo() {
 } refreshServerInfo()
 setInterval(refreshServerInfo, 60000);
 
-function updateServerCountdown() {
-    const milliseconds = 1768348800000 + 86400000 - Date.now()
-    const days = Math.floor(milliseconds / 86400000)
-    const hours = Math.floor((milliseconds % 86400000) / 3600000)
-    const minutes = Math.floor(((milliseconds % 86400000) % 3600000) / 60000)
-    const seconds = Math.floor((((milliseconds % 86400000) % 3600000) % 60000) / 1000)
-    doge('serverCountdown').innerText = `${days.toString().padStart(2,0)}:${hours.toString().padStart(2,0)}:${minutes.toString().padStart(2,0)}:${seconds.toString().padStart(2,0)}`
+// function updateServerCountdown() {
+//     const milliseconds = 1768348800000 + 86400000 - Date.now()
+//     const days = Math.floor(milliseconds / 86400000)
+//     const hours = Math.floor((milliseconds % 86400000) / 3600000)
+//     const minutes = Math.floor(((milliseconds % 86400000) % 3600000) / 60000)
+//     const seconds = Math.floor((((milliseconds % 86400000) % 3600000) % 60000) / 1000)
+//     doge('serverCountdown').innerText = `${days.toString().padStart(2,0)}:${hours.toString().padStart(2,0)}:${minutes.toString().padStart(2,0)}:${seconds.toString().padStart(2,0)}`
 
-    if(milliseconds > 0) {
-        doge('serverCountdown').innerText = `${days.toString().padStart(2,0)}:${hours.toString().padStart(2,0)}:${minutes.toString().padStart(2,0)}:${seconds.toString().padStart(2,0)}`
-    } else {
-        doge('serverCountdown').innerText = 'LIVE'
-    }
+//     if(milliseconds > 0) {
+//         doge('serverCountdown').innerText = `${days.toString().padStart(2,0)}:${hours.toString().padStart(2,0)}:${minutes.toString().padStart(2,0)}:${seconds.toString().padStart(2,0)}`
+//     } else {
+//         doge('serverCountdown').innerText = 'LIVE'
+//     }
 
-} setInterval(updateServerCountdown, 500)
-doge('eventDot').style.animation = 'live 1s ease-out infinite forwards'
+// } setInterval(updateServerCountdown, 500)
+// doge('eventDot').style.animation = 'live 1s ease-out infinite forwards'

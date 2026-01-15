@@ -26,19 +26,19 @@ const splashTexts = [
     'funi!'
 ]
 
-function updateServerCountdown() {
-    const milliseconds = 1768348800000 + 86400000 - Date.now()
-    const days = Math.floor(milliseconds / 86400000)
-    const hours = Math.floor((milliseconds % 86400000) / 3600000)
-    const minutes = Math.floor(((milliseconds % 86400000) % 3600000) / 60000)
-    const seconds = Math.floor((((milliseconds % 86400000) % 3600000) % 60000) / 1000)
+// function updateServerCountdown() {
+//     const milliseconds = 1768348800000 + 86400000 - Date.now()
+//     const days = Math.floor(milliseconds / 86400000)
+//     const hours = Math.floor((milliseconds % 86400000) / 3600000)
+//     const minutes = Math.floor(((milliseconds % 86400000) % 3600000) / 60000)
+//     const seconds = Math.floor((((milliseconds % 86400000) % 3600000) % 60000) / 1000)
 
-    if(milliseconds > 0) {
-        doge('serverCountdown').innerText = `${days.toString().padStart(2,0)}:${hours.toString().padStart(2,0)}:${minutes.toString().padStart(2,0)}:${seconds.toString().padStart(2,0)}`
-    } else {
-        doge('serverCountdown').innerText = 'LIVE'
-    }
-} setInterval(updateServerCountdown, 500)
+//     if(milliseconds > 0) {
+//         doge('serverCountdown').innerText = `${days.toString().padStart(2,0)}:${hours.toString().padStart(2,0)}:${minutes.toString().padStart(2,0)}:${seconds.toString().padStart(2,0)}`
+//     } else {
+//         doge('serverCountdown').innerText = 'LIVE'
+//     }
+// } setInterval(updateServerCountdown, 500)
 
 doge('splash').innerText = splashTexts[DeBread.randomNum(0,splashTexts.length-1)]
 doge('splash').onclick = () => {
