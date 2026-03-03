@@ -438,6 +438,11 @@ const tracks = {
         artist: 'Lifeformed, Janice Kwan',
         hit: [110,150]
     },
+    Walls_of_Denial: {
+        name: 'Walls of Denial',
+        artist: 'Ridiculon',
+        hit: [127,261]
+    },
     // FINAL_BLENDERMAN_APPEARED: {
     //     name: 'FINAL BLENDERMAN APPEARED',
     //     artist: 'Camellia, RichaadEB',
@@ -479,6 +484,8 @@ function openTrack(track) {
     audio.volume = 0.25
     currentTrack = track
     audio.pause()
+    musicPaused = true
+    doge('musicControllsPauseButtonImg').src = '../media/icons/play.png'
 
     updateTrackInfo(track)
 
@@ -487,6 +494,9 @@ function openTrack(track) {
         doge('musicControllsRangeHit').style.width = (data.hit[1]-data.hit[0]) / audio.duration * 100 + '%'
         doge('musicControllsRangeHit').style.left = data.hit[0] / audio.duration * 100 + '%'
     }
+
+    updateTrackVolume(true)
+    updateTrackSpeed(true)
 } openTrack('carnation')
 
 function updateTrackInfo(track) {
@@ -555,11 +565,12 @@ doge('musicControllsVolume').addEventListener('mouseup', ev => {
 })
 doge('musicControllsVolume').addEventListener('change', updateTrackVolume)
 
-function updateTrackVolume() {
+function updateTrackVolume(hideTooltip) {
     const volume = doge('musicControllsVolume').value
     doge('musicPlayerAudio').volume = volume
-    console.log('Volume updated!')
-    updateTrackTooltip('Volume',doge('musicPlayerAudio').volume)
+    if(!hideTooltip) {
+        updateTrackTooltip('Volume',doge('musicPlayerAudio').volume)
+    }
 
     if(volume >= 0.5) {
         if(volume == 1) {
@@ -598,9 +609,12 @@ doge('musicControllsSpeed').addEventListener('change', ev => {
     }
 })
 
-function updateTrackSpeed() {
+function updateTrackSpeed(hideTooltip) {
     doge('musicPlayerAudio').playbackRate = doge('musicControllsSpeed').value
-    updateTrackTooltip('Speed',doge('musicPlayerAudio').playbackRate)
+
+    if(!hideTooltip) {
+        updateTrackTooltip('Speed',doge('musicPlayerAudio').playbackRate)
+    }
 }
 
 function updateTrackTooltip(label, value) {

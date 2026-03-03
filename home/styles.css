@@ -297,6 +297,7 @@ img {
     width: 50px;
     height: 50px;
     cursor: pointer;
+    image-rendering: unset;
 }
 
 #musicPlayerText {
@@ -461,6 +462,7 @@ input[type="range"]::-moz-range-progress {
 .track img {
     width: 50px;
     height: 50px;
+    image-rendering: unset;
 }
 
 .trackInfo {

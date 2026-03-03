@@ -37,44 +37,6 @@ function deleteData() {
     console.log('Save deleted.')
 }
 
-//Loading screen stuff
-// if(doge('loadingScreen')) {
-//     let loadingFinished = false
-//     let loadingSkipped = false
-//     function finishLoading() {
-//         loadingFinished = true
-//         const randomRot = DeBread.randomNum(0,360)
-//         const screen = doge('loadingScreen')
-//         const emblem = doge('loadingEmblem')
-    
-//         screen.style.rotate = randomRot + 'deg'
-        
-//         screen.style.width = '0vmax'
-//         screen.style.height = '0vmax'
-//         setTimeout(() => {
-//             emblem.style.scale = 0
-//             setTimeout(() => {
-//                 doge('loadingEmblemContainer').style.pointerEvents = 'none'
-//                 document.body.style.overflow = 'unset'
-//             }, 750);
-//         }, 500);
-//         setTimeout(() => {
-//             doge('loadingScreenContainer').style.pointerEvents = 'none'
-//         }, 1250);
-//     } 
-//     if(!['/',''].includes(window.location.pathname)) {
-//         finishLoading()
-//     }
-    
-//     setTimeout(() => {
-//         if(!loadingFinished) {
-//             finishLoading()
-//             loadingSkipped = true
-//             console.warn('Seems like it took too long to load. Hiding loading screen anyways.')
-//         }
-//     }, 2000);
-// }'
-
 if(doge('loadingScreenContainer')) {
     let dots = 4
     let loadingInterval = setInterval(() => {
