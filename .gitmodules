@@ -31,3 +31,6 @@
 [submodule "CentralEsports"]
 	path = CentralEsports
 	url = https://github.com/NotDeBread/CentralEsports.git
+[submodule "games/GooberShooter2"]
+	path = games/GooberShooter2
+	url = https://github.com/NotDeBread/GooberShooter2
