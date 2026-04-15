@@ -53,10 +53,19 @@ if(doge('loadingScreenContainer')) {
             doge('loadingImg').src = '../media/realJump.png'
             doge('loadingImg').style.rotate = '0deg'
 
+            document.body.querySelectorAll('#flow').forEach(flow => {
+                flow.style.opacity = '0'
+            })
+
             setTimeout(() => {
                 doge('loadingScreenContainer').style.opacity = '0'
                 setTimeout(() => {
                     doge('loadingScreenContainer').style.display = 'none'
+
+                    document.body.querySelectorAll('#flow').forEach(flow => {
+                        applyFlowText(flow)
+                    flow.style.opacity = '1'
+                    })
                 }, 250);
             }, 500);
         }
@@ -310,6 +319,10 @@ const achievements = {
     holiday: {
         name: 'Don\'t you have anything better to do?',
         desc: 'Visit during a holiday.'
+    },
+    aRealOne: {
+        name: 'A real one',
+        desc: 'Visit using the poker chip QR code.'
     }
 }
 
@@ -350,3 +363,23 @@ if(data.guyPoints) {
 }
 
 getAchievement('welcome')
+
+function applyFlowText(elem,speedMult = 1) {
+    const targetText = elem.innerText
+
+    elem.innerHTML = ''
+    elem.style.display = 'flex'
+    for(let i = 0; i < targetText.length; i++) {
+        const div = document.createElement('div')
+        div.style.opacity = 0
+        div.innerText = targetText[i]
+        div.style.animation = `textFlow 3s ease-in-out -${(targetText.length - i) * 250}ms infinite forwards, scaleIn 0.25s ease-in-out ${(i * 25) / speedMult}ms 1 forwards`
+        div.style.rotate = (i - targetText.length / 2) / 3 + 'deg'
+        if(targetText[i] === ' ') div.style.width = '10px'
+        elem.append(div)
+
+        setTimeout(() => {
+            div.style.opacity = 1
+        }, (i * 25) / speedMult + 5);
+    }
+}

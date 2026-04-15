@@ -381,3 +381,24 @@ button:active {
     height: 1px;
     background-color: rgb(255,255,255,0.5);
 }
+
+@keyframes textFlow {
+  from {
+    translate: 0px 2px;
+  }
+  50% {
+    translate: 0px -2px;
+  }
+  to {
+    translate: 0px 2px;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}
