@@ -245,7 +245,7 @@ const fellaTexts = [
     `I\'m ${globalDate.getFullYear() - 2007} years old and I've already wasted my entire life`,
     'I hate my stupid job',
     'Tombstone pizzas 🥹',
-    `${globalDate.getFullYear()+1} will be my year trust`
+    `${globalDate.getFullYear()+1} will be my year trust`,
 ] 
 
 let fellaTimesClicked = 0
