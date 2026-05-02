@@ -59,6 +59,10 @@ if(doge('loadingScreenContainer')) {
 
             setTimeout(() => {
                 doge('loadingScreenContainer').style.opacity = '0'
+
+                if(doge('dbTitle')) {
+                    applyFlowText(doge('dbTitle'),0.75)
+                }
                 setTimeout(() => {
                     doge('loadingScreenContainer').style.display = 'none'
 

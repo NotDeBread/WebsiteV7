@@ -3,36 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="fediverse:creator" content="debread@yeen.town" />
-    <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../global.css">
     <link rel="icon" type="image/x-icon" href="../media/favicon.png">
     <title>DeBread's Space - Home</title>
-
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="DeBread's Space">
-    <meta name="description" content="Visit DeBread's Space.">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://debread.space/home">
-    <meta property="og:title" content="DeBread's Space">
-    <meta property="og:description" content="Visit DeBread's Space.">
-    <meta property="og:image" content="https://cdn.discordapp.com/attachments/805608363291181068/1460733074055888927/image.png?ex=6967fd2f&is=6966abaf&hm=db01770baaab41dc634147c56fd8b52202f25b39d325fbddcc50c79f2338b928&">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://debread.space/home">
-    <meta property="twitter:title" content="DeBread's Space">
-    <meta property="twitter:description" content="Visit DeBread's Space.">
-    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/805608363291181068/1460733074055888927/image.png?ex=6967fd2f&is=6966abaf&hm=db01770baaab41dc634147c56fd8b52202f25b39d325fbddcc50c79f2338b928&">
 </head>
 <body>
     <div id="crtOverlay"></div>
-
+    <div id="achievementNotiContainer"></div>
     <div id="loadingScreenContainer">
         <img src="../media/realFit.png" id="loadingImg" width="100">
         <span id="loadingText">Loading...</span>
+    </div>
+
+    <div id="confettiContainer"></div>
+
+    <div id="tooltip">
+        <span>Some sample text</span>
     </div>
 
     <div id="achievementNotiContainer"></div>
@@ -58,12 +45,6 @@
         </div>
     </div>
 
-    <div id="tooltip">
-        <span>Some sample text</span>
-    </div>
-
-    <div id="confettiContainer"></div>
-
     <div id="imageViewContainer">
         <div id="imageViewText">
             <div id="imageViewTitleContainer">
@@ -77,26 +58,28 @@
         <button id="imageViewButton" onclick="closeImage()">Close</button>
     </div>
 
-    <div id="all">
-        <div id="titleContainer">
-            <div style="height: 75px;">
-                <wavey>DeBread's Space</wavey>
-                <span><a href="https://github.com/NotDeBread/WebsiteV7/commits/master/" target="_blank" style="color: white;">v7-pre9</a> - the rebrand is real</span>
-            </div>
-            <img src="../media/realWalking.png" style="translate: 0px 57px;" onclick="realClick()" id="realRacc">
+    <div id="main">
+        <div id="dbTitleContainer">
+            <div id="dbTitle" style="height: 35px;">DeBread's Space</div>
+            <span><a href="https://github.com/NotDeBread/WebsiteV7" target="_blank" style="color: white;">v7-pre10</a> - The rebrand is real</span>
         </div>
-        <div id="main">
-            <section id="aboutSection">
+        <div id="innerMain">
+            <div class="mainSection">
                 <div class="genericBox">
-                    <div id="fellaPortrait" onclick="DeBread.playSound('../media/audio/splat.mp3', 0.1)"></div>
-                    <span>Hi! Welcome to my page! I'm DeBread and I make a bunch of silly things like web games and modpacks for a bunch of different games. This page is currently a <span style="color: yellow;">work in progress</span> and will be finished fully soon! Check out the <a onclick="scrollToElem(doge('newsSection'))">News</a> section if you want to see what I've been working on!</span>
+                    <img src="../media/realWalking.png" style="width: 128px;" onclick="realClick()" id="realRacc">
+                    <div class="genericHeader">
+                        <img src="../media/icons/socials.png">
+                        <span>DEBREAD'S SPACE</span>
+                        <coolLine></coolLine>
+                    </div>
+                    <div style="display: flex;">
+                        <span>Hi! Welcome to my page! I'm DeBread and I make a bunch of silly things like web games and modpacks for a bunch of different games. This page is currently a <span style="color: yellow;">work in progress</span> and will be finished fully soon! Check out the <a onclick="scrollToElem(doge('newsSection'))">News</a> section if you want to see what I've been working on!</span>
+                        <img id="welcomeImg" src="../media/hi.png" style="cursor: pointer; translate: 5px 5px;" onclick="DeBread.playSound('../media/audio/splat.mp3', 0.1)">
+                    </div>
                 </div>
-                <div class="genericBox">
-                    <!-- <marquee scrollamount="6">🦝 DeBread.space v7 out now! Check the <a onclick="scrollToElem(doge('newsSection'))">news section</a> for more information! 🦝</marquee> -->
-                    <marquee scrollamount="6">🦝 This is a pre realease version of DeBread.space v7, some things here are not complete and may not work correctly! 🦝</marquee>
-                </div>
-                <a class="genericBox" style="height: 75px; padding: 0; display: flex; justify-content: center; overflow: hidden;" href="https://debread.straw.page/" target="_blank">
-                    <img src="../media/notads/1.gif">
+                <a class="adContainer" href="https://buymeacoffee.com/debread" target="_blank" style="background-image: url(../media/notads/2BG.png); background-size: cover; background-position: center;">
+                    <img src="../media/notads/2Text.png" style="position: absolute; left: 0; top: 0;">
+                    <img src="../media/notads/2Guy.png" style="position: absolute; right: 0; top: 0;">
                 </a>
                 <div class="genericBox" id="newsSection">
                     <div class="genericHeader">
@@ -104,21 +87,18 @@
                         <span>NEWS</span>
                         <coolLine></coolLine>
                     </div>
-                    <div class="newsBox">
-                        <!-- <div style="padding: 5px; border: 1px solid rgb(255,255,255,0.5); display: flex; justify-content: space-between; align-items: end;" id="serverCountdownContainer">
-                            <div>
-                                <div style="display: flex; align-items: center; gap: 5px;">
-                                    <em>EVENT</em><div style="height: 5px; width: 5px; background-color: red; border-radius: 50%;" id="eventDot"></div>
-                                </div>
-                                <span>THE SERVER Season 3 release in</span><br>
-                                <span id="serverCountdown" style="font-size: 2em; font-weight: 700;">00:00:00</span><br>
-                                <span>Tuesday, January 13th, 6:00PM CST</span>
+                    <div id="newsContainer">
+                        <div class="news">
+                            <div class="newsHeader">
+                                <span class="newsTitle">Buy Me a Coffee page out!</span>
+                                <coolLine></coolLine>
+                                <em>3/30/2026</em>
                             </div>
-                            <a href="https://discord.gg/gh3ah5t9?event=1458659708628893861" target="_blank" id="finaleButton">
-                                <button>Join finale event</button>
-                            </a>
-                        </div> -->
-                        <div>
+                            <span class="newsBody">
+                                If you would like to support me on my work, you can click <a href="https://buymeacoffee.com/debread">here</a>! Please I need to afford colleg :(
+                            </span>
+                        </div>
+                        <div class="news">
                             <div class="newsHeader">
                                 <span class="newsTitle">Goober Shooter 2 Playtest Release out!</span>
                                 <coolLine></coolLine>
@@ -128,7 +108,7 @@
                                 It's finally time! Goober Shooter 2 is now availble for anyone to playtest. You can download the latest version <a href="https://github.com/NotDeBread/GooberShooter2" target="_blank">here</a>. If you encounter any bugs or issues, <strong>please</strong> fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_GAA_YzyjWLG1JQPlvc0W4UmAuAWE9o3mhYgEs9rPqLpI7g/viewform" target="_blank">Google Form</a>.
                             </span>
                         </div>
-                        <div>
+                        <div class="news">
                             <div class="newsHeader">
                                 <span class="newsTitle">Goober Shooter 2 News #1</span>
                                 <coolLine></coolLine>
@@ -138,20 +118,20 @@
                                 It has been a while since I've posted here... Since the last post, I've made a lot of progress Goober Shooter 2! Recently I joined a <a href="https://www.skillsusa.org/" target="_blank">SkillsUSA</a> championship for 'Interactive Application and Video Game Development' through my technical school, and I'm planning using Goober Shooter 2 as my game! Because of this I now have to meet a new dealine before the championship, <strong>Sometime in early April</strong> (My teacher isn't sure yet 😭). <br> For progress updates, join my <a href="https://discord.gg/Vhd662Pn9A" target="_blank">Discord Server</a>
                             </span>
                         </div>
-                        <div>
+                        <div class="news">
                             <div class="newsHeader">
                                 <span class="newsTitle">THE SERVER SEASON 3</span>
                                 <coolLine></coolLine>
                                 <em>1/14/2026</em>
                             </div>
                             <span class="newsBody">
-                                Season two of THE SERVER sucked, the modpack was very poorly put together a it performed like hot garbage. Season three plans to have more of a "vanilla+" feel to it, with less focus on content mods and more focus on QoL mods. Season two will be closing on Tuesday, January 13th, 6:00PM CST with a final Ender Dragon fight with everyone. If you are interesting on joining, click <a onclick="scrollToElem(doge('finaleButton'))">here</a>.
+                                Season two of THE SERVER sucked, the modpack was very poorly put together a it performed like hot garbage. Season three plans to have more of a "vanilla+" feel to it, with less focus on content mods and more focus on QoL mods. Season two will be closing on Tuesday, January 13th, 6:00PM CST with a final Ender Dragon fight with everyone. If you are interesting on joining, click <a href="../THESERVER/">here</a>.
                                 <div style="display: flex; justify-content: center; margin-top: 10px;">
                                     <img src="../media/server/title2.png" width="300" style="image-rendering: unset; max-width: 100%;">
                                 </div>
                             </span>
                         </div>
-                        <div>
+                        <div class="news">
                             <div class="newsHeader">
                                 <span class="newsTitle">DeBread.space v7</span>
                                 <coolLine></coolLine>
@@ -161,7 +141,7 @@
                                 Since I'm never happy with the look of my website, I remade it again for the seventh time! This one is inspired by old style websites, mostly similar to neocities websites. Some of the specific sites I used as inspiration are included in the <a onclick="scrollToElem(doge('sitesSection'))">Inspiration section</a> section under the navigator.
                             </span>
                         </div>
-                        <div>
+                        <div class="news">
                             <div class="newsHeader">
                                 <span class="newsTitle">Goober Shooter 2</span>
                                 <coolLine></coolLine>
@@ -173,8 +153,9 @@
                         </div>
                     </div>
                 </div>
-                <a class="genericBox" style="height: 75px; padding: 0; display: flex; justify-content: center; overflow: hidden;" href="../chud">
-                    <img src="../media/notads/0.gif"> <!--Ad blockers block this if the file path contains 'ad' LMAOOO-->
+                <a class="adContainer" href="https://debread.straw.page/" target="_blank" style="background-image: url(../media/notads/1BG.png); background-size: cover; background-position: center;">
+                    <img src="../media/notads/1Guy.png" style="position: absolute; right: 0;">
+                    <img src="../media/notads/1Text.png" style="position: absolute; left: 0;">
                 </a>
                 <div class="genericBox">
                     <div class="genericHeader">
@@ -183,69 +164,80 @@
                         <coolLine></coolLine>
                     </div>
                     <div id="featuredProjectsContainer">
-                        <div class="projectBox">
-                            <div class="projectInfo">
-                                <div>
-                                    <div style="display: flex; gap: 10px;">
-                                        <span class="projectTitle">Goober Shooter 2 - Playtest</span>
-                                    </div>
-                                    <span class="projectDesc">The sequel to Goober Shooter, now with new characters, items, weapons, and way more. Currently in its playtest phase.</span>
+                        <div class="featuredProject" style="height: 150px;">
+                            <div style="padding: 5px; display: flex; flex-direction: column; justify-content: space-between;">
+                                <div class="featuredProjectTitle">
+                                    <span>Goober Shooter 2</span>
+                                    <span>The sequel to Goober Shooter, now with new characters, items, weapons, and way more. Currently in its playtest phase.</span>
                                 </div>
-                                <div style="display: flex; gap: 5px;">
+                                <div class="featuredProjectButtons">
                                     <a href="../games/GooberShooter2/">
                                         <button>PLAYTEST</button>
                                     </a>
-                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_GAA_YzyjWLG1JQPlvc0W4UmAuAWE9o3mhYgEs9rPqLpI7g/viewform" target="_blank">
-                                        <button>REPORT BUG</button>
+                                    <a href="https://youtu.be/BYrJh25OEWo?si=tR6z5kTmBijelu_g" target="_blank">
+                                        <button>WATCH TRAILER</button>
                                     </a>
                                 </div>
                             </div>
-                            <div style="background-image: url('../media/projectImages/gooberShooter2.png');" class="projectThumbnail"></div>
+                            <div class="featuredProjectVideoContainer">
+                                <video src="../media/projectImages/GooberShooter2.mp4" muted loop autoplay height="150"></video>
+                            </div>
                         </div>
-                        <div class="projectBox">
-                            <div class="projectInfo">
-                                <div>
-                                    <div style="display: flex; gap: 10px;">
-                                        <span class="projectTitle">THE SERVER - SEASON THREE</span>
+                        <div class="featuredProject">
+                            <div style="padding: 5px; display: flex; flex-direction: column; justify-content: space-between;">
+                                <div class="featuredProjectTitle">
+                                    <span>Winnie Accumulator</span>
+                                    <span>An idle game where you collect large amounts of Winnie Orbs. Sources say this is better than Cookie Clicker.</span>
+                                </div>
+                                <div class="featuredProjectButtons">
+                                    <a href="../games/WinnieAccumulator/">
+                                        <button>PLAY</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="featuredProjectImageContainer">
+                                <img src="../media/projectImages/winnieAccumulator.png">
+                            </div>
+                        </div>
+                        <div class="featuredProject">
+                            <div style="padding: 5px; display: flex; flex-direction: column; justify-content: space-between;">
+                                <div class="featuredProjectTitle">
+                                    <div style="display: flex; gap: 5px;">
+                                        <span>THE SERVER</span>
                                         <div id="serverMemberCount">
                                             <div style="width: 5px; height: 5px; border-radius: 50%; background-color: grey;" id="onlineMemberCircle"></div>
                                             <span id="onlineMemberCount">fetching...</span>
                                         </div>
                                     </div>
-                                    <span class="projectDesc">The sequel of my old modded Minecraft server, which was originally for just my computer servicing class, but recently made public.</span>
+                                    <span>The sequel of my old modded Minecraft server, which was originally for just my computer servicing class, but eventually made public.</span>
                                 </div>
-                                <a href="../THESERVER/">
-                                    <button>JOIN</button>
-                                </a>
-                            </div>
-                            <div style="background-image: url('../media/projectImages/theServer.png');" class="projectThumbnail"></div>
-                        </div>
-                        <div class="projectBox">
-                            <div class="projectInfo">
-                                <div>
-                                    <span class="projectTitle">Goober Shooter</span><br>
-                                    <span class="projectDesc">Top down wave shooter but awesome.</span>
+                                <div class="featuredProjectButtons">
+                                    <a href="../THESERVER/">
+                                        <button>JOIN</button>
+                                    </a>
                                 </div>
-                                <a href="../games/GooberShooter/">
-                                    <button>PLAY</button>
-                                </a>
                             </div>
-                            <div style="background-image: url('../media/projectImages/gooberShooter.png');" class="projectThumbnail"></div>
-                        </div>
-                        <div class="projectBox">
-                            <div class="projectInfo">
-                                <div>
-                                    <span class="projectTitle">Winnie Accumulator</span><br>
-                                    <span class="projectDesc">Cookie Clicker if it was good.</span>
-                                </div>
-                                <a href="../games/WinnieAccumulator/">
-                                    <button>PLAY</button>
-                                </a>
+                            <div class="featuredProjectImageContainer">
+                                <img src="../media/projectImages/theServer.png">
                             </div>
-                            <div style="background-image: url('../media/projectImages/winnieAccumulator.png');" class="projectThumbnail"></div>
                         </div>
                     </div>
                 </div>
+                <a class="adContainer" href="../chud/" target="_blank" style="background-image: url(../media/notads/0BG.gif); background-size: cover; background-position: center;">
+                    <img src="../media/buddyLow.png" style="
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                    ">
+                    <span style="
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+                        position: absolute; 
+                        top: 10px; 
+                        left: 50px;
+                        font-size: 2em;
+                        line-height: 1;
+                    ">check out my dog<br><span style="font-size: 0.5em;">https://debread.space/chud/</span></span>
+                </a>
                 <div class="genericBox" id="musicPlayerContainer">
                     <div class="genericHeader">
                         <img src="../media/icons/music.png">
@@ -286,53 +278,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="genericBox" style="position: absolute; right: -5px; bottom: -5px; width: fit-content;">
+                            <span>*My music taste sucks</span>
+                        </div>
                     </div>
                     <div id="trackListContainer"></div>
                 </div>
-            </section>
-            <section id="navSection">
+            </div>
+            <div class="mainSection">
                 <div class="genericBox">
                     <div class="genericHeader">
                         <coolLine></coolLine>
-                        <img src="../media/icons/date.png">
-                        Date
+                        <img src="../media/icons/socials.png">
+                        <span>FAOTD</span>
                         <coolLine></coolLine>
                     </div>
-                    <div id="dateContainer">
-                        <section>
-                            <span id="dateMonth">-</span>
-                            <span id="dateDate">-</span>
-                            <span id="dateDay">-</span>
-                        </section>
-                        <section>
-                            <div class="dateBar">
-                                <div class="dateBarText">
-                                    <span>YEAR</span>
-                                    <span id="dateYearPercent">0%</span>
-                                </div>
-                                <div class="dateBarBar">
-                                    <div class="dateBarInnerBar" id="dateYearBar"></div>
-                                </div>
-                            </div>
-                            <div class="dateBar">
-                                <div class="dateBarText">
-                                    <span>MONTH</span>
-                                    <span id="dateMonthPercent">0%</span>
-                                </div>
-                                <div class="dateBarBar">
-                                    <div class="dateBarInnerBar" id="dateMonthBar"></div>
-                                </div>
-                            </div>
-                            <div class="dateBar">
-                                <div class="dateBarText">
-                                    <span>DAY</span>
-                                    <span id="dateDayPercent">0%</span>
-                                </div>
-                                <div class="dateBarBar">
-                                    <div class="dateBarInnerBar" id="dateDayBar"></div>
-                                </div>
-                            </div>
-                        </section>
+                    <p style="text-align: center; margin: 0; margin-bottom: 5px;">Fan art of the day</p>
+                    <div id="faotdContainer">
+                        <img src="../media/featuredDrawings/Erix/0.png" id="faotdImg">
+                        <span id="faotdArtist">Drawn by ?</span>
+                        <a href="https://discord.gg/uGyyqRVZPD" target="_blank">Send a drawing</a>
                     </div>
                 </div>
                 <div class="genericBox">
@@ -343,83 +308,90 @@
                         <coolLine></coolLine>
                     </div>
                     <div id="topHitContainer">
-                        <img src="../media/music/Walls_of_Denial/cover.png" width="50">
+                        <img src="../media/music/Sketches_of_Pain/cover.png" width="50">
                         <div id="topHitInfo">
-                            <span>Walls of Denial</span>
+                            <span>Sketches of Pain</span>
                             <span>By: Rediculon</span>
                         </div>
                     </div>
-                    <button id="topHitButton" onclick="scrollToElem(doge('musicPlayerContainer'));openTrack('Walls_of_Denial')">Open in music player</button>
+                    <button id="topHitButton" onclick="scrollToElem(doge('musicPlayerContainer'));openTrack('Sketches_of_Pain')">Open in music player</button>
                 </div>
                 <div class="genericBox">
-                    <div class="genericHeader">
-                        <coolLine></coolLine>
-                        <img src="../media/icons/socials.png">
-                        FAOTD
-                        <coolLine></coolLine>
+                    <div id="navigator">
+                        <div class="genericHeader">
+                            <coolLine></coolLine>
+                            <img src="../media/icons/about.png">
+                            About
+                            <coolLine></coolLine>
+                        </div>
+                        <a href="../home/">Home</a>
+                        <a style="color: grey;" onclick="fellaClick('Hey that isn\'t ready yet.', true)">About me</a>
+                        <a style="color: grey;" onclick="fellaClick('Hey that isn\'t ready yet.', true)">Projects</a>
+                        <a style="color: grey;" onclick="fellaClick('Hey that isn\'t ready yet.', true)">Gallery</a>
+
+                        <div class="genericHeader">
+                            <coolLine></coolLine>
+                            <img src="../media/icons/socials.png">
+                            <span>Socials</span>
+                            <coolLine></coolLine>
+                        </div>
+
+                        <a target="_blank" href="https://discord.gg/ecCBTRD2hN">Discord Server</a>
+                        <a target="_blank" href="https://twitter.com/notdebread">Twitter</a>
+                        <a target="_blank" href="https://bsky.app/profile/debread.space">Bluesky</a>
+                        <a target="_blank" href="https://yeen.town/@debread">YEEN TOWN</a>
+                        <a target="_blank" href="https://youtube.com/notdebread">YouTube</a>
+                        <a target="_blank" href="https://github.com/NotDeBread">GitHub</a>
+                        <br>
+                        <a target="_blank" href="https://buymeacoffee.com/debread">Support me!</a>
+                        <div class="genericHeader">
+                            <coolLine></coolLine>
+                            <img src="../media/icons/projects.png">
+                            <span>Projects</span>
+                            <coolLine></coolLine>
+                        </div>
+
+                        <a target="_blank" href="../games/GooberShooter2/">Goober Shooter 2 [PLAYTEST]</a>
+                        <a target="_blank" href="../games/GooberShooter/">Goober Shooter</a>
+                        <a target="_blank" href="../games/WinnieAccumulator/">Winnie Accumulator</a>
+                        <a href="../THESERVER/">THE SERVER</a>
+                        <div class="genericHeader">
+                            <coolLine></coolLine>
+                            <img src="../media/icons/archives.png">
+                            Archives
+                            <coolLine></coolLine>
+                        </div>
+
+                        <a target="_blank" href="../archives/Eddie-Accumulator/">Eddie Accumulator</a>
+                        <a target="_blank" href="../archives/RandomSentenceGenerator/">Random Sentence Generator</a>
+                        <a target="_blank" href="../archives/NotJSAB/">Not JSAB</a>
+                        <a target="_blank" href="../archives/PressTheButton/">Press The Button</a>
+                        <a target="_blank" href="../archives/PixelGenerator/">Pixel Generator</a>
+                        <a target="_blank" href="../archives/BigNumber/">Big Number</a>
+                        <a target="_blank" href="../archives/cprGame/">CPR Game</a>
+                        <a target="_blank" href="../archives/MathGame/">Math Game</a>
+                        <a target="_blank" href="../EddieSite/">Eddie Site</a>
                     </div>
-                    <div id="faotdContainer">
-                        <img src="../media/featuredDrawings/Erix/0.png" id="faotdImg">
-                        <span id="faotdArtist">Drawn by Erix</span>
-                        <a href="https://discord.gg/PCaxBSpD" target="_blank">Send a drawing</a>
-                    </div>
-                </div>
-                <div class="genericBox" id="navigator">
-                    <div class="genericHeader">
-                        <coolLine></coolLine>
-                        <img src="../media/icons/about.png">
-                        About
-                        <coolLine></coolLine>
-                    </div>
-                    <a href="../home/">Home</a>
-                    <span style="color: grey;" onclick="fellaClick('Hey that isn\'t ready yet.', true)">About me</span>
-                    <span style="color: grey;" onclick="fellaClick('Hey that isn\'t ready yet.', true)">Projects</span>
-                    <span style="color: grey;" onclick="fellaClick('Hey that isn\'t ready yet.', true)">Gallery</span>
-                    <div class="genericHeader">
-                        <coolLine></coolLine>
-                        <img src="../media/icons/socials.png">
-                        Socials
-                        <coolLine></coolLine>
-                    </div>
-                    <a target="_blank" href="https://discord.gg/ecCBTRD2hN">Discord Server</a>
-                    <a target="_blank" href="https://twitter.com/notdebread">Twitter</a>
-                    <a target="_blank" href="https://bsky.app/profile/debread.space">Bluesky</a>
-                    <a target="_blank" href="https://yeen.town/@debread">YEEN TOWN</a>
-                    <a target="_blank" href="https://youtube.com/notdebread">YouTube</a>
-                    <a target="_blank" href="https://github.com/NotDeBread">GitHub</a>
-                    <div class="genericHeader">
-                        <coolLine></coolLine>
-                        <img src="../media/icons/projects.png">
-                        Projects
-                        <coolLine></coolLine>
-                    </div>
-                    <a target="_blank" href="../games/GooberShooter/">Goober Shooter</a>
-                    <a target="_blank" href="../games/WinnieAccumulator/">Winnie Accumulator</a>
-                    <a href="../THESERVER/">THE SERVER</a>
-                    <div class="genericHeader">
-                        <coolLine></coolLine>
-                        <img src="../media/icons/archives.png">
-                        Archives
-                        <coolLine></coolLine>
-                    </div>
-                    <a target="_blank" href="../archives/Eddie-Accumulator/">Eddie Accumulator</a>
-                    <a target="_blank" href="../archives/RandomSentenceGenerator/">Random Sentence Generator</a>
-                    <a target="_blank" href="../archives/NotJSAB/">Not JSAB</a>
-                    <a target="_blank" href="../archives/PressTheButton/">Press The Button</a>
-                    <a target="_blank" href="../archives/PixelGenerator/">Pixel Generator</a>
-                    <a target="_blank" href="../archives/BigNumber/">Big Number</a>
-                    <a target="_blank" href="../archives/cprGame/">CPR Game</a>
-                    <a target="_blank" href="../archives/MathGame/">Math Game</a>
-                    <a target="_blank" href="../EddieSite/">Eddie Site</a>
                 </div>
                 <div class="genericBox" id="sitesSection">
                     <div class="genericHeader">
                         <coolLine></coolLine>
-                        <img src="../media/icons/about.png">
+                        <img src="../media/icons/support.png">
+                        Supporters
+                        <coolLine></coolLine>
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                        <span>xX_DeBread_H8ER_Xx</span>
+                    </div>
+                </div>
+                <div class="genericBox" id="sitesSection">
+                    <div class="genericHeader">
+                        <coolLine></coolLine>
+                        <img src="../media/icons/web.png">
                         Friends sites
                         <coolLine></coolLine>
                     </div>
-                    <div id="chipContainer">
+                    <div class="chipContainer">
                         <a href="https://debread.space/" target="_blank"><img src="../media/chips/debreadspace.gif" alt="DeBread's Space"></a>
                         <a href="https://plinkel.neocities.org/" target="_blank"><img src="../media/chips/plonksite.png"></a>
                     </div>
@@ -429,18 +401,18 @@
                     </div>
                     <div class="genericHeader" style="margin-top: 5px;">
                         <coolLine></coolLine>
-                        <img src="../media/icons/about.png">
-                        Inspiration
+                        <img src="../media/icons/web.png">
+                        Cool sites
                         <coolLine></coolLine>
                     </div>
-                    <div id="chipContainer">
+                    <div class="chipContainer">
                         <a href="https://dimden.dev/" target="_blank"><img src="https://dimden.dev/services/images/88x31.gif"></a>
                         <a href="https://ne0nbandit.neocities.org/" target="_blank"><img src="https://ne0nbandit.github.io/assets/img/btn/mine/nbbanner.png"></a>
                         <a href="https://swiftyshq.neocities.org/" target="_blank"><img src="https://swiftyshq.neocities.org/img/res/aff/swsign.png" alt="Swifty's HQ!"></a>
                         <a href="https://ninacti0n.art/" target="_blank"><img src="../media/chips/ninacti0n.gif"></a>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
     </div>
 
@@ -453,8 +425,6 @@
         </div>
       <img id="fella" src="../media/fella.png" onclick="fellaClick()">
     </div>
-
-    <div id="rainContainer"></div>
 
     <script src="../DeBread.js"></script>
     <script src="../global.js"></script>
@@ -469,7 +439,7 @@
     #define spin_amount 0.3
     #define contrast 1.
 
-    #define PIXEL_SIZE_FAC 0.25.
+    // #define PIXEL_SIZE_FAC 700.
 
     // default colours
     #define colour_1 vec4(0.118, 0.098, 0.176 ,1.0)

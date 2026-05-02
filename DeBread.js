@@ -607,3 +607,23 @@ function formatTime(seconds) {
     const formattedSeconds = String(remainingSeconds).padStart(2, '0')
     return `${formattedMinutes}:${formattedSeconds}`
 }
+
+function applyFlowText(elem,speedMult = 1) {
+    const targetText = elem.innerText
+
+    elem.innerHTML = ''
+    elem.style.display = 'flex'
+    for(let i = 0; i < targetText.length; i++) {
+        const div = document.createElement('div')
+        div.style.opacity = 0
+        div.innerText = targetText[i]
+        div.style.animation = `textFlow 3s ease-in-out -${(targetText.length - i) * 250}ms infinite forwards, scaleIn 0.25s ease-in-out ${(i * 25) / speedMult}ms 1 forwards`
+        div.style.rotate = (i - targetText.length / 2) / 3 + 'deg'
+        if(targetText[i] === ' ') div.style.width = '10px'
+        elem.append(div)
+
+        setTimeout(() => {
+            div.style.opacity = 1
+        }, (i * 25) / speedMult + 5);
+    }
+}

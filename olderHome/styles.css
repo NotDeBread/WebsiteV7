@@ -1,0 +1,472 @@
+/* STANDALONE Z-INDEXES */
+/* CRT Overlay - 10 */
+/* Loading screen emblem - 9*/
+/* Loading screen - 8*/
+/* Media viewer - 7*/
+
+:root {
+  --bouncy: cubic-bezier(0,2,.75,1);
+  --pageMargin: 250px;
+}
+
+/* Title stuff */
+#titleContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 100px var(--pageMargin);
+}
+
+#title {
+    line-height: 1;
+    position: relative;
+}
+
+#title span {
+    font-size: 1.5em;
+}
+
+#title wavey {
+    font-size: 3em;
+    font-weight: 900;
+    font-style: italic;
+}
+
+#splash {
+    position: absolute;
+    bottom: -15px;
+    right: -75px;
+    color: yellow;
+    rotate: -5deg;
+    user-select: none;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px black);
+    animation: splash 250ms ease-out infinite alternate-reverse;
+}
+
+@keyframes splash {
+    from {
+        scale: 1;
+    }   
+    to {
+        scale: 1.1;
+    }
+}
+
+#outerGuyContainer {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 150px;
+    height: 150px;
+    pointer-events: none;
+}
+
+#relativeGuyContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#guyCounter {
+    width: 150px;
+    text-align: center;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    font-weight: 700;
+    position: absolute;
+    top: -50px;
+}
+
+.guyPoint {
+    position: fixed;
+    background-color: white;
+    width: 5px;
+    height: 5px;
+    translate: -50% -50%;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: left 50ms linear, top 50ms linear;
+}
+
+.guyPointParticle {
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    position: fixed;
+    translate: -2.5px -2.5px;
+    animation: guyPointParticle 250ms ease-out 1 forwards;
+}
+
+@keyframes guyPointParticle {
+    to {
+        transform: translate(var(--randomX), var(--randomY));
+        rotate: var(--randomRotate);
+        opacity: 0;
+    }
+}
+
+#guyContainer {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+
+#guy {
+    position: absolute; 
+    bottom: -10px;
+    right: 0px;
+    width: 150px;
+    cursor: pointer;
+    pointer-events: all;
+    transition: scale var(--bouncy) 250ms, translate var(--bouncy) 250ms;
+}
+
+#guy:active {
+  scale: 1.2 0.9;
+  translate: 0 10px;
+}
+
+#guyTextBox {
+    background-color: white;
+    outline: 2px solid black;
+    padding: 5px;
+    color: black;
+    border-radius: 5px;
+    position: absolute;
+    max-width: 250px;
+    overflow: hidden;
+    top: -50px;
+    left: -250px;
+    animation: textboxIn 250ms ease-out 1 forwards;
+}
+
+@keyframes textboxIn {
+    from {
+        scale: 1.1;
+    }
+}
+
+/* The big one*/
+#theBigOne {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 100px var(--pageMargin);
+    width: calc(100% - calc(var(--pageMargin) * 2));
+}
+
+.genericBoxRow {
+    display: flex;
+    gap: 5px;
+}
+
+.genericBox {
+    outline: 1px solid white;
+    padding: 5px;
+    background-color: rgb(0,0,0,0.25);
+    backdrop-filter: blur(5px);
+}
+
+.boxTitle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.25em;
+    width: 100%;
+    white-space: nowrap;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+/* Individual box stuff */
+
+#socialsContainer {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 35px);
+}
+
+.social {
+    /* outline: 1px solid grey; */
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 0px 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.social:hover {
+    color: black;
+    background-color: white;
+}
+
+.progressBox {
+    position: relative;
+    padding: 5px;
+    outline: 1px solid rgb(255,255,255,0.5);
+    margin-top: 10px;
+}
+
+.progressBoxHeader {
+    position: absolute;
+    top: -7px;
+    background-color: black;
+    padding: 0px 5px;
+    left: 5px;
+    line-height: 0.75;
+    color: grey;
+}
+
+/* Project stuff */
+
+.projectsContainer {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.project {
+    width: 100%;
+    height: 150px;
+    outline: 1px solid white;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+}
+
+.project:hover {
+    outline: 2px solid white;
+}
+
+.project:active {
+    outline: 1px solid white;
+}
+
+.projectInfo, .projectBG {
+    position: absolute;
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
+    top: 0;
+    left: 0;
+    padding: 5px;
+}
+
+.projectInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+    line-height: 1.25;
+    background: linear-gradient(rgb(0,0,0,0.9), rgb(0,0,0,0.5), rgb(0,0,0,0.75));
+}
+
+.projectInfo strong {
+    font-size: 1.25em;
+    line-height: 1;
+}
+
+.projectTag {
+    position: absolute;
+    z-index: 2;
+    bottom: 5px;
+    right: 5px;
+    padding: 5px;
+    height: 10px;
+    border-radius: 5px;
+    outline: 1px solid rgb(255,255,255,0.5);
+    background-color: rgb(0,0,0,0.25);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+}
+
+.projectBG {
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+#featuredDrawingsContainer {
+    display: flex;
+    gap: 5px;
+    overflow-x: scroll;
+    padding: 1px;
+}
+
+#projectShowMore {
+    width: 100%;
+    text-align: center;
+}
+
+.featuredDrawing {
+    outline: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.featuredDrawing img {
+    outline: 1px solid white;
+    height: 175px;
+}
+
+#strawpageBox {
+    outline: 1px solid red;
+    background-image: url(../media/straw.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    min-height: 75px;
+}
+
+#strawText {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 1.75em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(254, 151, 1);
+    text-shadow: 1px 0 0 #813300,0 1px 0 #c14d00,2px 1px .35px #813300,1px 2px .35px #c14d00,3px 2px .35px #813300,2px 3px .35px #c14d00,4px 3px .35px #813300,3px 4px .35px #c14d00,5px 4px .35px #813300,4px 5px .35px #c14d00,6px 5px .35px #813300,5px 6px .35px #c14d00,7px 6px .35px #813300,6px 7px .35px #c14d00;
+    transform: skewY(5deg);
+}
+
+#strawguy {
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    width: 150px;
+    pointer-events: none;
+    filter: drop-shadow(1px 0 0 white) 
+        drop-shadow(0 1px 0 white)
+        drop-shadow(-1px 0 0 white) 
+        drop-shadow(0 -1px 0 white);
+        animation: guyJump 0.5s ease-in-out infinite forwards, guySquish 0.5s ease-out infinite forwards;
+}
+
+@keyframes guyJump {
+  from {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 25px;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+
+@keyframes guySquish {
+  from {
+    scale: 1;
+  }
+  50% {
+    scale: 1.2 0.8;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+#footer {
+    margin-top: 50px;
+}
+
+/* Stuff for different screen widths */
+
+@media (max-width: 1500px) {
+    .projectsContainer {
+        flex-direction: column;
+    }
+
+    #projectShowMore {
+        height: 50px;
+    }
+
+    :root {
+        --pageMargin: 75px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #titleContainer {
+        font-size: 0.75em;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    :root {
+        --pageMargin: 50px;
+    }
+
+    #theBigOne {
+        margin-bottom: 200px;
+    }
+
+    .genericBoxRow {
+        flex-direction: column;
+    }
+
+    .genericBox {
+        width: 100% !important; /* dont judge me */
+    }
+
+    .social {
+        height: 50px;
+        outline: 1px solid grey;
+    }
+
+    #strawText {
+        font-size: 2em;
+        top: 20px;
+        left: 50px;
+    }
+}
+
+@media (max-width: 750px) {
+
+    :root {
+        --pageMargin: 10px
+    }
+
+    .genericBoxRow {
+        width: calc(100% - calc(var(--pageMargin) * 2));
+    }
+
+    .mobileIncompatible {
+        display: none;
+    }
+
+    .featuredDrawing {
+        font-size: 0.75em;
+    }
+
+    .featuredDrawing img {
+        height: 150px;
+    }
+
+    #strawText {
+        font-size: 1.5em;
+        left: 10px;
+    }
+
+    #strawguy {
+        right: 25px;
+    }
+
+    #splash {
+        right: 0;
+    }
+}

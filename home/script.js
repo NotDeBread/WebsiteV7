@@ -7,67 +7,67 @@ function convertToVec4(rgb) {
     return output
 }
 
-const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
-const days = ['SUN','MON','TUE','WED','THU','FRI','SAT']
-let newYearsTrigger = false
+// const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+// const days = ['SUN','MON','TUE','WED','THU','FRI','SAT']
+// let newYearsTrigger = false
 
-function updateDate() {
-    const now = new Date()
+// function updateDate() {
+//     const now = new Date()
 
-    doge('dateDay').innerText = days[now.getDay()]
-    doge('dateDate').innerText = now.getDate()
-    doge('dateMonth').innerText = months[now.getMonth()]
+//     doge('dateDay').innerText = days[now.getDay()]
+//     doge('dateDate').innerText = now.getDate()
+//     doge('dateMonth').innerText = months[now.getMonth()]
 
-    const date = {
-        months: now.getMonth(),
-        days: now.getDate(),
-        hours: now.getHours(),
-        minutes: now.getMinutes(),
-        seconds: now.getSeconds(),
-    }
+//     const date = {
+//         months: now.getMonth(),
+//         days: now.getDate(),
+//         hours: now.getHours(),
+//         minutes: now.getMinutes(),
+//         seconds: now.getSeconds(),
+//     }
 
-    const dayProgress = (
-        date.hours + 
-        (date.minutes / 60) + 
-        (date.seconds / 3600)) / 24
+//     const dayProgress = (
+//         date.hours + 
+//         (date.minutes / 60) + 
+//         (date.seconds / 3600)) / 24
 
-    doge('dateDayPercent').innerText = DeBread.round(dayProgress * 100,2) + '%'
-    doge('dateDayBar').style.width = dayProgress * 100 + '%'
+//     doge('dateDayPercent').innerText = DeBread.round(dayProgress * 100,2) + '%'
+//     doge('dateDayBar').style.width = dayProgress * 100 + '%'
 
-    function getMonthLength(year, month) {
-        return new Date(year, month + 1, 0).getDate()
-    }  
+//     function getMonthLength(year, month) {
+//         return new Date(year, month + 1, 0).getDate()
+//     }  
 
-    const monthLength = getMonthLength(now.getFullYear(), date.months)
-    const monthProgress = (date.days - 1 + dayProgress) / monthLength
-    doge('dateMonthPercent').innerText = DeBread.round(monthProgress * 100,2) + '%'
-    doge('dateMonthBar').style.width = monthProgress * 100 + '%'
+//     const monthLength = getMonthLength(now.getFullYear(), date.months)
+//     const monthProgress = (date.days - 1 + dayProgress) / monthLength
+//     doge('dateMonthPercent').innerText = DeBread.round(monthProgress * 100,2) + '%'
+//     doge('dateMonthBar').style.width = monthProgress * 100 + '%'
 
-    const startOfYear = new Date(now.getFullYear(), 0, 1)
-    const endOfYear = new Date(now.getFullYear(), 11, 31)
+//     const startOfYear = new Date(now.getFullYear(), 0, 1)
+//     const endOfYear = new Date(now.getFullYear(), 11, 31)
 
-    const dayOfYear = (now - startOfYear) / 86400000
-    const yearLength = (endOfYear - startOfYear) / 86400000
+//     const dayOfYear = (now - startOfYear) / 86400000
+//     const yearLength = (endOfYear - startOfYear) / 86400000
 
-    const yearProgress = dayOfYear / (yearLength + 1)
+//     const yearProgress = dayOfYear / (yearLength + 1)
     
-    doge('dateYearPercent').innerText = DeBread.round(yearProgress * 100,2) + '%'
-    doge('dateYearBar').style.width = yearProgress * 100 + '%'
+//     doge('dateYearPercent').innerText = DeBread.round(yearProgress * 100,2) + '%'
+//     doge('dateYearBar').style.width = yearProgress * 100 + '%'
 
-    if(dayProgress <= 0.15) {
-        getAchievement('afterhours')
-    }
+//     if(dayProgress <= 0.15) {
+//         getAchievement('afterhours')
+//     }
 
-    if(DeBread.round(yearProgress,3) === 0 && !newYearsTrigger) {
-        for(let i = 0; i < globalDate.getFullYear() - 2000; i++) {
-            setTimeout(() => {
-                createConfetti()
-            }, i * 250);
-        }
-        fellaClick('Man you should be out celebrating right now, not sitting on my website 😭', true)
-        newYearsTrigger = true
-    }
-} setInterval(updateDate, 1000)
+//     if(DeBread.round(yearProgress,3) === 0 && !newYearsTrigger) {
+//         for(let i = 0; i < globalDate.getFullYear() - 2000; i++) {
+//             setTimeout(() => {
+//                 createConfetti()
+//             }, i * 250);
+//         }
+//         fellaClick('Man you should be out celebrating right now, not sitting on my website 😭', true)
+//         newYearsTrigger = true
+//     }
+// } setInterval(updateDate, 1000)
 
 const confettiBase = document.createElement('div')
 addStyles(confettiBase, {
@@ -157,14 +157,15 @@ const featuredDrawings = {
     Angelos: 1,
     Baxter: 1,
     Cherry: 1,
-    Dottr: 3,
+    Dottr: 5,
     Erix: 1,
     HallowArtis: 1,
     Millards: 2,
     Nex: 1,
+    Ozzy: 2,
     Plonk: 5,
     Skact: 1,
-    terminallysynth: 1,
+    sevenxstarz: 2,
     TrueSkywalkr: 1,
     Unknown: 2,
 }
@@ -187,28 +188,110 @@ function getRandomFAOTDList() {
 }
 
 const randomFeaturedDrawings = [
-  {artist:"Baxter",num: 0},
-  {artist:"terminallysynth",num: 0},
-  {artist:"Plonk",num: 0},
-  {artist:"Millards",num: 1},
-  {artist:"Plonk",num: 1},
-  {artist:"Erix",num: 0},
-  {artist:"TrueSkywalkr",num: 0},
-  {artist:"Millards",num: 0},
-  {artist:"Plonk",num: 4},
-  {artist:"HallowArtis",num: 0},
-  {artist:"Unknown",num: 0},
-  {artist:"Dottr",num: 2},
-  {artist:"Unknown",num: 1},
-  {artist:"Dottr",num: 0},
-  {artist:"Nex",num: 0},
-  {artist:"Angelos",num: 0},
-  {artist:"Plonk",num: 2},
-  {artist:"Plonk",num: 3},
-  {artist:"Dottr",num: 1},
-  {artist:"Skact",num: 0},
-  {artist:"Cherry",num: 0},
-  {artist:"Dottr",num: 3}
+  {
+    "artist": "TrueSkywalkr",
+    "num": 0
+  },
+  {
+    "artist": "sevenxstarz",
+    "num": 0
+  },
+  {
+    "artist": "Ozzy",
+    "num": 0
+  },
+  {
+    "artist": "Nex",
+    "num": 0
+  },
+  {
+    "artist": "Plonk",
+    "num": 2
+  },
+  {
+    "artist": "Unknown",
+    "num": 0
+  },
+  {
+    "artist": "sevenxstarz",
+    "num": 1
+  },
+  {
+    "artist": "Dottr",
+    "num": 0
+  },
+  {
+    "artist": "Plonk",
+    "num": 1
+  },
+  {
+    "artist": "Dottr",
+    "num": 4
+  },
+  {
+    "artist": "Skact",
+    "num": 0
+  },
+  {
+    "artist": "Plonk",
+    "num": 3
+  },
+  {
+    "artist": "Dottr",
+    "num": 2
+  },
+  {
+    "artist": "Plonk",
+    "num": 0
+  },
+  {
+    "artist": "HallowArtis",
+    "num": 0
+  },
+  {
+    "artist": "Dottr",
+    "num": 1
+  },
+  {
+    "artist": "Angelos",
+    "num": 0
+  },
+  {
+    "artist": "Dottr",
+    "num": 3
+  },
+  {
+    "artist": "Erix",
+    "num": 0
+  },
+  {
+    "artist": "Millards",
+    "num": 0
+  },
+  {
+    "artist": "Baxter",
+    "num": 0
+  },
+  {
+    "artist": "Plonk",
+    "num": 4
+  },
+  {
+    "artist": "Ozzy",
+    "num": 1
+  },
+  {
+    "artist": "Cherry",
+    "num": 0
+  },
+  {
+    "artist": "Unknown",
+    "num": 1
+  },
+  {
+    "artist": "Millards",
+    "num": 1
+  }
 ]
 
 function updateFAOTD() {
@@ -231,7 +314,6 @@ function updateFAOTD() {
 const fellaTexts = [
     'Hi',
     'Imagine if there was a secret game here...',
-    'Join my Minecraft server!',
     'I\'ve made this website like 8 times now. 💀',
     'Check this out <br><img src="../media/buddy.png" width=100>',
     'Imma be a one-man cheeseburger apocalypse',
@@ -242,10 +324,12 @@ const fellaTexts = [
     'I need my big lolipop',
     'I love playing with my choo choo train',
     'I gotta go to bed',
-    `I\'m ${globalDate.getFullYear() - 2007} years old and I've already wasted my entire life`,
+    `I\'m ${globalDate.getFullYear() - 2008} years old and I've already wasted my entire life`,
     'I hate my stupid job',
     'Tombstone pizzas 🥹',
     `${globalDate.getFullYear()+1} will be my year trust`,
+    'Clicking me like an 8 ball',
+    'I\'d like to bring the fishing minigame back'
 ] 
 
 let fellaTimesClicked = 0
@@ -290,86 +374,6 @@ setTimeout(() => {
         }
     }
 }, 1000);
-
-const rain = {
-    weight: 5,
-    wind: 5,
-    speed: 40,
-}
-
-const rainParticleBase = document.createElement('div')
-rainParticleBase.classList.add('rainParticle')
-addStyles(rainParticleBase, {
-    width: '10px',
-    height: '2px',
-    backgroundColor: 'white',
-    position: 'absolute',
-    opacity: '0.25',
-    transition: 'top linear 100ms, left linear 100ms, rotate ease-in-out 250ms'
-})
-setInterval(() => {
-    const rainParticle = rainParticleBase.cloneNode()
-    const randomAxis = DeBread.randomNum(0,1)
-    rainParticle.pos = [DeBread.randomNum(0,window.innerWidth) * randomAxis - 10, DeBread.randomNum(0,window.innerHeight) * (1-randomAxis) - 10]
-    rainParticle.targetPos = [rainParticle.pos[0] + rain.wind, rainParticle.pos[1] + rain.weight]
-    rainParticle.speedMult = DeBread.randomNum(0.75,1.25,5)
-
-    rainParticle.angle = Math.atan2(
-        rainParticle.targetPos[1] - rainParticle.pos[1],
-        rainParticle.targetPos[0] - rainParticle.pos[0],
-    )
-
-    addStyles(rainParticle, {
-        left: rainParticle.pos[0]+'px',
-        top: rainParticle.pos[1]+'px',
-        rotate: rainParticle.angle + 'rad'
-    })
-
-    doge('rainContainer').append(rainParticle)
-}, 25)
-
-setInterval(() => {
-    doge('rainContainer').querySelectorAll('.rainParticle').forEach(particle => {
-        particle.pos[0] += Math.cos(particle.angle) * rain.speed * particle.speedMult
-        particle.pos[1] += Math.sin(particle.angle) * rain.speed * particle.speedMult
-        particle.targetPos = [particle.pos[0] + rain.wind, particle.pos[1] + rain.weight]
-        particle.angle = Math.atan2(
-            particle.targetPos[1] - particle.pos[1],
-            particle.targetPos[0] - particle.pos[0],
-        )
-
-        addStyles(particle, {
-            left: particle.pos[0]+'px',
-            top: particle.pos[1]+'px',
-            rotate: particle.angle + 'rad'
-        })
-
-        if(particle.pos[0] >= window.innerWidth + 100 || particle.pos[1] >= window.innerHeight + 100) {
-            particle.remove()
-        }
-    })
-}, 100)
-
-//Preset rain particles
-for(let i = 0; i < 100; i++) {
-    const rainParticle = rainParticleBase.cloneNode()
-    rainParticle.pos = [DeBread.randomNum(0,window.innerWidth),DeBread.randomNum(0,window.innerHeight)]
-    rainParticle.targetPos = [rainParticle.pos[0] + rain.wind, rainParticle.pos[1] + rain.weight]
-    rainParticle.speedMult = DeBread.randomNum(0.9,1.1,5)
-
-    rainParticle.angle = Math.atan2(
-        rainParticle.targetPos[1] - rainParticle.pos[1],
-        rainParticle.targetPos[0] - rainParticle.pos[0],
-    )
-
-    addStyles(rainParticle, {
-        left: rainParticle.pos[0]+'px',
-        top: rainParticle.pos[1]+'px',
-        rotate: rainParticle.angle + 'rad'
-    })
-
-    doge('rainContainer').append(rainParticle)
-}
 
 function renderAchievements() {
     doge('innerAchievementsContainer').innerHTML = ''
@@ -443,11 +447,31 @@ const tracks = {
         artist: 'Ridiculon',
         hit: [127,261]
     },
-    // FINAL_BLENDERMAN_APPEARED: {
-    //     name: 'FINAL BLENDERMAN APPEARED',
-    //     artist: 'Camellia, RichaadEB',
-    //     hit: [192, 245]
-    // },
+    FINAL_BLENDERMAN_APPEARED: {
+        name: 'FINAL BLENDERMAN APPEARED',
+        artist: 'Camellia, RichaadEB',
+        hit: [192, 245]
+    },
+    NUCLEAR_STAR: {
+        name: 'NUCLEAR STAR',
+        artist: 'Camellia',
+        hit: [193, 253]
+    },
+    Sketches_of_Pain: {
+        name: 'Sketches of Pain',
+        artist: 'Ridiculon',
+        hit: [141,290],
+    },
+    The_Shattering_Circle: {
+        name: 'The Shattering Circle, or: A Charade of... ',
+        artist: 'Heaven Pierce Her',
+        hit: [83,105],
+    },
+    Ascension_to_Heaven: {
+        name: 'Ascension to Heaven',
+        artist: 'xi',
+        hit: [83,126],
+    },
     // jaden: {
     //     name: 'jaden',
     //     artist: 'jaden',

@@ -1,0 +1,483 @@
+@font-face {
+    font-family: operator;
+    src: url(../../media/fonts/operator.otf);
+}
+
+#breadFightContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: black;
+    z-index: 2;
+    image-rendering: pixelated;
+    display: none;
+    font-family: operator;
+    font-size: 2em;
+}
+
+#bfDebug {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: aqua;
+    z-index: 999;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 15px;
+}
+
+#breadFight {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#TPBarContainer {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    height: calc(100% - 325px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+#TPCounterContainer {
+    margin-right: 10px;
+    width: 50px;
+    text-align: center;
+}
+
+#TPCounterContainer div {
+    transform: skewX(-10deg);
+}
+
+#TPBar {
+    height: 320px;
+    width: 32px;
+    background-color: yellow;
+    position: relative;
+}
+
+#innerTPBar {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    transition: height ease-in-out 250ms;
+}
+
+#playArea, #backgroundContainer, #playFieldContainer {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: calc(100% - 325px);
+    transition: height ease-in-out 250ms;
+}
+
+#playFieldContainer {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    gap: 150px;
+}
+
+#playField {
+    outline: 4px solid darkgreen;
+    background-color: black;
+    width: 250px;
+    height: 250px;
+    position: relative;
+    /* scale: 0; */
+    /* rotate: 180deg; */
+    overflow: hidden;
+    transition: rotate 1000ms ease-in-out, scale 1000ms ease-in-out, width 500ms ease-in-out, height 500ms ease-in-out;
+}
+
+#playFieldPlayers, #playFieldEnemies {
+    width: 100px;
+}
+
+@keyframes gooberHazard {
+    to {
+        scale: 2;
+        opacity: 0;
+    }
+}
+
+@keyframes bulletExplosion {
+    to {
+        scale: 10;
+        opacity: 0;
+    }
+}
+
+@keyframes line {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes linePulse {
+    from {
+        transform: scaleX(200%);
+        box-shadow: 0px 0px 0px 0px white;
+    }
+    to {
+        box-shadow: 0px 0px 0px 25px transparent;
+    }
+}
+
+@keyframes lineOut {
+    to {
+        width: 0;
+    }
+}
+
+@keyframes spikeIn {
+    from {
+        scale: 0;
+    }
+}
+
+@keyframes spikeOut{
+    to {
+        scale: 0;
+    }
+}
+
+#fellaContainer {
+    width: 256px;
+    height: 256px;
+    position: relative;
+}
+
+#playFieldEnemies img {
+    position: absolute;
+    animation: float 5s ease-in-out infinite forwards;
+}
+
+@keyframes float {
+    from {
+        translate: 0px -10px;
+    }
+    50% {
+        translate: 0px 10px;
+    }
+    to {
+        translate: 0px -10px;
+    }
+}
+
+@keyframes shadow {
+    from {
+        opacity: 0.25;
+    }
+    to {
+        translate: 250px 0px;
+        opacity: 0;
+    }
+}
+
+#attackNumContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    z-index: 2;
+}
+
+
+@keyframes attackNum {
+    15% {
+        translate: 15px -25px;
+    }
+    30% {
+        translate: 30px 0px;
+    }
+    75% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        translate: 30px 0px;
+    }
+}
+
+#bfSoul {
+    width: 24px;
+    height: 24px;
+    background-image: url(../../media/breadFight/soul.png);
+    background-size: 24px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bfGraze {
+    height: 64px;
+    width: 64px;
+    position: absolute;
+    background-image: url(../../media/breadFight/graze.png);
+    background-size: 64px;
+    opacity: 0;
+    /* animation: graze 250ms ease-out 1 forwards; */
+}
+
+@keyframes graze {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../../media/breadFight/bg.svg);
+    background-size: 100px;
+    opacity: 0.5;
+    animation: backgroundScroll 5s linear infinite forwards;
+}
+
+@keyframes backgroundScroll {
+    to {
+        background-position: 100px 100px;
+    }
+}
+
+@keyframes backgroundScroll2 {
+    from {
+        background-position: 13.35px 13.35px;
+    }
+    to {
+        background-position: 213.35px 313.35px;
+    }
+}
+
+#realContainer {
+    position: absolute;
+    width: 100%;
+    bottom: 450px;
+    z-index: 0;
+}
+
+#innerRealContainer {
+    position: relative;
+}
+
+#status {
+    height: 325px;
+    /* border-top: 4px solid rgb(51, 32, 51); */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 3;
+    transition: height ease-in-out 250ms;
+}
+
+#realContainer {
+    position: absolute;
+    top: 0;
+}
+
+#innerRealContainer {
+    position: relative;
+}
+
+.realBox {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 128px;
+    display: flex;
+    z-index: 3;
+    background-image: url(../../media/breadFight/real0.png);
+    background-size: contain;
+    animation: realboxLoop 2s linear infinite forwards, realboxJump 4s ease-out infinite forwards;
+}
+
+#realboxBack {
+    z-index: 2;
+    filter: brightness(75%);
+    animation: realboxLoop 3.76576s linear infinite forwards, realboxJump 4s ease-out 3.1415926s infinite forwards;
+}
+
+#realboxFarBack {
+    z-index: 1;
+    filter: brightness(50%);
+    animation: realboxLoop 4.4356s linear infinite forwards, realboxJump 4s ease-out 4.43821s infinite forwards;
+}
+
+#realboxFartherBack {
+    z-index: 0;
+    filter: brightness(50%);
+    animation: realboxLoop 5.986645s linear infinite forwards, realboxJump 4s ease-out 6.4342s infinite forwards;
+}
+
+@keyframes realboxLoop {
+    to {
+        background-position: -128px 0px;
+    }
+}
+
+@keyframes realboxJump {
+    from {
+        background-image: url(../../media/breadFight/real1.png);
+    }
+    10% {
+        translate: 0px -100px;
+        background-image: url(../../media/breadFight/real1.png);
+    }
+    30% {
+        translate: 0px 0px;
+        background-image: url(../../media/breadFight/real0.png);
+    }
+}
+
+#statusMain {
+    padding: 10px;
+    font-size: 1.25em;
+    border-top: 4px solid #332033;
+}
+
+#players {
+    height: 64px;
+    width: 100%;
+    display: flex;
+    background-color: black;
+    box-shadow: 0px -4px 0px #332033;
+}
+
+.player {
+    height: 64px;
+    width: 350px;
+    /* border-top: 4px solid #9eabb4; */
+    box-shadow: 0px -4px 0px #9eabb4;
+    overflow: hidden;
+    background-color: black;
+    transition: height ease-in-out 250ms, translate ease-in-out 250ms;
+}
+
+.playerCard {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.playerHealth {
+    height: 15px;
+    width: 100px;
+    background-color: red;
+    position: relative;
+}
+
+.innerPlayerHealth {
+    width: 100%;
+    height: 100%;
+    background-color: lime;
+}
+
+.playerHealthText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    filter: drop-shadow(0px 0px 3px black);
+}
+
+
+.playerButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 64px;
+}
+
+.playerButton {
+    /* box-shadow: 0px 0px 0px 4px orange inset; */
+    width: 48px;
+    height: 48px;
+    background-image: url(../../media/breadFight/icons/fight.png);
+    background-size: 48px;
+}
+
+.attackBarContainer {
+    height: 64px;
+    width: 500px;
+    border-bottom: 2px solid grey;
+    display: flex;
+    padding: 8px 0px;
+    gap: 25px;
+}
+
+@keyframes attackBarHit {
+    from {
+        translate: -5px 0px;
+    }
+    to {
+        translate: 0px 0px;
+    }
+}
+
+.attackBox {
+    outline: 2px solid white;
+    height: 100%;
+    width: 250px;
+    position: relative;
+}
+
+.attackGoal {
+    height: 100%;
+    width: 10px;
+    outline: 4px solid white;
+}
+
+.attackBar {
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background-color: white;
+    transition: left linear 25ms;
+}
+
+@keyframes barAcc {
+    to {
+        translate: 10px 0px;
+        letter-spacing: 1px;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes barHit {
+    to {
+        scale: 2;
+        opacity: 0;
+    }
+}
+
+@keyframes barEffect0 {
+    to {
+        width: 250px;
+        opacity: 0;
+    }
+}
