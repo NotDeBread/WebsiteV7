@@ -157,6 +157,7 @@ const featuredDrawings = {
     Angelos: 1,
     Baxter: 1,
     Cherry: 1,
+    Chow: 2,
     Dottr: 5,
     Erix: 1,
     HallowArtis: 1,
@@ -189,59 +190,15 @@ function getRandomFAOTDList() {
 
 const randomFeaturedDrawings = [
   {
-    "artist": "TrueSkywalkr",
+    "artist": "Baxter",
     "num": 0
   },
   {
-    "artist": "sevenxstarz",
+    "artist": "Angelos",
     "num": 0
   },
   {
     "artist": "Ozzy",
-    "num": 0
-  },
-  {
-    "artist": "Nex",
-    "num": 0
-  },
-  {
-    "artist": "Plonk",
-    "num": 2
-  },
-  {
-    "artist": "Unknown",
-    "num": 0
-  },
-  {
-    "artist": "sevenxstarz",
-    "num": 1
-  },
-  {
-    "artist": "Dottr",
-    "num": 0
-  },
-  {
-    "artist": "Plonk",
-    "num": 1
-  },
-  {
-    "artist": "Dottr",
-    "num": 4
-  },
-  {
-    "artist": "Skact",
-    "num": 0
-  },
-  {
-    "artist": "Plonk",
-    "num": 3
-  },
-  {
-    "artist": "Dottr",
-    "num": 2
-  },
-  {
-    "artist": "Plonk",
     "num": 0
   },
   {
@@ -249,11 +206,51 @@ const randomFeaturedDrawings = [
     "num": 0
   },
   {
+    "artist": "Plonk",
+    "num": 3
+  },
+  {
+    "artist": "Nex",
+    "num": 0
+  },
+  {
+    "artist": "sevenxstarz",
+    "num": 0
+  },
+  {
+    "artist": "Dottr",
+    "num": 0
+  },
+  {
+    "artist": "Cherry",
+    "num": 0
+  },
+  {
+    "artist": "Millards",
+    "num": 1
+  },
+  {
+    "artist": "Chow",
+    "num": 0
+  },
+  {
+    "artist": "Plonk",
+    "num": 1
+  },
+  {
+    "artist": "Chow",
+    "num": 1
+  },
+  {
     "artist": "Dottr",
     "num": 1
   },
   {
-    "artist": "Angelos",
+    "artist": "Ozzy",
+    "num": 1
+  },
+  {
+    "artist": "TrueSkywalkr",
     "num": 0
   },
   {
@@ -261,7 +258,35 @@ const randomFeaturedDrawings = [
     "num": 3
   },
   {
+    "artist": "Unknown",
+    "num": 1
+  },
+  {
+    "artist": "sevenxstarz",
+    "num": 1
+  },
+  {
+    "artist": "Dottr",
+    "num": 4
+  },
+  {
+    "artist": "Dottr",
+    "num": 2
+  },
+  {
+    "artist": "Unknown",
+    "num": 0
+  },
+  {
     "artist": "Erix",
+    "num": 0
+  },
+  {
+    "artist": "Plonk",
+    "num": 2
+  },
+  {
+    "artist": "Skact",
     "num": 0
   },
   {
@@ -269,28 +294,12 @@ const randomFeaturedDrawings = [
     "num": 0
   },
   {
-    "artist": "Baxter",
+    "artist": "Plonk",
     "num": 0
   },
   {
     "artist": "Plonk",
     "num": 4
-  },
-  {
-    "artist": "Ozzy",
-    "num": 1
-  },
-  {
-    "artist": "Cherry",
-    "num": 0
-  },
-  {
-    "artist": "Unknown",
-    "num": 1
-  },
-  {
-    "artist": "Millards",
-    "num": 1
   }
 ]
 
