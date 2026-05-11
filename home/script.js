@@ -230,7 +230,7 @@ const randomFeaturedDrawings = [
     "num": 1
   },
   {
-    "artist": "Chow",
+    "artist": "chow",
     "num": 0
   },
   {
@@ -238,7 +238,7 @@ const randomFeaturedDrawings = [
     "num": 1
   },
   {
-    "artist": "Chow",
+    "artist": "chow",
     "num": 1
   },
   {
