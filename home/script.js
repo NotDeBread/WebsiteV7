@@ -737,7 +737,7 @@ let mcServerData
 let mcServerDataTooltip = 'fetching...'
 
 function refreshServerInfo() {
-    fetch('https://api.mcsrvstat.us/2/debread.space')
+    fetch('https://api.mcsrvstat.us/2/hub.debread.space')
     .then(res => res.json())
     .then(data => {
         mcServerData = data
