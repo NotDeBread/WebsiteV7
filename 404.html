@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/404.css">
     <link rel="stylesheet" href="/global.css">
-    <link rel="icon" type="image/x-icon" href="../media/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/media/favicon.png">
     <title>???</title>
 </head>
 <body>
     <div id="crtOverlay"></div>
     <div id="loadingScreenContainer">
-        <img src="../media/realFit.png" id="loadingImg" width="100">
+        <img src="/media/realFit.png" id="loadingImg" width="100">
         <span id="loadingText">LOADING...</span>
     </div>
 
     <div id="achievementNotiContainer"></div>
 
-    <img src="../media/gauntletofgormlessterrorfella.gif" id="him" onclick="DeBread.playSound('../media/audio/bark.mp3', 0.25)">
+    <img src="/media/gauntletofgormlessterrorfella.gif" id="him" onclick="DeBread.playSound('/media/audio/bark.mp3', 0.25)">
 
     <div id="fourohfour">
         <span>404</span><br>
@@ -28,13 +28,13 @@
         <span>The page </span><span id="unknownpage" style="font-family: 'JetBrains Mono', monospace;">undefined</span><span> links to a page that doesnt exist or has not been made yet.</span>
     </div>
 
-    <a href="../home">
+    <a href="/home">
         <button id="returnButton">Return to main page</button>
     </a>
 
 
-    <script src="../DeBread.js"></script>
-    <script src="../global.js"></script>
+    <script src="/DeBread.js"></script>
+    <script src="/global.js"></script>
     <script src="/404.js"></script>
 
     <!-- BG Shader -->
@@ -101,6 +101,6 @@
       gl_FragColor = (0.3/contrast)*colour_1 + (1. - 0.3/contrast)*(colour_1*c1p + colour_2*c2p + vec4(c3p*colour_3.rgb, c3p*colour_1.a));
     }
   </script>
-  <script src="../bgShader.js"></script>
+  <script src="/bgShader.js"></script>
 </body>
 </html>
