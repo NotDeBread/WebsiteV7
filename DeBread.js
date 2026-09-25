@@ -637,3 +637,11 @@ function getWeightedChance(weights) {
         randomNum -= weights[i]
     }
 }
+
+function downloadFile(filename,url) {
+    const a = document.createElement('a')
+    a.download = filename
+    a.href = url
+    a.click()
+    a.remove()
+}

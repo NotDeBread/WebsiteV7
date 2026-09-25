@@ -392,7 +392,6 @@ function refreshWebsiteData() {
     if(doge('dataCommitNum')) {
         //Commits
         fetch('https://api.github.com/repos/NotDeBread/WebsiteV7/commits')
-        .then(res => console.log(res))
         .then(res => res.json())
         .then(data => {
             doge('dataCommitNum').innerText = `Running on commit #${data.length+1}`

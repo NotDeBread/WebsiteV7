@@ -104,6 +104,17 @@ button:active {
     }
 }
 
+input[type="text"] {
+    font-family: monospace;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
 .goBackButton {
     height: 25px;
     display: flex;

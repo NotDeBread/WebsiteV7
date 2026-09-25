@@ -135,4 +135,14 @@ body {
     #trailerContainer {
         scale: 0.6;
     }
+
+    #itemCard {
+        flex-direction: column;
+        min-height: 275px;
+    }
+
+    #exampleItemTitleContainer {
+        max-width: unset;
+        width: 100%;
+    }
 }

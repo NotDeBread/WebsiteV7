@@ -28,6 +28,7 @@ body {
     outline: 1px solid white;
     margin-top: 50px;
     width: 300px;
+    margin-bottom: 25px;
 }
 
 #unknownpage {
@@ -36,6 +37,5 @@ body {
 }
 
 #returnButton {
-    margin-top: 50px;
     padding: 5px;
 }

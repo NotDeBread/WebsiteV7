@@ -741,7 +741,7 @@ function refreshServerInfo() {
     .then(res => res.json())
     .then(data => {
         mcServerData = data
-        if(data.debug.error && false) {
+        if(data.debug.error) {
             doge('onlineMemberCount').innerText = 'Error'
             doge('onlineMemberCircle').style.backgroundColor = 'red'
             mcServerDataTooltip = data.debug.error.query
@@ -756,7 +756,7 @@ function refreshServerInfo() {
         } else {
             doge('onlineMemberCount').innerText = 'Server down'
             doge('onlineMemberCircle').style.backgroundColor = 'red'
-            mcServerDataTooltip = 'Server is currently offline.'
+            mcServerDataTooltip = `Failed to connect to server.<br>(${data.debug.errors[0].message})`
         }
     })
     
@@ -780,26 +780,74 @@ const randomImages = [
         {name:'ImJustJAG',url:'babygoomba.jpg'},
         {name:'ImJustJAG',url:'car0.jpg'},
         {name:'ImJustJAG',url:'heavy.jpg'},
+        {name:'Inferno',url:'catglass.jpg'},
+        {name:'Inferno',url:'puter.jpg'},
+        {name:'Inferno',url:'dogs.jpg'},
+        {name:'Kino',url:'pickles.jpg'},
+        {name:'Inferno',url:'sad.jpg'},
+        {name:'Inferno',url:'baby.png'},
+        {name:'Inferno',url:'bugs.jpg'},
+        {name:'Inferno',url:'coke.png'},
+        {name:'Inferno',url:'biden.jpg'},
+        {name:'Inferno',url:'ball.png'},
     ],
     [ //Uncommon
         {name:'Inferno',url:'pigon.jpg'},
         {name:'ImJustJAG',url:'evilassskeleton.jpg'},
         {name:'Plinkel',url:'aycabron.png'},
         {name:'Plinkel',url:'speed.jpg'},
-        {name:'ImJustJAG',url:'sideeye.jpg'},
+        {name:'Dottr',url:'minion.gif'},
+        {name:'Dottr',url:'buge.png'},
+        {name:'Inferno',url:'fungus.jpg'},
+        {name:'Inferno',url:'onion.png'},
+        {name:'Inferno',url:'slep.png'},
+        {name:'Inferno',url:'gpu.jpg'},
+        {name:'Inferno',url:'wd40.jpg'},
+        {name:'Inferno',url:'whatsapp.jpg'},
+        {name:'Inferno',url:'car2.jpg'},
+        {name:'Inferno',url:'tom.jpg'},
+        {name:'Inferno',url:'shrake.jpg'},
+        {name:'Inferno',url:'tox.png'},
+        {name:'Cata',url:'murr.jpg'},
     ],
     [ //Rare
         {name:'ImJustJAG',url:'horse.jpg'},
         {name:'Dottr',url:'dottreat.png'},
-        {name:'B-Money',url:'mirror.png'}
+        {name:'B-Money',url:'mirror.png'},
+        {name:'???',url:'the_orange.png'},
+        {name:'firstgenerationipadmini',url:'car1.jpg'},
+        {name:'shapoco',url:'the_port.jpg'},
+        {name:'Inferno',url:'hamburger.png'},
+        {name:'Inferno',url:'losing_it.jpg'},
+        {name:'Inferno',url:'hiroshima.jpg'},
+        {name:'Fella',url:'aura.jpg'},
+        {name:'Inferno',url:'dripping_cock.jpg'},
+        {name:'Inferno',url:'horseloaf.jpg'},
+        {name:'Inferno',url:'dogblown.png'},
+        {name:'Inferno',url:'the_wall.png'},
+        {name:'Skywalkr',url:'him.png'},
     ],
     [ //Epic
         {name:'ImJustJAG',url:'thinking0.jpg'},
         {name:'Plinkel',url:'awesomegreenguy.png'},
+        {name:'Dottr',url:'bran.png'},
+        {name:'Inferno',url:'sex.jpg'},
+        {name:'Fella',url:'bald.jpg'},
+        {name:'Inferno',url:'dragon.jpg'},
+        {name:'Inferno',url:'toilet.jpg'},
+        {name:'Fella',url:'sphere.png'},
+        {name:'Fella',url:'yeen.gif'},
+        {name:'Inferno',url:'worm.png'},
     ],
     [ //Mythic
         {name:'Synth',url:'trol.jpg'},
-        {name:'ImJustJAG',url:'creature.png'}
+        {name:'ImJustJAG',url:'creature.png'},
+        {name:'???',url:'car.png'},
+        {name:'doggo revolution',url:'wolves.jpg'},
+        {name:'Aeon',url:'toby.jpg'},
+        {name:'Fella',url:'yoshi.jpg'},
+        {name:'Fella',url:'poppy.jpg'},
+        {name:'Inferno',url:'chicken.jpg'},
     ]
 ]
 
@@ -820,6 +868,8 @@ function rollRandomImage() {
     ]
 
     const rarityIndex = getWeightedChance([100,50,30,10,1])
+    // const rarityIndex = DeBread.randomNum(0,4)
+    // const rarityIndex = 0
     const randomList = randomImages[rarityIndex]
     const randomImage = randomList[DeBread.randomNum(0,randomList.length-1)]
 

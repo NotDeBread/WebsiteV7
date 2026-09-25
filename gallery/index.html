@@ -14,32 +14,174 @@
         <span id="loadingText">Loading...</span>
     </div>
 
-    
-    <div id="imageViewContainer">
-        <div id="imageViewText">
-            <div id="imageViewTitleContainer">
-                <coolLine></coolLine>
-                <span id="imageViewTitle">Image Title</span>
-                <coolLine></coolLine>
+    <div id="galleryViewContainer">
+        <div id="galleryView">
+            <div id="galleryViewLeft">
+                <div id="galleryViewMainImg">
+                    <div id="galleryViewPrev">
+                        <button id="gvBack">back</button>
+                    </div>
+                    <div id="galleryViewMainImgLabel"></div>
+                    <div id="galleryViewNext">
+                        <button id="gvNext">next</button>
+                    </div>
+                </div>
+                <div id="galleryViewCarousel">
+                    <div class="galleryViewCarouselItem"></div>
+                    <div class="galleryViewCarouselItem"></div>
+                    <div class="galleryViewCarouselItem"></div>
+                    <div class="galleryViewCarouselItem"></div>
+                    <div class="galleryViewCarouselItem"></div>
+                    <div class="galleryViewCarouselItem"></div>
+                </div>
             </div>
-            <span id="imageViewDesc" style="color: lightgrey;">Some really really long image description</span>
+            <div id="galleryViewRight">
+                <div>
+                    <div id="galleryViewTitleContainer">
+                        <strong id="galleryViewTitle">My super cool figura model</strong>
+                        <em id="galleryViewDate">00/00/0000</em>
+                    </div>
+                    <span id="galleryViewDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas quos quaerat culpa. Dolorem in, pariatur quis dolor numquam dolorum, autem molestias optio alias laborum qui amet voluptatem ratione, adipisci dicta?</span>
+                </div>
+                <div id="galleryViewLinks">
+                    <button>Balls</button>
+                </div>
+            </div>
         </div>
-        <img src="../media/buddy.png" id="imageViewImg" style="min-width: 128px; min-height: 128px; image-rendering: pixelated;">
-        <button id="imageViewButton" onclick="closeImage()">Close</button>
+        <div id="galleryViewCloseButton">
+            <button onclick="closeGalleryView()">Close</button>
+        </div>
     </div>
-    
-    
-    <div id="all">
-        <div>Gallery</div>
-        <div style="display: flex; justify-content: center;">
-            <span style="color: yellow; font-weight: 700;">THIS PAGE IS UNDER CONSTRUCTION</span>
+
+    <div id="main">
+        <div id="dbTitleContainer">
+            <a href="../home/"><- Go back</a>
+            <div id="dbTitle" style="height: 35px;">Gallery</div>
         </div>
-        <div id="searchContainer" class="genericBox">
-            <span id="searchLabel">Search...</span>
-            <input placeholder="Search gallery..." id="gallerySearch">
-            <dropdown multiple="true"></dropdown>
+        <div id="innerMain">            
+            <div class="mainSection">
+                <div class="genericBox">
+                    <div class="genericHeader">
+                        <img src="../media/icons/image.png">
+                        GALLERY
+                        <coolLine></coolLine>
+                    </div>
+                    <div id="galleryControls">
+                        <div style="display: flex; gap: 5px;">
+                            <input type="text" placeholder="Search..." id="gallerySearch">
+                        </div>
+                        <div style="display: flex; gap: 5px;">
+                            <button onclick="renderingMode = 0;renderArtworks()">Cards</button>
+                            <button onclick="renderingMode = 1;renderArtworks()">List</button>
+                        </div>
+                    </div>
+                    <div id="artworksContainer">
+                        <div class="artworkCard">
+                            <div class="artworkThumbnail"></div>
+                            <div class="artworkTags">
+                                <div class="artworkTag">📦3D Model</div>
+                            </div>
+                            <div class="artworkTitle">
+                                <strong>Poop and balls</strong>
+                                <em>00/00/0000</em>
+                            </div>
+                            <span class="artworkDesc">Some really cool and really long description</span>
+                        </div>
+                        <div class="artworkCard">
+                            <div class="artworkThumbnail"></div>
+                            <div class="artworkTags">
+                                <div class="artworkTag">📦3D Model</div>
+                            </div>
+                            <div class="artworkTitle">
+                                <strong>Poop and balls</strong>
+                                <em>00/00/0000</em>
+                            </div>
+                            <span class="artworkDesc">Some really cool and really long description</span>
+                        </div>
+                        <div class="artworkListItem">
+                            <div>
+                                <strong>Poop and balls</strong><br>
+                                <span class="artworkDesc">Some really cool and really long description</span>
+                                <div class="artworkTags">
+                                    <div class="artworkTag">📦3D Model</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 5px;">
+                                <em>00/00/0000</em>
+                                <div class="artworkThumbnail">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mainSection" style="position: sticky; top: 5px; align-self: flex-start;">
+                <div class="genericBox">
+                    <div id="navigator">
+                        <div class="genericHeader">
+                            <coolLine></coolLine>
+                            <img src="../media/icons/about.png">
+                            About
+                            <coolLine></coolLine>
+                        </div>
+                        <a href="/home/">Home</a>
+                        <a href="/aboutme/">About me</a>
+                        <a style="color: grey;">Projects</a>
+                        <a style="color: white;">➤ Gallery (YOU ARE HERE)</a>
+                        <a href="../GooberShooter2/">Goober Shooter 2</a>
+    
+                        <div class="genericHeader">
+                            <coolLine></coolLine>
+                            <img src="../media/icons/socials.png">
+                            <span>Socials</span>
+                            <coolLine></coolLine>
+                        </div>
+    
+                        <a target="_blank" href="https://discord.gg/ecCBTRD2hN">Discord Server</a>
+                        <a target="_blank" href="https://twitter.com/notdebread">Twitter</a>
+                        <a target="_blank" href="https://bsky.app/profile/debread.space">Bluesky</a>
+                        <a target="_blank" href="https://yeen.town/@debread">YEEN TOWN</a>
+                        <a target="_blank" href="https://youtube.com/notdebread">YouTube</a>
+                        <a target="_blank" href="https://github.com/NotDeBread">GitHub</a>
+                        <a target="_blank" href="https://artfight.net/~DeBread">Artfight</a>
+                        <br>
+                        <a target="_blank" href="https://buymeacoffee.com/debread">Support me!</a>
+                        <div class="genericHeader">
+                            <coolLine></coolLine>
+                            <img src="../media/icons/projects.png">
+                            <span>Projects</span>
+                            <coolLine></coolLine>
+                        </div>
+    
+                        <a target="_blank" href="../games/GooberShooter2/">Goober Shooter 2 [PLAYTEST]</a>
+                        <a target="_blank" href="../games/GooberShooter/">Goober Shooter</a>
+                        <a target="_blank" href="../games/WinnieAccumulator/">Winnie Accumulator</a>
+                        <a href="../THESERVER/">THE SERVER</a>
+                        <div class="genericHeader">
+                            <coolLine></coolLine>
+                            <img src="../media/icons/archives.png">
+                            Archives
+                            <coolLine></coolLine>
+                        </div>
+    
+                        <a target="_blank" href="../archives/Eddie-Accumulator/">Eddie Accumulator</a>
+                        <a target="_blank" href="../archives/RandomSentenceGenerator/">Random Sentence Generator</a>
+                        <a target="_blank" href="../archives/NotJSAB/">Not JSAB</a>
+                        <a target="_blank" href="../archives/PressTheButton/">Press The Button</a>
+                        <a target="_blank" href="../archives/PixelGenerator/">Pixel Generator</a>
+                        <a target="_blank" href="../archives/BigNumber/">Big Number</a>
+                        <a target="_blank" href="../archives/cprGame/">CPR Game</a>
+                        <a target="_blank" href="../archives/MathGame/">Math Game</a>
+                        <a target="_blank" href="../EddieSite/">Eddie Site</a>
+                    </div>
+                </div>
+                <div class="genericBox">
+                    <span id="dataCommitNum">Running on commit ?</span><br>
+                    <span id="dataReleaseNum">Released on ?</span>
+                </div>
+            </div>
         </div>
-        <div id="imageListContainer"></div>
     </div>
 
     <script src="../DeBread.js"></script>

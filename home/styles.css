@@ -652,6 +652,10 @@ input[type="range"]::-moz-range-progress {
         width: 150px;
         height: 150px;
     }
+
+    #topHitBox {
+        display: none;
+    }
 }
 
 @media (max-width: 400px) {
