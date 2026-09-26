@@ -50,7 +50,7 @@ if(doge('loadingScreenContainer')) {
         if(document.readyState === 'complete') {
             clearInterval(loadingInterval)
             doge('loadingText').innerText = 'Done!'
-            doge('loadingImg').src = '../media/realJump.png'
+            doge('loadingImg').src = '/media/realJump.png'
             doge('loadingImg').style.rotate = '0deg'
 
             document.body.querySelectorAll('#flow').forEach(flow => {
