@@ -159,7 +159,7 @@ const featuredDrawings = {
     Case: 1,
     Cherry: 1,
     Chow: 2,
-    Dottr: 5,
+    Dottr: 6,
     Erix: 1,
     HallowArtis: 1,
     Millards: 2,
@@ -170,6 +170,7 @@ const featuredDrawings = {
     sevenxstarz: 2,
     TrueSkywalkr: 1,
     Unknown: 2,
+    Jake: 1,
 }
 
 function getRandomFAOTDList() {
@@ -191,11 +192,91 @@ function getRandomFAOTDList() {
 
 const randomFeaturedDrawings = [
   {
-    "artist": "Baxter",
+    "artist": "Dottr",
+    "num": 0
+  },
+  {
+    "artist": "sevenxstarz",
+    "num": 0
+  },
+  {
+    "artist": "Dottr",
+    "num": 1
+  },
+  {
+    "artist": "Jake",
+    "num": 0
+  },
+  {
+    "artist": "Dottr",
+    "num": 5
+  },
+  {
+    "artist": "Unknown",
+    "num": 0
+  },
+  {
+    "artist": "Case",
     "num": 0
   },
   {
     "artist": "Angelos",
+    "num": 0
+  },
+  {
+    "artist": "Plonk",
+    "num": 2
+  },
+  {
+    "artist": "Erix",
+    "num": 0
+  },
+  {
+    "artist": "Chow",
+    "num": 0
+  },
+  {
+    "artist": "Plonk",
+    "num": 4
+  },
+  {
+    "artist": "Nex",
+    "num": 0
+  },
+  {
+    "artist": "Plonk",
+    "num": 1
+  },
+  {
+    "artist": "Cherry",
+    "num": 0
+  },
+  {
+    "artist": "Dottr",
+    "num": 3
+  },
+  {
+    "artist": "Baxter",
+    "num": 0
+  },
+  {
+    "artist": "Dottr",
+    "num": 4
+  },
+  {
+    "artist": "Plonk",
+    "num": 0
+  },
+  {
+    "artist": "Millards",
+    "num": 1
+  },
+  {
+    "artist": "Ozzy",
+    "num": 1
+  },
+  {
+    "artist": "TrueSkywalkr",
     "num": 0
   },
   {
@@ -211,83 +292,7 @@ const randomFeaturedDrawings = [
     "num": 3
   },
   {
-    "artist": "Nex",
-    "num": 0
-  },
-  {
-    "artist": "sevenxstarz",
-    "num": 0
-  },
-  {
     "artist": "Dottr",
-    "num": 0
-  },
-  {
-    "artist": "Cherry",
-    "num": 0
-  },
-  {
-    "artist": "Millards",
-    "num": 1
-  },
-  {
-    "artist": "chow",
-    "num": 0
-  },
-  {
-    "artist": "Plonk",
-    "num": 1
-  },
-  {
-    "artist": "chow",
-    "num": 1
-  },
-  {
-    "artist": "Dottr",
-    "num": 1
-  },
-  {
-    "artist": "Ozzy",
-    "num": 1
-  },
-  {
-    "artist": "TrueSkywalkr",
-    "num": 0
-  },
-  {
-    "artist": "Dottr",
-    "num": 3
-  },
-  {
-    "artist": "Unknown",
-    "num": 1
-  },
-  {
-    "artist": "sevenxstarz",
-    "num": 1
-  },
-  {
-    "artist": "Dottr",
-    "num": 4
-  },
-  {
-    "artist": "Dottr",
-    "num": 2
-  },
-  {
-    "artist": "Unknown",
-    "num": 0
-  },
-  {
-    "artist": "Case",
-    "num": 0
-  },
-  {
-    "artist": "Erix",
-    "num": 0
-  },
-  {
-    "artist": "Plonk",
     "num": 2
   },
   {
@@ -295,16 +300,20 @@ const randomFeaturedDrawings = [
     "num": 0
   },
   {
+    "artist": "Chow",
+    "num": 1
+  },
+  {
+    "artist": "sevenxstarz",
+    "num": 1
+  },
+  {
+    "artist": "Unknown",
+    "num": 1
+  },
+  {
     "artist": "Millards",
     "num": 0
-  },
-  {
-    "artist": "Plonk",
-    "num": 0
-  },
-  {
-    "artist": "Plonk",
-    "num": 4
   }
 ]
 
@@ -343,8 +352,9 @@ const fellaTexts = [
     'Clicking me like an 8 ball',
     'I\'d like to bring the fishing minigame back',
     '<img src="../media/peep.png">',
-    'Fuck the orange man'
-] 
+    'Fuck the orange man',
+    'the unused giggle function'
+]
 
 let fellaTimesClicked = 0
 function fellaClick(talk, giggle) {
@@ -431,11 +441,11 @@ function openAchievements() {
 
 //MUSIC PLAYER
 const tracks = {
-    carnation: {
-        name: 'carnation',
-        artist: 'AAAA',
-        hit: [187,220]
-    },
+    // carnation: {
+    //     name: 'carnation',
+    //     artist: 'AAAA',
+    //     hit: [187,220]
+    // },
     TV_WORLD: {
         name: 'TV WORLD',
         artist: 'Toby Fox',
@@ -446,11 +456,11 @@ const tracks = {
         artist: 'Dorkus64',
         hit: [0,0]
     },
-    The_End_of_All_Seasons: {
-        name: 'The End of All Seasons',
-        artist: 'mashall h',
-        hit: [284,340]
-    },
+    // The_End_of_All_Seasons: {
+    //     name: 'The End of All Seasons',
+    //     artist: 'mashall h',
+    //     hit: [284,340]
+    // },
     Ocean_Glaze: {
         name: 'Ocean Glaze',
         artist: 'Lifeformed, Janice Kwan',
@@ -506,6 +516,11 @@ const tracks = {
         artist: 'Kenta Nagata',
         hit: [0,0],
     },
+    Rainbow_Road: {
+        name: 'Rainbow Road',
+        artist: 'Atsuko Asahi',
+        hit: [380,550],
+    },
     // jaden: {
     //     name: 'jaden',
     //     artist: 'jaden',
@@ -556,7 +571,7 @@ function openTrack(track) {
 
     updateTrackVolume(true)
     updateTrackSpeed(true)
-} openTrack('carnation')
+}
 
 function updateTrackInfo(track) {
     doge('musicPlayerAlbum').src = `../media/music/${track}/cover.png`

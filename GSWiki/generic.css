@@ -60,6 +60,16 @@ cs {
     font-weight: 700;
 }
 
+.itemTag, .tooltipTag {
+    font-size: 0.75em;
+    font-weight: 700;
+    box-shadow: inset 0px 2px rgb(255,255,255,0.25);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 2px;
+    display: inline;
+}
+
 :root {
     --lightbg4: rgb(60,60,60);
     --lightbg3: rgb(55,55,55);
@@ -115,6 +125,44 @@ code {
     gap: 5px;
 }
 
+#topperRight {
+    display: flex;
+}
+
+#searchContainer {
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    max-height: 500px;
+}
+
+#searchBar {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--darkbg0);
+    color: white;
+    border: none;
+    height: 25px;
+}
+
+#searchBar:focus {
+    outline: none;
+}
+
+#searchContainer a {
+    border: none;
+    background-color: var(--darkbg0);
+    text-align: left;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    padding: 0px 5px;
+}
+
+#searchContainer a:hover {
+    background-color: var(--darkbg1);
+}
+
 #main {
     display: flex;
     height: calc(100% - 74px);
@@ -129,6 +177,7 @@ code {
     padding: 10px;
     background-color: var(--darkbg0);
     position: sticky;
+    overflow-y: auto;
 }
 
 .explorerItem {
@@ -267,4 +316,43 @@ code {
     justify-content: center;
     align-items: center;
     box-shadow: inset 0px 2px 0px 0px rgb(255,255,255,0.25);
+}
+
+.projectileDisplayContainer {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(/games/GooberShooter2/graphics/bullet.png);
+    background-size: cover;
+    image-rendering: pixelated;
+    margin: 50px;
+}
+
+.bigButtonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.bigButton {
+    background-color: var(--lightbg1);
+    border: 1px solid var(--lightbg2);
+    padding: 5px;
+    display: flex;
+    gap: 5px;
+    width: 30%;
+    min-width: 200px;
+    user-select: none;
+}
+
+.bigButton span {
+    color: white;
+}
+
+.bigButton:hover {
+    text-decoration: none !important;
 }

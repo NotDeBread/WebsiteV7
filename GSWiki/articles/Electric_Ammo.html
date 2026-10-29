@@ -1,0 +1,26 @@
+<div>
+    <span class="genericTitle">Electric Ammo</span>
+    <span><strong>Elecrtic Ammo</strong> is a strong <a href="#Items">Item</a> that causes player projectiles to create 'arcs' that damage nearby enemies when hitting an enemy. The arcs max range is defined by the players <code>electricChainReach</code> value plus 100 in pixels.</span>
+
+    <span class="genericHeader">Notes</span>
+    <ul>
+        <li>Each enemy can only be arced to once, meaning an arc can't repeatedly go between two enemies.</li>
+        <li>Having multiple <strong>Electric Ammo</strong> items allows arcs to travel between more enemies and have a longer range.</li>
+        <li>The damage of an arc is defined by this formula: <img src="/GSWiki/images/arc-equation.svg" style="filter: invert(); vertical-align: middle;">.</li>
+    </ul>
+
+    <span class="genericHeader">History</span>
+    <ul>
+        <li><a>playtest8</a>: Electricity arcs are now textures instead of a line of particles.</li>
+        <li><a>playtest9</a>: Projectile effecting upgrades like <strong>Electric Ammo</strong> now give the projectile a texture overlay.</li>
+    </ul>
+</div>
+<div>
+    <gsItem class="infoCard" item="electric_ammo" rarity="3"></gsItem>
+    <div class="infoCard">
+        <span>Projectile Texture</span>
+        <div class="projectileDisplayContainer">
+            <img src="/games/GooberShooter2/graphics/electricBullet.gif" style="min-width: 48px; min-height: 48px;">
+        </div>
+    </div>
+</div>

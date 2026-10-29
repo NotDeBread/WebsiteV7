@@ -74,7 +74,6 @@ if(doge('loadingScreenContainer')) {
             }, 500);
         }
     }, 500);
-
 }
 
 function gotoPage(page, absoluteURL) {

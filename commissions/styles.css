@@ -1,0 +1,19 @@
+.commissionBox {
+    padding: 5px;
+    border: 2px solid var(--outlineDark);
+}
+
+.commissionDesc {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.commissionImages {
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.commissionImages img {
+    width: 250px;
+    max-width: 100%;
+}

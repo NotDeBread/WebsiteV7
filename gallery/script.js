@@ -111,7 +111,7 @@ const artworks = [
         date: '9/16/2026',
         imgs: [
             {
-                url: 'fellaStudies.jpg',
+                url: 'thefellastudies.jpg',
             },
         ],
         tags: ['Traditional Art'],
@@ -255,6 +255,11 @@ const artworks = [
             {
                 url: 'goober-bread.png',
                 desc: 'Bread',
+                pixelated: true,
+            },
+            {
+                url: 'goober-undead_bread.png',
+                desc: 'Undead Bread',
                 pixelated: true,
             },
             {

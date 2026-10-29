@@ -1,0 +1,41 @@
+<div>
+    <span class="genericTitle">Golden Ammo</span>
+    <span><strong>Golden Ammo</strong> is a strong <a href="#Items">Item</a> that gives projectiles a chance to spawn a random <a href="#Pickups"><img src="/games/GooberShooter2/graphics/coin2.gif">coin</a> when hitting an enemy.</span>
+    <span>Higher value coins have a lower chance of spawning, using these weights:</span>
+    <ul>
+        <li>100 (~56% chance): <img src="/games/GooberShooter2/graphics/coin0.gif" style="image-rendering: pixelated; vertical-align: middle;"> Copper Coin ($1)</li>
+        <li>50 (~28% chance): <img src="/games/GooberShooter2/graphics/coin1.gif" style="image-rendering: pixelated; vertical-align: middle;"> Silver Coin ($5)</li>
+        <li>20 (~11% chance): <img src="/games/GooberShooter2/graphics/coin2.gif" style="image-rendering: pixelated; vertical-align: middle;"> Gold Coin ($10)</li>
+        <li>5 (~3% chance): <img src="/games/GooberShooter2/graphics/coin3.gif" style="image-rendering: pixelated; vertical-align: middle;"> Emerald Coin ($25)</li>
+        <li>1 (~0.6% chance): <img src="/games/GooberShooter2/graphics/coin4.gif" style="image-rendering: pixelated; vertical-align: middle;"> Diamond Coin ($100)</li>
+    </ul>
+
+    <span class="genericHeader">Synergies</span>
+    <ul>
+        <li>Items that let player projectiles hit enemies multiple times like <a><img src="/games/GooberShooter2/graphics/upgrades/screw.png">Screw</a>, <a><img src="/games/GooberShooter2/graphics/upgrades/drill_ammo.png">Drill Ammo</a>, and <a href="#Ghost_Ammo"><img src="/games/GooberShooter2/graphics/upgrades/ghost_ammo.png">Ghost Ammo</a> are very powerful since every time the projectile hits an enemy, it can create a coin.</li>
+        <li><a><img src="/games/GooberShooter2/graphics/powerItems/lucky_penny.png">Lucky Penny</a> can duplicate pickups created by <strong>Golden Ammo</strong>.</li>
+    </ul>
+
+    <span class="genericHeader">Notes</span>
+    <ul>
+        <li>If there are more than 100 pickups on screen, golden projectiles will no longer spawn coins but instead add them straight to the players money. This is put in place to avoid lag.</li>
+        <li>Having a <code>coinChance</code> value more and 100% can cause the projectile to create multiple coins at once. (1 guaranteed for every 100%)</li>
+    </ul>
+
+    <span class="genericHeader">History</span>
+    <ul>
+        <li><a>playtest8</a>: Added <strong>Golden Ammo</strong>.</li>
+        <li><a>playtest22</a>: <strong>Golden Ammo</strong> now gives an increased chance to spawn a coin (<cg>+1</cg>% -> <cg>+2</cg>%).</li>
+    </ul>
+</div>
+<div>
+    <gsItem class="infoCard" item="golden_ammo" rarity="3"></gsItem>
+    <div class="infoCard">
+        <strong>Unlock Requirement</strong>
+        <span>Have <cp>$1,000</cp> in a run.</span>
+    </div>
+    <div class="infoCard">
+        <img src="/GSWiki/images/goldenAmmoSynergy.png">
+        <span style="text-align: center;">An example of a synergy using <strong>Golden Ammo</strong>.<br>Golden Ammo + <a href="#Ghost_Ammo"><img src="/games/GooberShooter2/graphics/upgrades/ghost_ammo.png">Ghost Ammo</a> + <a><img src="/games/GooberShooter2/graphics/upgrades/magnetic_ammo.png">Magnetic Ammo</a></span>
+    </div>
+</div>
