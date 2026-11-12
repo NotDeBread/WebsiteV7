@@ -158,7 +158,7 @@ const featuredDrawings = {
     Baxter: 1,
     Case: 1,
     Cherry: 1,
-    Chow: 2,
+    chow: 2,
     Dottr: 6,
     Erix: 1,
     HallowArtis: 1,
@@ -232,7 +232,7 @@ const randomFeaturedDrawings = [
     "num": 0
   },
   {
-    "artist": "Chow",
+    "artist": "chow",
     "num": 0
   },
   {
@@ -300,7 +300,7 @@ const randomFeaturedDrawings = [
     "num": 0
   },
   {
-    "artist": "Chow",
+    "artist": "chow",
     "num": 1
   },
   {

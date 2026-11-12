@@ -7,6 +7,7 @@ const Home = {
         },
         Characters: {
             Bread: {},
+            Undead_Bread: {},
             Fella: {},
             Plonk: {},
             Ashton: {},
@@ -68,6 +69,7 @@ const Home = {
             Incendiary_Ammo: {},
             Golden_Ammo: {},
             Radioactive_Ammo: {},
+            Spooky_Ammo: {},
             Shrapnel: {},
             Cluster_Ammo: {},
             Raccoon_Tail: {},
@@ -79,6 +81,9 @@ const Home = {
         },
         Elixirs: {
             Strength_Elixir: {}
+        },
+        Consumables: {
+            Health_Potion: {}
         },
         Bosses: {
             The_Tutorialist0Boss: {}
@@ -160,6 +165,13 @@ async function loadPage(page) {
     if(response.ok) {
         doge('body').innerHTML = html
         updateCustomElements()
+
+        //This is kinda scuffed lmao
+        const spacer = document.createElement('div')
+        addStyles(spacer, {
+            height: '250px'
+        })
+        doge('body').querySelectorAll('div')[0].append(spacer)
     } else {
         doge('body').innerText = 'This page has not been made yet!'
     }
@@ -209,7 +221,9 @@ const characterUnlocks = {
     luke: '<a href="#Achievements"><img src="../../games/GooberShooter2/graphics/achievements/Divorce.png">Divorce</a>',
     tana: '<a href="#Achievements"><img src="../../games/GooberShooter2/graphics/achievements/Unc.png">Unc still got it</a>',
     jake: '<a href="#Achievements"><img src="../../games/GooberShooter2/graphics/achievements/The_Feast.png">The Feast</a>',
+    crow: '<a href="#Achievements"><img>Leave Them Alone</a>',
     nyan: '<a href="#Achievements"><img src="../../games/GooberShooter2/graphics/achievements/GSOrigins.png">Goober Shooter: Origins</a>',
+    udev: '<a href="#Achievements"><img>It\'s a good game trust me</a>',
     glorp: '<a href="#Achievements"><img src="../../games/GooberShooter2/graphics/achievements/SkillsUSA.png">SkillsUSA</a>',
     tico: '<a href="#Achievements"><img src="../../games/GooberShooter2/graphics/achievements/SkillsUSA.png">SkillsUSA</a>',
 }
@@ -353,6 +367,25 @@ function updateCustomElements() {
             border: '1px solid yellow',
             padding: '5px'
         })
+    })
+    
+    //Cycling img
+    doge('body').querySelectorAll('img').forEach(elem => {
+        if(elem.getAttribute('cycle')) {
+            const imgs = elem.getAttribute('imgs').split(' ')
+            
+            elem.currentImg = 0
+            elem.src = imgs[elem.currentImg]
+
+            setInterval(() => {
+                elem.currentImg++
+                if(elem.currentImg > imgs.length-1) {
+                    elem.currentImg = 0
+                }
+                
+                elem.src = imgs[elem.currentImg]
+            }, 1000);
+        }
     })
 }
 

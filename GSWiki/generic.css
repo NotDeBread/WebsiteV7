@@ -110,7 +110,7 @@ table td {
 code {
     outline: 1px solid var(--lightbg2);
     height: 100%;
-    padding: 5px;
+    padding: 2px;
 }
 
 #topper {

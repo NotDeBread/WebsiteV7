@@ -1,9 +1,104 @@
 <div>
     <span class="genericTitle">Pickups</span>
+    <b>Pickups</b> are entities that spawn in the area that trigger something once collided with. Currently, there are 5 different kinds of pickups:
+
+    <span class="genericHeader"><img cycle="true" imgs="/games/GooberShooter2/graphics/coin0.gif /games/GooberShooter2/graphics/coin1.gif /games/GooberShooter2/graphics/coin2.gif /games/GooberShooter2/graphics/coin3.gif /games/GooberShooter2/graphics/coin4.gif" style="vertical-align: center; image-rendering: pixelated; width: 32px; height: 16px; margin-right: 5px;">Coins</span>
+    <span>Coins are the most common kind of pickup, each wave spawning coins with value equal to the current wave. There are 5 different coins that can spawn, each with thier own values:</span>
+    <ul>
+        <li><img src="/games/GooberShooter2/graphics/coin0.gif" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Copper Coin: $1</li>
+        <li><img src="/games/GooberShooter2/graphics/coin1.gif" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Silver Coin: $5</li>
+        <li><img src="/games/GooberShooter2/graphics/coin2.gif" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Gold Coin: $10</li>
+        <li><img src="/games/GooberShooter2/graphics/coin3.gif" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Emerald Coin: $25</li>
+        <li><img src="/games/GooberShooter2/graphics/coin4.gif" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Diamond Coin: $100</li>
+    </ul>
+
+    <span class="genericHeader"><img src="/games/GooberShooter2/graphics/battery.gif" style="vertical-align: center; image-rendering: pixelated; width: 32px; margin-right: 5px;">Battery</span>
+    <span>The battery is a rare pickup, only being able to spawn from the <a><img src="/games/GooberShooter2/graphics/powerItems/pocket_change.png">Pocket Change</a> power item. It gives <cg>+25</cg> POWER.</span>
+    
+    <span class="genericHeader"><img cycle="true" imgs="/games/GooberShooter2/graphics/candyHealth.png /games/GooberShooter2/graphics/candyRed.png /games/GooberShooter2/graphics/candyBlue.png /games/GooberShooter2/graphics/candyAmmo.png /games/GooberShooter2/graphics/candyScary.png /games/GooberShooter2/graphics/candyElectric.png /games/GooberShooter2/graphics/candyProjectile.png /games/GooberShooter2/graphics/candyGolden.png /games/GooberShooter2/graphics/candyRainbow.png /games/GooberShooter2/graphics/candyBomb.png" style="vertical-align: center; image-rendering: pixelated; width: 16px; height: 16px; margin-right: 5px;">Candies</span>
+    <span>Candies are small pickups introduced in <a>Playtest26 - The Spooky Update</a> which give random effects:</span>
+    <ul>
+        <li><img src="/games/GooberShooter2/graphics/candyHealth.png" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Health Candy (20%)</li>
+        <ul>
+            <li>Gives <cg>+10</cg> HP</li>
+        </ul>
+        <li><img src="/games/GooberShooter2/graphics/candyRed.png" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Red Candy (18%)</li>
+        <ul>
+            <li>Gives the Strength <a>Status Effect</a> for 4 seconds.</li>
+            <li>If the player already has the Strength <a>Status Effect</a>, it will increase its duration by 4 seconds instead.</li>
+        </ul>
+        <li><img src="/games/GooberShooter2/graphics/candyBlue.png" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Blue Candy (18%)</li>
+        <ul>
+            <li>Gives the Buff <a>Status Effect</a> for 4 seconds.</li>
+            <li>If the player already has the Buff <a>Status Effect</a>, it will increase its duration by 4 seconds instead.</li>
+        </ul>
+        <li><img src="/games/GooberShooter2/graphics/candyAmmo.png" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Ammo Candy (18%)</li>
+        <ul>
+            <li>Reloads the players weapon.</li>
+            <li>This can only be picked up if the player is not at max ammo.</li>
+        </ul>
+        <li><img src="/games/GooberShooter2/graphics/candyScary.png" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Scary Candy (5%)</li>
+        <ul>
+            <li>Gives the Scary <a>Status Effect</a> for 2 seconds.</li>
+            <li>If the player already has the Scary <a>Status Effect</a>, it will increase its duration by 2 seconds instead.</li>
+        </ul>
+        <li><img src="/games/GooberShooter2/graphics/candyElectric.png" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Electric Candy (14%)</li>
+        <ul>
+            <li>Gives the Statically Charged <a>Status Effect</a> for 6 seconds.</li>
+            <li>If the player already has the Statically Charged <a>Status Effect</a>, it will increase its duration by 6 seconds instead.</li>
+        </ul>
+        <li><img src="/games/GooberShooter2/graphics/candyProjectile.png" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Projectile Candy (18%)</li>
+        <ul>
+            <li>Spawns a projectile identical to a player projectile facing towards the nearest enemy.</li>
+            <li>If there are no enemies, it will face in a random direction instead.</li>
+        </ul>
+        <li><img src="/games/GooberShooter2/graphics/candyGolden.png" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Golden Candy (5%)</li>
+        <ul>
+            <li>Gives a random amount of money between 25 and 100.</li>
+        </ul>
+        <li><img src="/games/GooberShooter2/graphics/candyRainbow.png" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Rainbow Candy (4%)</li>
+        <ul>
+            <li>Gives a random stat up.</li>
+            <li>All possible stat ups have an equal chance to be chosen.</li>
+            <li>The possible stat ups are as follows:</li>
+            <ul>
+                <li><code>player.speed + 0.1</code></li>
+                <li><code>player.maxHealth + 10</code></li>
+                <li><code>player.maxPower + 1</code></li>
+                <li><code>player.grazeSize + 0.1</code></li>
+                <li><code>player.parryHeal + 1</code></li>
+                <li><code>shop.luck + 0.5</code></li>
+                <li><code>shop.rerolls + 1</code></li>
+                <li><code>bullet.damage + 1</code></li>
+                <li><code>bullet.shotCooldown * 0.95</code></li>
+                <li><code>bullet.range + 5</code></li>
+                <li><code>bullet.critChance + 5</code></li>
+                <li><code>bullet.critDamageMult + 0.1</code></li>
+                <li><code>bullet.drillChance + 1</code></li>
+                <li><code>bullet.bounces + 1</code></li>
+                <li><code>melee.damage + 2</code></li>
+                <li><code>melee.cooldown * 0.95</code></li>
+                <li><code>melee.knockback + 1</code></li>
+                <li><code>melee.heal + 1</code></li>
+                <li><code>ammo.max + 1</code></li>
+                <li><code>ammo.reloadSpeed * 0.95</code></li>
+            </ul>
+        </ul>
+        <li><img src="/games/GooberShooter2/graphics/candyBomb.png" style="image-rendering: pixelated; vertical-align: center; width: 16px; margin-right: 5px;">Bomb Candy (Unused)</li>
+        <ul>
+            <li>Creates a small explosion.</li>
+        </ul>
+    </ul>
+
+    <span class="genericHeader"><img src="/games/GooberShooter2/graphics/upgrades/rock.png" style="vertical-align: center; image-rendering: pixelated; width: 32px; margin-right: 5px;">Floor Items</span>
+    <span>Floor Items are pickups that give the effect of an <a href="#Items">Item</a> when collided with.</span>
+
+    <span class="genericHeader"><img src="/games/GooberShooter2/graphics/upgrades/rock.png" style="vertical-align: center; image-rendering: pixelated; width: 32px; margin-right: 5px;">Floor Consumables</span>
+    <span>Floor Consumables are pickups that give the effect of a <a>Consumable</a> when collided with.</span>
 </div>
 <div>
     <div class="infoCard">
         <img src="/GSWiki/images/pickups.png">
-        <span>The three types of pickups in the game.<br>Batteries, Coins, and Items.</span>
+        <span>The three types of pickups in the game.<br>Batteries, Coins, and Items. [OUTDATED]</span>
     </div>
 </div>
