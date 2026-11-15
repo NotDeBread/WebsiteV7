@@ -21,19 +21,19 @@
                 "components": [
                     {
                         "type": 2,
-                        "style": 1,
+                        "style": 5,
                         "label": "Play",
                         "url": "https://debread.space/games/GooberShooter2"
                     },
                     {
                         "type": 2,
-                        "style": 2,
+                        "style": 5,
                         "label": "Watch Trailer",
                         "url": "https://youtu.be/BYrJh25OEWo"
                     },
                     {
                         "type": 2,
-                        "style": 2,
+                        "style": 5,
                         "label": "Open Wiki",
                         "url": "https://debread.space/GSWiki"
                     }
