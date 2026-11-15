@@ -1,6 +1,7 @@
 {
     "component": {
         "type": 17,
+        "accent_color": 7626419,
         "components": [
             {
                 "type": 10,
