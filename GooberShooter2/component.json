@@ -5,14 +5,15 @@
         "components": [
             {
                 "type": 10,
-                "content": "**[Goober Shooter 2](https://debread.space/GooberShooter2)**\nA browser-based top-down shooter."
+                "content": "## **[Goober Shooter 2](https://debread.space/GooberShooter2)**\nA browser-based top-down shooter."
             },
             {
                 "type": 12,
                 "items": [
                     {
                         "media": {
-                            "url": "https://debread.space/media/GooberShooterBanner.png"
+                            "url": "https://debread.space/media/GooberShooterBanner.png",
+                            "width": 500
                         }
                     }
                 ]
