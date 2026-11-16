@@ -343,7 +343,7 @@ const fellaTexts = [
     `<span style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 1.25em; color: rgb(254, 151, 1); text-shadow: 1px 0 0 #813300,0 1px 0 #c14d00,2px 1px .35px #813300,1px 2px .35px #c14d00,3px 2px .35px #813300,2px 3px .35px #c14d00,4px 3px .35px #813300,3px 4px .35px #c14d00,5px 4px .35px #813300,4px 5px .35px #c14d00,6px 5px .35px #813300,5px 6px .35px #c14d00,7px 6px .35px #813300,6px 7px .35px #c14d00;">Send me a drawing.</span>`,
     'I\'m good at programming just trust',
     'Throw rocks at homeless people',
-    'I need my big lolipop',
+    'I need my big lollipop',
     'I love playing with my choo choo train',
     'I gotta go to bed',
     `I\'m ${globalDate.getFullYear() - 2008} years old and I've already wasted my entire life`,

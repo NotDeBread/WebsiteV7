@@ -1,0 +1,55 @@
+{
+    "component": {
+        "type": 17,
+        "accent_color": 11500287,
+        "components": [
+            {
+                "type": 9,
+                "components": [
+                    {
+                        "type": 10,
+                        "content": "## **[Fella](https://debread.space)**\nI make stuff."
+                    }
+                ],
+                "accessory": {
+                    "type": 11,
+                    "media": {
+                        "url": "https://debread.space/media/guy.png"
+                    }
+                }
+            },
+            {
+                "type": 14
+            },
+            {
+                "type": 1,
+                "components": [
+                    {
+                        "type": 2,
+                        "style": 5,
+                        "label": "Home",
+                        "url": "https://debread.space/home"
+                    },
+                    {
+                        "type": 2,
+                        "style": 5,
+                        "label": "About me",
+                        "url": "https://debread.space/aboutme"
+                    },
+                    {
+                        "type": 2,
+                        "style": 5,
+                        "label": "Gallery",
+                        "url": "https://debread.space/gallery"
+                    },
+                    {
+                        "type": 2,
+                        "style": 5,
+                        "label": "Commissions",
+                        "url": "https://debread.space/commissions"
+                    }
+                ]
+            }
+        ]
+    }
+}
